@@ -1,0 +1,17 @@
+.navbar a {
+    font-weight: bold;
+}
+
+.jumbotron {
+    height: 400px;
+    background-image: url(../assets/background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    color: #eaeaea;
+    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+}
+
+.link-footer {
+    color: #eaeaea;
+}
