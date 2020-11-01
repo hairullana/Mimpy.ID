@@ -1,6 +1,6 @@
 <!-- header -->
 <?php 
-$title = "My Curriculum Vitae";
+$title = "Edit Curriculum Vitae";
 include '_header.php' ?>
 
 
