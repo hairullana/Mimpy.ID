@@ -10,9 +10,18 @@
     <div class="container text-center">
         <h1 class="display-1">Mimpy.ID</h1>
         <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
-        <div class="row center">
-            <div class="col text-center">
-                <button type="button" class="btn btn-primary align-content-center">Daftar Sekarang</button>
+        
+        <div class="row text-center mb-3">
+            <div class="col-md-4 offset-md-4">
+                <a href="profil_perusahaan.php"><button type="button" class="btn btn-primary btn-block">Profil Saya</button></a>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-3 offset-md-3">
+                <a href="data-loker_perusahaan.php"><button type="button" class="btn btn-primary btn-block">Kelola Loker</button></a>
+            </div>
+            <div class="col-md-3">
+                <a href="data-pelamar_perusahaan.php"><button type="button" class="btn btn-primary btn-block">Kelola Pelamar</button></a>
             </div>
         </div>
     </div>
