@@ -2,7 +2,7 @@
     font-weight: bold;
 }
 
-.jumbotron {
+.bg {
     height: 400px;
     background-image: url(../assets/background.jpg);
     background-attachment: fixed;

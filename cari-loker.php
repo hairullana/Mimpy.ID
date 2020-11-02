@@ -1,16 +1,46 @@
 <?php
-    $title = "Mimpy.ID";
+    $title = "Cari Loker";
     include '_header.php';
 ?>
 
 <!-- jumbotron -->
-<div class="jumbotron jumbotron-fluid bg">
+<div class="jumbotron jumbotron-fluid bg-gradient-primary">
     <div class="container text-center">
-        <h1 class="display-1">Mimpy.ID</h1>
-        <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+        <p class="lead text-danger font-weight-bold">* Kosongkan form jika ingin mencari semua jenis loker</p>
         <div class="row center">
-            <div class="col text-center">
-                <button type="button" class="btn btn-primary align-content-center">Daftar Sekarang</button>
+            <div class="col text-center mt-2">
+                <form action="">
+                    <div class="form-row">
+                        <div class="form-group col-md-4 offset-md-2 mb-3">
+                            <input type="text" class="form-control" placeholder="Daerah">
+                        </div>
+                        <div class="form-group col-md-4 mb-3">
+                            <input type="text" class="form-control" placeholder="Gaji Minimal">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 offset-md-2 mb-3">
+                            <input type="text" class="form-control" placeholder="Posisi">
+                        </div>
+                        <div class="form-group col-md-4 mb-3">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option selected disabled>Sampai</option>
+                                <option>Tanpa Ijasah</option>
+                                <option>SD</option>
+                                <option>SMP</option>
+                                <option>SMA/K</option>
+                                <option>D1</option>
+                                <option>D2</option>
+                                <option>D3</option>
+                                <option>D4</option>
+                                <option>S1</option>
+                                <option>S2</option>
+                                <option>S3</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-primary align-content-center">Cari Loker</button>
             </div>
         </div>
         <!-- <div class="row">
@@ -37,24 +67,15 @@
 <div class="container">
     <div class="row">
         <div class="col text-center">
-            <h1 class="display3 mb-4">Daftar Lowongan Kerja</h1>
+            <h1 class="display-4">Daftar Lowongan Kerja</h1>
         </div>
     </div>
 
-    <!-- search -->
-    <form action="">
-        <div class="row mx-5">
-            <div class="col">
-                <div class="form-group">
-                    <input class="form-control" type="search" placeholder="Keyword" aria-label="Search">
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-primary" type="submit">Search</button>
-            </div>
+    <div class="row my-4">
+        <div class="col-md-8 offset-md-2 font-weight-bold">
+            <div class="alert alert-primary">Menampilkan Lowongan Kerja dengan Syarat Lulusan S1, Posisi Guru, Gaji Minimal Rp. 2.500.000 di Daerah Denpasar</div>
         </div>
-    </form>
-    <!-- end search -->
+    </div>
 
     <div class="row mb-2">
         <div class="col-md-6">
