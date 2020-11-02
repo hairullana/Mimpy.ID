@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group col-md-4 mb-3">
                             <select class="form-control" id="exampleFormControlSelect1">
-                                <option selected disabled>Sampai</option>
+                                <option selected disabled>Lulusan</option>
                                 <option>Tanpa Ijasah</option>
                                 <option>SD</option>
                                 <option>SMP</option>

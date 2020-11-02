@@ -32,7 +32,7 @@
                     <ul class="navbar-nav mr-auto"></ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Register</a>
+                            <a class="nav-link active" href="registrasi.php">Register</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="login.php">Login</a>

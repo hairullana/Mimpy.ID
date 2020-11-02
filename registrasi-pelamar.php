@@ -3,16 +3,18 @@ $title = "Registrasi Pelamar";
 include '_header.php';
 ?>
 
-
-<div class="row">
+<!-- body -->
+<div class="row mt-5">
     <div class="col">
         <div class="container">
             <div class="card">
+                <!-- heading -->
                 <div class="card-header text-center">
                     <h3>Registrasi Pelamar</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <!-- syarat dan ketentuan -->
                         <div class="col-md-5 offset-md-1">
                             <h5>Term and Condition</h5>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa odio deleniti placeat sit? Maxime, quos? Quaerat quod magnam alias pariatur, a error expedita molestiae, obcaecati voluptatem, harum saepe minus omnis.</p>
@@ -20,11 +22,12 @@ include '_header.php';
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe sapiente assumenda ea quia amet incidunt labore voluptatem debitis inventore modi sunt, architecto maiores officia pariatur dicta, alias cumque deserunt explicabo!</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt aliquam animi mollitia quasi omnis, eius voluptate aperiam earum reprehenderit dolore adipisci nihil, nisi accusamus doloribus, fugit beatae unde praesentium dolorum.</p>
                         </div>
+                        <!-- form -->
                         <div class="col-md-5">
                             <table class="table">
                                 <form action="">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nama Perusahaan">
+                                        <input type="text" class="form-control" placeholder="Nama Lengkap">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Email">
@@ -46,6 +49,9 @@ include '_header.php';
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Ulangi Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" value="setuju" id="setuju"> <label for="setuju">Setuju</label>
                                     </div>
                                     <div class="form-group text-center">
                                         <button type="submit" class="btn btn-primary">Registrasi</button>

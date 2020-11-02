@@ -6,7 +6,7 @@
 <!-- end header -->
 
 <!-- jumbotron -->
-<div class="jumbotron jumbotron-fluid bg">
+<div class="jumbotron jumbotron-fluid bg jumbotron-index">
     <div class="container text-center">
         <h1 class="display-1">Mimpy.ID</h1>
         <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
@@ -24,7 +24,7 @@
                 <a href="data-lamaran_pelamar.php"><button type="button" class="btn btn-primary btn-block">Kelola Lamaran</button></a>
             </div>
             <div class="col-md-3">
-                <a href="data-lamaran_pelamar.php"><button type="button" class="btn btn-primary btn-block">Cari Loker Lanjutan</button></a>
+                <a href="cari-loker.php"><button type="button" class="btn btn-primary btn-block">Cari Loker Lanjutan</button></a>
             </div>
         </div>
     </div>

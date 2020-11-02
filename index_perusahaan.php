@@ -6,7 +6,7 @@
 <!-- end header -->
 
 <!-- jumbotron -->
-<div class="jumbotron jumbotron-fluid bg">
+<div class="jumbotron jumbotron-fluid bg jumbotron-index">
     <div class="container text-center">
         <h1 class="display-1">Mimpy.ID</h1>
         <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>

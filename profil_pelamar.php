@@ -5,7 +5,7 @@ include '_header.php';
 
 
 <div class="row mt-5">
-    <div class="col">
+    <div class="col-md-6 offset-md-3">
         <div class="container">
             <div class="card"> 
                 <div class="card-header text-center">
@@ -13,7 +13,7 @@ include '_header.php';
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6 offset-md-3">
+                        <div class="col-md-10 offset-md-1">
                             <table class="table">
                                 <form action="">
                                     <div class="form-group">
@@ -35,7 +35,7 @@ include '_header.php';
                                         <textarea type="text" class="form-control" placeholder="Alamat Lengkap"></textarea>
                                     </div>
                                     <div class="form-group text-center">
-                                        <button type="submit" class="btn btn-primary">Ubah Data</button> <button type="submit" class="btn btn-danger">Ganti Password</button> 
+                                        <button type="submit" class="btn btn-primary">Ubah Data</button> <a href="ganti-password.php" class="btn btn-danger">Ganti Password</a>
                                     </div>
                                 </form>
                             </table>
