@@ -5,62 +5,63 @@
 ?>
 <!-- end header -->
 
-<!-- jumbotron -->
-<div class="jumbotron jumbotron-fluid bg-gradient-primary">
-    <div class="container text-center">
-        <p class="lead text-danger font-weight-bold">* Kosongkan form jika ingin mencari semua jenis loker</p>
-        <div class="row center">
-            <div class="col text-center mt-2">
 
-                <!-- spesifik pencarian -->
-                <form action="">
-                    <div class="form-row">
-                        <div class="form-group col-md-4 offset-md-2 mb-3">
-                            <input type="text" class="form-control" placeholder="Daerah" value="Denpasar">
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header text-center">
+            <h3>Pencarian Loker Spesifik</h3>
+        </div>
+        <div class="card-body col-md-8 offset-md-2 text-center">
+            <p class="text-danger font-weight-bold">* Kosongkan form jika ingin mencari semua jenis loker</p>
+            <div class="row center">
+                <div class="col text-center mt-2">
+
+                    <!-- spesifik pencarian -->
+                    <form action="">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-2 mb-3">
+                                <input type="text" class="form-control" placeholder="Daerah" value="Denpasar">
+                            </div>
+                            <div class="form-group col-md-4 mb-3">
+                                <input type="text" class="form-control" placeholder="Gaji Minimal" value="2500000">
+                            </div>
                         </div>
-                        <div class="form-group col-md-4 mb-3">
-                            <input type="text" class="form-control" placeholder="Gaji Minimal" value="2500000">
+                        <div class="form-row">
+                            <div class="form-group col-md-4 offset-md-2 mb-3">
+                                <input type="text" class="form-control" placeholder="Posisi" value="Guru">
+                            </div>
+                            <div class="form-group col-md-4 mb-3">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option selected disabled>Lulusan</option>
+                                    <option>Tanpa Ijasah</option>
+                                    <option>SD</option>
+                                    <option>SMP</option>
+                                    <option>SMA/K</option>
+                                    <option>D1</option>
+                                    <option>D2</option>
+                                    <option>D3</option>
+                                    <option>D4</option>
+                                    <option selected>S1</option>
+                                    <option>S2</option>
+                                    <option>S3</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4 offset-md-2 mb-3">
-                            <input type="text" class="form-control" placeholder="Posisi" value="Guru">
-                        </div>
-                        <div class="form-group col-md-4 mb-3">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option selected disabled>Lulusan</option>
-                                <option>Tanpa Ijasah</option>
-                                <option>SD</option>
-                                <option>SMP</option>
-                                <option>SMA/K</option>
-                                <option>D1</option>
-                                <option>D2</option>
-                                <option>D3</option>
-                                <option>D4</option>
-                                <option selected>S1</option>
-                                <option>S2</option>
-                                <option>S3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-primary align-content-center">Cari Loker</button>
-                </form>
+                        <button type="button" class="btn btn-primary align-content-center">Cari Loker</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- end jumbotron -->
+
+
 
 
 
 
 <!-- list lowongan kerja -->
 <div class="container">
-    <div class="row">
-        <div class="col text-center">
-            <h1 class="display-4">Daftar Lowongan Kerja</h1>
-        </div>
-    </div>
 
     <div class="row my-4">
         <div class="col-md-8 offset-md-2 font-weight-bold">
