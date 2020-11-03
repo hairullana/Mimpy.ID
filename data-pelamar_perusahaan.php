@@ -4,7 +4,6 @@ $title = "Data Pelamar";
 include '_header.php';
 ?>
 
-
 <div class="container mt-5">
     <div class="card">
         <div class="card-header text-center">

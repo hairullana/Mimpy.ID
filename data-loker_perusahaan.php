@@ -1,9 +1,12 @@
+<!-- header -->
 <?php
 $title = "Kelola Lowongan Kerja";
 include '_header.php';
 ?>
+<!-- end header -->
 
 
+<!-- body -->
 <div class="row mt-5">
     <div class="col">
         <div class="container">
@@ -89,14 +92,14 @@ include '_header.php';
                     </div>
                     <!-- end pagination -->
 
-                    
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
+<!-- footer -->
 <?php
 include '_footer.php'
 ?>

@@ -1,9 +1,12 @@
+<!-- header -->
 <?php
 $title = "Buat Lamaran";
 include '_header.php';
 ?>
+<!-- end header -->
 
 
+<!-- body -->
 <div class="container">
 
     <div class="card mt-5">
@@ -17,6 +20,7 @@ include '_header.php';
                         <div class="card-header">
                             Ringkasan Pekerjaan
                         </div>
+                        <!-- overview -->
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Perusahaan : PT. Ayam Geprek Rainord</li>
                             <li class="list-group-item">Jabatan : Koki</li>
@@ -26,6 +30,7 @@ include '_header.php';
                 </div>
             </div>
             <div class="row mt-5">
+            <!-- surat lamaran -->
                 <div class="col">
                     <strong>Surat Lamaran Anda</strong>
                     <form action="" class="mt-4">
@@ -46,11 +51,11 @@ include '_header.php';
             </div>
         </div>
     </div>
-
 </div>
+<!-- end body -->
 
 
-
+<!-- footer -->
 <?php 
 include '_footer.php';
 ?>

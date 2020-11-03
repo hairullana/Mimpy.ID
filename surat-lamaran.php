@@ -5,7 +5,7 @@ include '_header.php';
 ?>
 <!-- end header -->
 
-
+<!-- body -->
 <div class="row">
     <div class="col-md-8 offset-md-2">
         <div class="container mt-5 ">
@@ -13,6 +13,7 @@ include '_header.php';
                 <div class="card-header text-center">
                     <h3>Lamaran</h3>
                 </div>
+                <!-- biodata singkat -->
                 <div class="card-body">
                     <p>Nama : Hairul Lana</p>
                     <p>Lulusan : SMA/K</p>
@@ -35,7 +36,7 @@ include '_header.php';
         </div>
     </div>
 </div>
-
+<!-- end body -->
 
 
 <!-- footer -->

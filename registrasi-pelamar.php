@@ -1,7 +1,9 @@
+<!-- header -->
 <?php
 $title = "Registrasi Pelamar";
 include '_header.php';
 ?>
+<!-- end header -->
 
 <!-- body -->
 <div class="row mt-5">
@@ -66,7 +68,8 @@ include '_header.php';
     </div>
 </div>
 
-
+<!-- footer -->
 <?php
 include '_footer.php';
 ?>
+<!-- end footer -->

@@ -1,16 +1,20 @@
+<!-- header -->
 <?php
 $title = "Registrasi Perusahaan";
 include '_header.php';
 ?>
+<!-- end header -->
 
-
+<!-- body -->
 <div class="row">
     <div class="col">
         <div class="container">
             <div class="card">
+            <!-- heading -->
                 <div class="card-header text-center">
                     <h3>Registrasi Pelamar</h3>
                 </div>
+                <!-- syarat dan ketentuan -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-5 offset-md-1">
@@ -20,6 +24,7 @@ include '_header.php';
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe sapiente assumenda ea quia amet incidunt labore voluptatem debitis inventore modi sunt, architecto maiores officia pariatur dicta, alias cumque deserunt explicabo!</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt aliquam animi mollitia quasi omnis, eius voluptate aperiam earum reprehenderit dolore adipisci nihil, nisi accusamus doloribus, fugit beatae unde praesentium dolorum.</p>
                         </div>
+                        <!-- form -->
                         <div class="col-md-5">
                             <table class="table">
                                 <form action="">
@@ -59,8 +64,11 @@ include '_header.php';
         </div>
     </div>
 </div>
+<!-- end body -->
 
 
+<!-- footer -->
 <?php
 include '_footer.php';
 ?>
+<!-- end footer -->

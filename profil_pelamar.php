@@ -1,9 +1,12 @@
+<!-- header -->
 <?php
 $title = "Profil Saya";
 include '_header.php';
 ?>
+<!-- end header -->
 
 
+<!-- body -->
 <div class="row mt-5">
     <div class="col-md-6 offset-md-3">
         <div class="container">
@@ -11,6 +14,7 @@ include '_header.php';
                 <div class="card-header text-center">
                     <h3>Profil Saya</h3>
                 </div>
+                <!-- form -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-10 offset-md-1">
@@ -42,12 +46,15 @@ include '_header.php';
                         </div>
                     </div>
                 </div>
+                <!-- end form -->
             </div>
         </div>
     </div>
 </div>
+<!-- end body -->
 
-
+<!-- footer -->
 <?php 
 include '_footer.php';
 ?>
+<!-- end footer -->

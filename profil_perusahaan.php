@@ -1,7 +1,9 @@
+<!-- header -->
 <?php
 $title = "Registrasi Pelamar";
 include '_header.php';
 ?>
+<!-- end header -->
 
 <!-- body -->
 <div class="row mt-5">
@@ -11,6 +13,7 @@ include '_header.php';
                 <div class="card-header text-center">
                     <h3>Profil Perusahaan</h3>
                 </div>
+                <!-- form -->
                 <div class="card-body">
                     <table class="table">
                         <form action="">
@@ -42,8 +45,10 @@ include '_header.php';
         </div>
     </div>
 </div>
+<!-- end body -->
 
-
+<!-- footer -->
 <?php
 include '_footer.php';
 ?>
+<!-- end footer -->

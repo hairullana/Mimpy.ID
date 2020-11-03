@@ -6,6 +6,7 @@ include '_header.php';
 <!-- end header -->
 
 
+<!-- body -->
 <div class="container">
     <div class="card mt-5">
         <div class="card-header text-center">
@@ -28,6 +29,7 @@ include '_header.php';
             </form>
             <!-- end search -->
 
+            <!-- data -->
             <table class="table table-responsive-md">
                 <tr>
                     <th>ID Loker</th>
@@ -78,6 +80,10 @@ include '_header.php';
                     <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
             </table>
+            <!-- end data -->
+
+
+            <!-- pagination -->
             <div class="row mt-3">
                 <div class="col">
                     <nav aria-label="...">
@@ -91,13 +97,15 @@ include '_header.php';
                     </nav>
                 </div>
             </div>
+            <!-- end pagination -->
         </div>
     </div>
 </div>
 
 
-
+<!-- footer -->
 <?php
 include '_footer.php';
 ?>
+<!-- end footer -->
 

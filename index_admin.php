@@ -144,6 +144,8 @@
     </div>
 </div>
 
+
+<!-- pagination -->
 <div class="row">
     <div class="col">
         <nav aria-label="...">
@@ -157,7 +159,7 @@
         </nav>
     </div>
 </div>
-<!-- end list loker -->
+<!-- end pagination -->
 
 
 <!-- footer -->

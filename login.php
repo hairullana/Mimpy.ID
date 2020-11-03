@@ -1,10 +1,12 @@
 <!-- header -->
 <?php 
 $title = "Halaman Login";
-include '_header.php' ?>
+include '_header.php';
+?>
+<!-- end header -->
 
 
-
+<!-- body -->
 <div class="container my-5">
     <div class="row">
         <div class="col-xl-6 offset-xl-3">
@@ -12,6 +14,7 @@ include '_header.php' ?>
             <div class="card-header text-center">
                 Silahkan Login Terlebih Dahulu
                 </div>
+                <!-- form login -->
                 <div class="card-body">
                 <form>
                 <div class="text-center mb-3">
@@ -43,6 +46,8 @@ include '_header.php' ?>
         </div>
     </div>
 </div>
+<!-- end body -->
 
 <!-- footer -->
 <?php include '_footer.php' ?>
+<!-- end footer -->
