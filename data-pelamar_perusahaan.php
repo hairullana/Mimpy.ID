@@ -41,35 +41,35 @@ include '_header.php';
                     <td>1</td>
                     <td>Hairul Lana</td>
                     <td>Admin</td>
-                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a></td>
+                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a> <a href="surat-lamaran.php" class="btn btn-primary">Lihat Lamaran</a></td>
                     <td><button class="btn btn-success">Diterima</button></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Derwi Rainord</td>
                     <td>Manager</td>
-                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a></td>
+                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a> <a href="surat-lamaran.php" class="btn btn-primary">Lihat Lamaran</a></td>
                     <td><button class="btn btn-primary">Terima</button> <button class="btn btn-primary">Tolak</button></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Arya Dwisada</td>
                     <td>Manager</td>
-                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a></td>
+                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a> <a href="surat-lamaran.php" class="btn btn-primary">Lihat Lamaran</a></td>
                     <td><button class="btn btn-primary">Terima</button> <button class="btn btn-primary">Tolak</button></td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>Febri Wira</td>
                     <td>Akuntan</td>
-                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a></td>
+                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a> <a href="surat-lamaran.php" class="btn btn-primary">Lihat Lamaran</a></td>
                     <td><button class="btn btn-danger">Ditolak</button></td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>Farin</td>
                     <td>Tim Media</td>
-                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a></td>
+                    <td><a href="cv.php" class="btn btn-primary">Lihat CV</a> <a href="surat-lamaran.php" class="btn btn-primary">Lihat Lamaran</a></td>
                     <td><button class="btn btn-success">Diterima</button></td>
                 </tr>
             </table>

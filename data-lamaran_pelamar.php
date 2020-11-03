@@ -40,7 +40,7 @@ include '_header.php';
                     <td>1 Januari 2020</td>
                     <td>PT. Abdi Jaya</td>
                     <td>Manager</td>
-                    <td>Ditotak</td>
+                    <td><span class="text-danger">Ditotak</span></td>
                     <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@ include '_header.php';
                     <td>5 Maret 2020</td>
                     <td>PT. Ayam Bakar Anu</td>
                     <td>Manager</td>
-                    <td>Ditolak</td>
+                    <td><span class="text-danger">Ditolak</span></td>
                     <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
                 <tr>
@@ -72,7 +72,7 @@ include '_header.php';
                     <td>7 Mei 2020</td>
                     <td>PT. Abdi Jaya</td>
                     <td>Manager</td>
-                    <td>Diterima</td>
+                    <td><span class="text-success">Diterima</span></td>
                     <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
             </table>
