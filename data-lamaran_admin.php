@@ -1,9 +1,12 @@
+<!-- header -->
 <?php
 $title = "Kelola Lamaran";
 include '_header.php';
 ?>
+<!-- end header -->
 
 
+<!-- body -->
 <div class="card mt-5">
     <div class="card-header text-center">
         <h3>Kelola Lamaran</h3>
@@ -25,6 +28,7 @@ include '_header.php';
         </form>
         <!-- end search -->
 
+        <!-- data -->
         <table class="table table-responsive-md">
             <tr>
                 <th>ID Loker</th>
@@ -75,22 +79,26 @@ include '_header.php';
                 <td><a href=""><button class="btn btn-primary">Detail</button></a></td>
             </tr>
         </table>
+        <!-- end data -->
+        <!-- pagination -->
+        <div class="row mt-3">
+            <div class="col">
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- end pagination -->
     </div>
 </div>
 
-<div class="row mt-3">
-    <div class="col">
-        <nav aria-label="...">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+
 
 
 

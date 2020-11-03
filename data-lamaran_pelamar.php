@@ -1,7 +1,9 @@
+<!-- header -->
 <?php
 $title = "Kelola Lamaran";
 include '_header.php';
 ?>
+<!-- end header -->
 
 
 <div class="container">

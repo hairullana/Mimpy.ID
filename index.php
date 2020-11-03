@@ -12,7 +12,7 @@
         <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
         <div class="row center">
             <div class="col text-center">
-                <button type="button" class="btn btn-primary align-content-center">Daftar Sekarang</button>
+                <a href="registrasi.php" type="button" class="btn btn-primary align-content-center">Daftar Sekarang</a>
             </div>
         </div>
     </div>

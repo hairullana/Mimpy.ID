@@ -1,7 +1,9 @@
+<!-- header -->
 <?php
     $title = "Cari Loker";
     include '_header.php';
 ?>
+<!-- end header -->
 
 <!-- jumbotron -->
 <div class="jumbotron jumbotron-fluid bg-gradient-primary">
@@ -9,18 +11,20 @@
         <p class="lead text-danger font-weight-bold">* Kosongkan form jika ingin mencari semua jenis loker</p>
         <div class="row center">
             <div class="col text-center mt-2">
+
+                <!-- spesifik pencarian -->
                 <form action="">
                     <div class="form-row">
                         <div class="form-group col-md-4 offset-md-2 mb-3">
-                            <input type="text" class="form-control" placeholder="Daerah">
+                            <input type="text" class="form-control" placeholder="Daerah" value="Denpasar">
                         </div>
                         <div class="form-group col-md-4 mb-3">
-                            <input type="text" class="form-control" placeholder="Gaji Minimal">
+                            <input type="text" class="form-control" placeholder="Gaji Minimal" value="2500000">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4 offset-md-2 mb-3">
-                            <input type="text" class="form-control" placeholder="Posisi">
+                            <input type="text" class="form-control" placeholder="Posisi" value="Guru">
                         </div>
                         <div class="form-group col-md-4 mb-3">
                             <select class="form-control" id="exampleFormControlSelect1">
@@ -33,37 +37,24 @@
                                 <option>D2</option>
                                 <option>D3</option>
                                 <option>D4</option>
-                                <option>S1</option>
+                                <option selected>S1</option>
                                 <option>S2</option>
                                 <option>S3</option>
                             </select>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-primary align-content-center">Cari Loker</button>
                 </form>
-                <button type="button" class="btn btn-primary align-content-center">Cari Loker</button>
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col text-right">
-                <button type="button" class="btn btn-dark">Profil Saya</button>
-            </div>
-            <div class="col text-left">
-                <button type="button" class="btn btn-dark">Data Perusahaan</button>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col text-right">
-                <button type="button" class="btn btn-dark">Data Loker</button>
-            </div>
-            <div class="col text-left">
-                <button type="button" class="btn btn-dark">Data Pelamar</button>
-            </div>
-        </div> -->
     </div>
 </div>
 <!-- end jumbotron -->
 
+
+
+
+<!-- list lowongan kerja -->
 <div class="container">
     <div class="row">
         <div class="col text-center">
@@ -175,8 +166,12 @@
         </nav>
     </div>
 </div>
+<!-- end list lowongan kerja -->
 
+
+<!-- footer -->
 <?php include '_footer.php'; ?>
+<!-- end foooter -->
 
 
         

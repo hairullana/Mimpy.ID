@@ -1,8 +1,9 @@
 <!-- header -->
 <?php 
 $title = "CV Hairul Lana";
-include '_header.php' ?>
-
+include '_header.php';
+?>
+<!-- end header -->
 
 
 <!-- form -->
@@ -117,3 +118,4 @@ include '_header.php' ?>
 
 <!-- footer -->
 <?php include '_footer.php' ?>
+<!-- end footer -->
