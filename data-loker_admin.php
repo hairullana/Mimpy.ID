@@ -20,10 +20,9 @@
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
         <!-- title -->
-        <title><?= $title ?></title>
+        <title>Admin</title>
     </head>
     <body>
-        
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
             <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
@@ -63,7 +62,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-loker_admin.php">
+                        <a class="nav-link text-white font-weight-bold" href="data-loker_admin.php">
                             <i class="fas fa-sticky-note"></i>
                             Data Loker
                         </a>
@@ -75,7 +74,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="data-lamaran_admin.php">
+                        <a class="nav-link text-white" href="data-lamaran_admin.php">
                             <i class="fas fa-address-book"></i>
                             Data Lamaran
                         </a>
@@ -107,62 +106,61 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Date</th>
                                     <th>Company Name</th>
-                                    <th>Name</th>
                                     <th>Position</th>
-                                    <th>Status</th>
+                                    <th>Graduate Requirements</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>001</td>
-                                    <td>20 Juni 2020</td>
                                     <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
                                     <td>System Analyst</td>
+                                    <td>S2 Teknik Informatika</td>
                                     <td>
-                                        <a href="#" class="btn btn-block btn-primary">Waiting</a>
+                                    <a href="#" class="btn btn-primary">Detail</a>
+                                        <a href="#" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>001</td>
-                                    <td>20 Juni 2020</td>
                                     <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
                                     <td>System Analyst</td>
+                                    <td>S2 Teknik Informatika</td>
                                     <td>
-                                        <a href="#" class="btn btn-block btn-danger">Decline</a>
+                                    <a href="#" class="btn btn-primary">Detail</a>
+                                        <a href="#" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>001</td>
-                                    <td>20 Juni 2020</td>
                                     <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
                                     <td>System Analyst</td>
+                                    <td>S2 Teknik Informatika</td>
                                     <td>
-                                        <a href="#" class="btn btn-block btn-danger">Decline</a>
+                                    <a href="#" class="btn btn-primary">Detail</a>
+                                        <a href="#" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>001</td>
-                                    <td>20 Juni 2020</td>
                                     <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
                                     <td>System Analyst</td>
+                                    <td>S2 Teknik Informatika</td>
                                     <td>
-                                        <a href="#" class="btn btn-block btn-primary">Waiting</a>
+                                    <a href="#" class="btn btn-primary">Detail</a>
+                                        <a href="#" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>001</td>
-                                    <td>20 Juni 2020</td>
                                     <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
                                     <td>System Analyst</td>
+                                    <td>S2 Teknik Informatika</td>
                                     <td>
-                                        <a href="#" class="btn btn-block btn-success">Accept</a>
+                                    <a href="#" class="btn btn-primary">Detail</a>
+                                        <a href="#" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>

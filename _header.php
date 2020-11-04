@@ -14,6 +14,9 @@
         <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
+        <!-- Fontawesome -->
+        <script src="https://kit.fontawesome.com/ac1ee11f2c.js" crossorigin="anonymous"></script>
+
         <!-- title -->
         <title><?= $title ?></title>
     </head>

@@ -23,78 +23,62 @@
         <title>Admin</title>
     </head>
     <body>
-        <!-- Navbar -->
+        
+
+        <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-            <a class="navbar-brand ml-2" href="#">
-                <strong>Mimpy.ID</strong>
-            </a>
+            <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <ul class="navbar-nav mr-auto"></ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="registrasi.php">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link active" href="login.php">Logout</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul> -->
-                <form class="form-inline my-2 my-lg-0 ml-auto">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <div class="icon ml-4">
-                    <h5>
-                        <i class="fas fa-sign-in-alt text-white mr-3" data-toggle="tooltip" tittle="Logout"></i>
-                    </h5>
-                </div>
+                </ul>
             </div>
         </nav>
-        <!-- end Navbar -->
+        <!-- end navbar -->
 
         <!-- Nav -->
         <div class="row no-gutters mt-5">
-            <div class="col-md-2 bg-dark pr-3 pt-4"> 
+            <div class="col-md-2 bg-dark pr-3 pt-4" style="min-height:auto"> 
                 <ul class="nav flex-column ml-3 mb-5">
                     <li class="nav-item">
-                            <a class="nav-link active text-white" href="#">
+                            <a class="nav-link active text-white font-weight-bold" href="dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>
                                 Dashboard
                             </a>
                         <hr class="bg-secondary">
                     </li>
                     <li class="nav-item">  
-                        <a class="nav-link text-white" href="#">
+                        <a class="nav-link text-white" href="data-perusahaan.php">
                             <i class="fas fa-building"></i>
                             Data Perusahaan
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">
+                        <a class="nav-link text-white" href="data-loker_admin.php">
                             <i class="fas fa-sticky-note"></i>
                             Data Loker
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">
+                        <a class="nav-link text-white" href="data-pelamar_admin.php">
                             <i class="fas fa-address-card"></i>
                             Data Pelamar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="data-lamaran_admin.php">
+                            <i class="fas fa-address-book"></i>
+                            Data Lamaran
                         </a>
                     </li>
                 </ul>
@@ -112,7 +96,7 @@
                             </div>
                             <h5 class="card-title"><strong>JUMLAH PERUSAHAAN</strong></h5>
                             <div class="display-4">1.893</div>
-                            <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+                            <a href="data-perusahaan.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
                     <div class="card bg-warning ml-5" style="width: 18rem;">
@@ -122,7 +106,7 @@
                             </div>
                             <h5 class="card-title"><strong>JUMLAH LOKER</strong></h5>
                             <div class="display-4">3.154</div>
-                            <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+                            <a href="data-loker_admin.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
                     <div class="card bg-danger ml-5" style="width: 18rem;">
@@ -132,7 +116,7 @@
                             </div>
                             <h5 class="card-title"><strong>JUMLAH PELAMAR</strong></h5>
                             <div class="display-4">8.642</div>
-                            <a href=""><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+                            <a href="data-pelamar_admin.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
                 </div>

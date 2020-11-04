@@ -16,15 +16,7 @@
                 <a href="profil_admin.php"><button type="button" class="btn btn-primary btn-block">Profil Saya</button></a>
             </div>
             <div class="col-md-3">
-                <a href="data-perusahaan.php"><button type="button" class="btn btn-primary btn-block">Data Perusahaan</button></a>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-md-3 offset-md-3">
-                <a href="data-loker_admin.php"><button type="button" class="btn btn-primary btn-block">Data Loker</button></a>
-            </div>
-            <div class="col-md-3">
-                <a href="data-pelamar.php"><button type="button" class="btn btn-primary btn-block">Data Pelamar</button></a>
+                <a href="dashboard.php"><button type="button" class="btn btn-primary btn-block">Dashboard Admin</button></a>
             </div>
         </div>
     </div>
