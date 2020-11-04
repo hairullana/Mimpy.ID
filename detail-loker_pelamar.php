@@ -59,6 +59,11 @@ include '_header.php' ?>
                             </table>
                         </div>
                     </div>
+                    <div class="row my-3">
+                        <div class="col text-center">
+                            <a href="lamaran.php" class="btn btn-danger btn-lg btn-block">Buat Lamaran</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
