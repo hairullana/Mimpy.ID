@@ -84,12 +84,14 @@
                 </ul>
             </div>
             <div class="col-md-10 p-5">
-                <h3>
-                    Dashboard
-                </h3>
+                <div class="text-center">
+                    <h3>
+                        Dashboard
+                    </h3>
+                </div>
                 <hr>
-                <div class="row text-white">
-                    <div class="card bg-info ml-5" style="width: 18rem;">
+                <div class="row text-white mt-5">
+                    <div class="card bg-info mx-auto" style="width: 25rem;">
                         <div class="card-body">
                             <div class="card-body-icon">
                                 <i class="fas fa-building"></i>
@@ -99,7 +101,7 @@
                             <a href="data-perusahaan.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
-                    <div class="card bg-warning ml-5" style="width: 18rem;">
+                    <div class="card bg-warning mx-auto" style="width: 25rem;">
                         <div class="card-body">
                             <div class="card-body-icon">
                                 <i class="fas fa-sticky-note"></i>
@@ -109,7 +111,9 @@
                             <a href="data-loker_admin.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
-                    <div class="card bg-danger ml-5" style="width: 18rem;">
+                </div>
+                <div class="row text-white mt-5">
+                    <div class="card bg-danger mx-auto" style="width: 25rem;">
                         <div class="card-body">
                             <div class="card-body-icon">
                                 <i class="fas fa-address-card"></i>
@@ -117,6 +121,16 @@
                             <h5 class="card-title"><strong>JUMLAH PELAMAR</strong></h5>
                             <div class="display-4">8.642</div>
                             <a href="data-pelamar_admin.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+                        </div>
+                    </div>
+                    <div class="card bg-primary mx-auto" style="width: 25rem;">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-address-card"></i>
+                            </div>
+                            <h5 class="card-title"><strong>JUMLAH LAMARAN</strong></h5>
+                            <div class="display-4">8.642</div>
+                            <a href="data-lamaran_admin.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
                 </div>
