@@ -6,13 +6,13 @@ include '_header.php';
 <!-- end header -->
 
 <!-- body -->
-<div class="row">
+<div class="row mt-5">
     <div class="col">
         <div class="container">
             <div class="card">
             <!-- heading -->
                 <div class="card-header text-center">
-                    <h3>Registrasi Pelamar</h3>
+                    <h3>Registrasi Perusahaan</h3>
                 </div>
                 <!-- syarat dan ketentuan -->
                 <div class="card-body">
