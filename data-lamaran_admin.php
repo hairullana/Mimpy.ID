@@ -20,7 +20,7 @@
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
         <!-- title -->
-        <title><?= $title ?></title>
+        <title>Data Lamaran</title>
     </head>
     <body>
         

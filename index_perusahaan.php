@@ -12,8 +12,11 @@
         <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
         
         <div class="row text-center mb-3">
-            <div class="col-md-4 offset-md-4">
+            <div class="col-md-3 offset-md-3">
                 <a href="profil_perusahaan.php"><button type="button" class="btn btn-primary btn-block">Profil Saya</button></a>
+            </div>
+            <div class="col-md-3">
+                <a href="buat-loker.php" class="btn btn-primary btn-block">Buat Loker</a>
             </div>
         </div>
         <div class="row text-center">
@@ -66,7 +69,7 @@
                     <h3 class="mb-0">Kumon Denpasar</h3>
                     <div class="mb-1 text-muted">Jl. Kampus Unud No.99, Kuta Selatan, Badung, Bali</div>
                     <p class="card-text mb-auto">Dibutuhkan segera Guru Matematika SMP, Minimal S1 Matematika</p>
-                    <a href="#" class="stretched-link">read more</a>
+                    <a href="detail-loker.php" class="stretched-link">read more</a>
                 </div>
             </div>
         </div>
@@ -79,7 +82,7 @@
                     <h3 class="mb-0">Kumon Denpasar</h3>
                     <div class="mb-1 text-muted">Jl. Kampus Unud No.99, Kuta Selatan, Badung, Bali</div>
                     <p class="card-text mb-auto">Dibutuhkan segera Guru Matematika SMP, Minimal S1 Matematika</p>
-                    <a href="#" class="stretched-link">read more</a>
+                    <a href="detail-loker.php" class="stretched-link">read more</a>
                 </div>
             </div>
         </div>   
@@ -94,7 +97,7 @@
                     <h3 class="mb-0">Kumon Denpasar</h3>
                     <div class="mb-1 text-muted">Jl. Kampus Unud No.99, Kuta Selatan, Badung, Bali</div>
                     <p class="card-text mb-auto">Dibutuhkan segera Guru Matematika SMP, Minimal S1 Matematika</p>
-                    <a href="#" class="stretched-link">read more</a>
+                    <a href="detail-loker.php" class="stretched-link">read more</a>
                 </div>
             </div>
         </div>
@@ -107,7 +110,7 @@
                     <h3 class="mb-0">Kumon Denpasar</h3>
                     <div class="mb-1 text-muted">Jl. Kampus Unud No.99, Kuta Selatan, Badung, Bali</div>
                     <p class="card-text mb-auto">Dibutuhkan segera Guru Matematika SMP, Minimal S1 Matematika</p>
-                    <a href="#" class="stretched-link">read more</a>
+                    <a href="detail-loker.php" class="stretched-link">read more</a>
                 </div>
             </div>
         </div>   
@@ -121,7 +124,7 @@
                     <h3 class="mb-0">Kumon Denpasar</h3>
                     <div class="mb-1 text-muted">Jl. Kampus Unud No.99, Kuta Selatan, Badung, Bali</div>
                     <p class="card-text mb-auto">Dibutuhkan segera Guru Matematika SMP, Minimal S1 Matematika</p>
-                    <a href="#" class="stretched-link">read more</a>
+                    <a href="detail-loker.php" class="stretched-link">read more</a>
                 </div>
             </div>
         </div>
@@ -134,7 +137,7 @@
                     <h3 class="mb-0">Kumon Denpasar</h3>
                     <div class="mb-1 text-muted">Jl. Kampus Unud No.99, Kuta Selatan, Badung, Bali</div>
                     <p class="card-text mb-auto">Dibutuhkan segera Guru Matematika SMP, Minimal S1 Matematika</p>
-                    <a href="#" class="stretched-link">read more</a>
+                    <a href="detail-loker.php" class="stretched-link">read more</a>
                 </div>
             </div>
         </div>   

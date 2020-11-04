@@ -20,7 +20,7 @@
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
         <!-- title -->
-        <title>Admin</title>
+        <title>Data Loker</title>
     </head>
     <body>
         <!-- navbar -->

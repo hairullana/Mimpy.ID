@@ -44,35 +44,35 @@ include '_header.php';
                             <td>1 Januari 2020</td>
                             <td>Admin</td>
                             <td>SMA/K</td>
-                            <td><button class="btn btn-primary">Detail</button> <button class="btn btn-success">Ubah</button> <button class="btn btn-danger">Hapus</button></td>
+                            <td><a href="detail-loker.php" class="btn btn-primary">Detail</a> <button class="btn btn-success">Edit</button> <button class="btn btn-danger">Hapus</button></td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>1 Februari 2020</td>
                             <td>Kasir</td>
                             <td>SMA/K</td>
-                            <td><button class="btn btn-primary">Detail</button> <button class="btn btn-success">Ubah</button> <button class="btn btn-danger">Hapus</button></td>
+                            <td><a href="detail-loker.php" class="btn btn-primary">Detail</a> <button class="btn btn-success">Edit</button> <button class="btn btn-danger">Hapus</button></td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td>1 Maret 2020</td>
                             <td>Cleaning Service</td>
                             <td>SMA/K</td>
-                            <td><button class="btn btn-primary">Detail</button> <button class="btn btn-success">Ubah</button> <button class="btn btn-danger">Hapus</button></td>
+                            <td><a href="detail-loker.php" class="btn btn-primary">Detail</a> <button class="btn btn-success">Edit</button> <button class="btn btn-danger">Hapus</button></td>
                         </tr>
                         <tr>
                             <td>4</td>
                             <td>1 April 2020</td>
                             <td>Manager</td>
                             <td>D3</td>
-                            <td><button class="btn btn-primary">Detail</button> <button class="btn btn-success">Ubah</button> <button class="btn btn-danger">Hapus</button></td>
+                            <td><a href="detail-loker.php" class="btn btn-primary">Detail</a> <button class="btn btn-success">Edit</button> <button class="btn btn-danger">Hapus</button></td>
                         </tr>
                         <tr>
                             <td>5</td>
                             <td>1 Mei 2020</td>
                             <td>Customer Service</td>
                             <td>S1</td>
-                            <td><button class="btn btn-primary">Detail</button> <button class="btn btn-success">Ubah</button> <button class="btn btn-danger">Hapus</button></td>
+                            <td><a href="detail-loker.php" class="btn btn-primary">Detail</a> <button class="btn btn-success">Edit</button> <button class="btn btn-danger">Hapus</button></td>
                         </tr>
                     </table>
 

@@ -12,10 +12,10 @@
                         <div class="card-body">
                             <h5 class="card-title">Mimpy.ID</h5>
                             <p class="card-text">
-                                <a href="#" class="link-footer">Home</a><br>
-                                <a href="#" class="link-footer">Term and Condition</a><br>
-                                <a href="#" class="link-footer">Registration</a><br>
-                                <a href="#" class="link-footer">Login</a>
+                                <a href="/mimpy.id" class="link-footer">Home</a><br>
+                                <a href="terms.php" class="link-footer">Term and Condition</a><br>
+                                <a href="registrasi.php" class="link-footer">Registration</a><br>
+                                <a href="login.php" class="link-footer">Login</a>
                             </p>
                         </div>
                     </div>

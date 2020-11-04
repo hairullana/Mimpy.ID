@@ -45,7 +45,7 @@ include '_header.php';
                     <td>PT. Abdi Jaya</td>
                     <td>Manager</td>
                     <td><span class="text-danger">Ditotak</span></td>
-                    <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -53,7 +53,7 @@ include '_header.php';
                     <td>PT. Ayam Geprek</td>
                     <td>Manager</td>
                     <td>Menunggu</td>
-                    <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -61,7 +61,7 @@ include '_header.php';
                     <td>PT. Ayam Bakar Anu</td>
                     <td>Manager</td>
                     <td><span class="text-danger">Ditolak</span></td>
-                    <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
                 <tr>
                     <td>4</td>
@@ -69,7 +69,7 @@ include '_header.php';
                     <td>PT. Yeyeye</td>
                     <td>Manager</td>
                     <td>Menunggu</td>
-                    <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -77,7 +77,7 @@ include '_header.php';
                     <td>PT. Abdi Jaya</td>
                     <td>Manager</td>
                     <td><span class="text-success">Diterima</span></td>
-                    <td><a href="" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
                 </tr>
             </table>
             <!-- end data -->
