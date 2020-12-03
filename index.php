@@ -24,7 +24,7 @@
         </div>
     </div>
     <!-- end jumbotron -->
-<?php elseif (isset($_POST["perusahaan"])) : ?>
+<?php elseif (isset($_SESSION["perusahaan"])) : ?>
     <!-- jumbotron -->
     <div class="jumbotron jumbotron-fluid bg jumbotron-index">
         <div class="container text-center">
@@ -50,7 +50,7 @@
         </div>
     </div>
     <!-- end jumbotron -->
-<?php elseif ($_POST["pelamar"]) : ?>
+<?php elseif (isset($_SESSION["pelamar"])) : ?>
     <!-- jumbotron -->
     <div class="jumbotron jumbotron-fluid bg jumbotron-index">
         <div class="container text-center">

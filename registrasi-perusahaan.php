@@ -5,6 +5,20 @@ include '_header.php';
 ?>
 <!-- end header -->
 
+<?php
+
+// kalau sudah login, tendang ke index
+if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSION["pelamar"])) {
+    echo "
+        <script>
+            alert('Ups, Anda Sudah Login Gan !');
+            document.location.href = 'index.php';
+        </script>
+    ";
+}
+
+?>
+
 <!-- body -->
 <div class="row mt-5">
     <div class="col">
@@ -27,33 +41,33 @@ include '_header.php';
                         <!-- form -->
                         <div class="col-md-5">
                             <table class="table">
-                                <form action="">
+                                <form action="" method="POST">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nama Perusahaan">
+                                        <input type="text" class="form-control" placeholder="Nama Perusahaan" name="nama">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email">
+                                        <input type="email" class="form-control" placeholder="Email" name="email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nomor Telp">
+                                        <input type="text" class="form-control" placeholder="Nomor Telp" name="telp">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Kota / Kabupaten">
+                                        <input type="text" class="form-control" placeholder="Kota / Kabupaten" name="kota">
                                     </div>
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control" placeholder="Alamat Lengkap"></textarea>
+                                        <textarea type="text" class="form-control" placeholder="Alamat Lengkap" name="alamat"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control" placeholder="Deskripsi Perusahaan"></textarea>
+                                        <textarea type="text" class="form-control" placeholder="Deskripsi Perusahaan" name="deskripsi"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" placeholder="Password" name="password1">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Ulangi Password">
+                                        <input type="password" class="form-control" placeholder="Ulangi Password" name="password2">
                                     </div>
                                     <div class="form-group text-center">
-                                        <button type="submit" class="btn btn-primary">Registrasi</button>
+                                        <button type="submit" class="btn btn-primary" name="daftar">Registrasi</button>
                                     </div>
                                 </form>
                             </table>
@@ -72,3 +86,23 @@ include '_header.php';
 include '_footer.php';
 ?>
 <!-- end footer -->
+
+
+<?php
+
+require "functions.php";
+
+if (isset($_POST["daftar"])) {
+    $nama = htmlspecialchars($_POST["nama"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $telp = htmlspecialchars($_POST["telp"]);
+    $kota = htmlspecialchars($_POST["kota"]);
+    $alamat = htmlspecialchars($_POST["alamat"]);
+    $deskripsi = htmlspecialchars($_POST["deskripsi"]);
+    $password1 = htmlspecialchars($_POST["password1"]);
+    $password2 = htmlspecialchars($_POST["password2"]);
+
+    validasiNama($nama);
+}
+
+?>

@@ -15,9 +15,11 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
         <!-- My CSS -->
-        <link rel="stylesheet" href="css/mimpy.id.css">
+        <link rel="stylesheet" href="assets/css/mimpy.id.css">
+        <!-- Sweetalert2 -->
+        <link rel="stylesheet" href="assets/sweetalert2/sweetalert2.min.css">
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
