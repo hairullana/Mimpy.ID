@@ -3,9 +3,10 @@ Job Vacancies Website
 Served as Final Project of Praktikum Pemrograman Web Course
 Informatics - Udayana University
 
-Database  : MySQL
-Frontend  : Bootstrap v4.5.3
-Backend   : PHP Native
+Made with Technology : 
+- Database  : MySQL
+- Frontend  : Bootstrap v4.5.3
+- Backend   : PHP Native
 
 3 Role User
 1. Admin (manage website data)
