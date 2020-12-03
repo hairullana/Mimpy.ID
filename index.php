@@ -5,19 +5,94 @@
 ?>
 <!-- end header -->
 
-<!-- jumbotron -->
-<div class="jumbotron jumbotron-fluid bg jumbotron-index">
-    <div class="container text-center">
-        <h1 class="display-1">Mimpy.ID</h1>
-        <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
-        <div class="row center">
-            <div class="col text-center">
-                <a href="registrasi.php" type="button" class="btn btn-primary align-content-center">Daftar Sekarang</a>
+
+<?php if (isset($_SESSION["admin"])) : ?>
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid bg jumbotron-index">
+        <div class="container text-center">
+            <h1 class="display-1">Mimpy.ID</h1>
+            <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+            
+            <div class="row text-center mb-3">
+                <div class="col-md-3 offset-md-3">
+                    <a href="profil_admin.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Admin</button></a>
+                </div>
+                <div class="col-md-3">
+                    <a href="dashboard.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Dashboard Admin</button></a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end jumbotron -->
+    <!-- end jumbotron -->
+<?php elseif (isset($_POST["perusahaan"])) : ?>
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid bg jumbotron-index">
+        <div class="container text-center">
+            <h1 class="display-1">Mimpy.ID</h1>
+            <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+            
+            <div class="row text-center mb-3">
+                <div class="col-md-3 offset-md-3">
+                    <a href="profil_perusahaan.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
+                </div>
+                <div class="col-md-3">
+                    <a href="buat-loker.php" class="btn btn-primary btn-block font-weight-bold">Buat Loker</a>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3 offset-md-3">
+                    <a href="data-loker_perusahaan.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Loker</button></a>
+                </div>
+                <div class="col-md-3">
+                    <a href="data-pelamar_perusahaan.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Pelamar</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end jumbotron -->
+<?php elseif ($_POST["pelamar"]) : ?>
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid bg jumbotron-index">
+        <div class="container text-center">
+            <h1 class="display-1">Mimpy.ID</h1>
+            <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+            
+            <div class="row text-center mb-3">
+                <div class="col-md-3 offset-md-3">
+                    <a href="profil_pelamar.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
+                </div>
+                <div class="col-md-3">
+                    <a href="edit-cv.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">CV Saya</button></a>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3 offset-md-3">
+                    <a href="data-lamaran_pelamar.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Lamaran</button></a>
+                </div>
+                <div class="col-md-3">
+                    <a href="cari-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Cari Loker Lanjutan</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end jumbotron -->
+<?php else : ?>
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid bg jumbotron-index">
+        <div class="container text-center">
+            <h1 class="display-1">Mimpy.ID</h1>
+            <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+            <div class="row center">
+                <div class="col text-center">
+                    <a href="registrasi.php" type="button" class="btn btn-primary align-content-center">Daftar Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end jumbotron -->
+<?php endif; ?>
+
+
 
 <!-- tampilan loker -->
 <div class="container">

@@ -1,3 +1,12 @@
+<?php
+
+// koneksi db
+require "connectDB.php";
+// session
+session_start();
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -6,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/bootstrap.css">
         <!-- My CSS -->
         <link rel="stylesheet" href="css/mimpy.id.css">
 
@@ -23,27 +32,116 @@
 
     <body class="pt-5">
 
-        <!-- navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
+        <?php if (isset($_SESSION["admin"])) : ?>
+            <!-- navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
 
-                <!-- klo kecil, muncul button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto"></ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="registrasi.php">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="login.php">Login</a>
-                        </li>
-                    </ul>
+                    <!-- klo kecil, muncul button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto"></ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="profil.php">Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="logout.php">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <!-- end navbar -->
+            </nav>
+            <!-- end navbar -->
+        <?php elseif (isset($_SESSION["perusahaan"]))    : ?>
+            <?php
+                $id = $_SESSION["perusahaan"];
+                $perusahaan = mysqli_query($connectDB,"SELECT * FROM perusahaan WHERE id = $id");
+                $perusahaan = mysqli_fetch_assoc($perusahaan);
+            ?>
+            <!-- navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
+
+                    <!-- klo kecil, muncul button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto"></ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="profil.php"><?php $perusahaan["nama"] ?></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="logout.php">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- end navbar -->
+        <?php elseif (isset($_SESSION["pelamar"])) : ?>
+            <?php
+                $id = $_SESSI["pelamar"];
+                $pelamar = mysqli_query($connectDB,"SELECT * FROM pelamar WHERE id = $id");
+                $pelamar = mysqli_fetch_assoc($pelamar);
+            ?>
+            <!-- navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
+
+                    <!-- klo kecil, muncul button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto"></ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="profil.php"><?= $pelamar["nama"] ?></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="logout.php">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- end navbar -->
+        <?php else : ?>
+            <!-- navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
+
+                    <!-- klo kecil, muncul button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto"></ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="registrasi.php">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="login.php">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- end navbar -->
+                
+            
+        <?php endif; ?>
