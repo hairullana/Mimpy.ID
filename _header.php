@@ -20,6 +20,8 @@ session_start();
         <link rel="stylesheet" href="assets/css/mimpy.id.css">
         <!-- Sweetalert2 -->
         <link rel="stylesheet" href="assets/sweetalert2/sweetalert2.min.css">
+        <!-- Sweetalert2 JS -->
+        <script src="assets/sweetalert2/sweetalert2.min.js"></script>
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
@@ -27,6 +29,9 @@ session_start();
 
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/ac1ee11f2c.js" crossorigin="anonymous"></script>
+        
+
+        <?php require "functions.php"; ?>
 
         <!-- title -->
         <title><?= $title ?></title>
@@ -79,7 +84,7 @@ session_start();
                         <ul class="navbar-nav mr-auto"></ul>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" href="profil.php"><?php $perusahaan["nama"] ?></a>
+                                <a class="nav-link active" href="profil.php"><?= $perusahaan["nama"] ?></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="logout.php">Logout</a>
@@ -91,8 +96,8 @@ session_start();
             <!-- end navbar -->
         <?php elseif (isset($_SESSION["pelamar"])) : ?>
             <?php
-                $id = $_SESSI["pelamar"];
-                $pelamar = mysqli_query($connectDB,"SELECT * FROM pelamar WHERE id = $id");
+                $email = $_SESSION["pelamar"];
+                $pelamar = mysqli_query($connectDB,"SELECT * FROM pelamar WHERE email = '$email'");
                 $pelamar = mysqli_fetch_assoc($pelamar);
             ?>
             <!-- navbar -->

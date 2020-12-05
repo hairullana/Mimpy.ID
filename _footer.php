@@ -50,8 +50,7 @@
         <script src="assets/js/jquery.min.js"></script>
         <!-- My Javascript -->
         <script src="assets/js/script.js"></script>
-        <!-- Sweetalert2 JS -->
-        <script src="assets/sweetalert2/sweetalert2.min.js"></script>
+        
 
 
         <!-- Option 2: jQuery, Popper.js, and Bootstrap JS

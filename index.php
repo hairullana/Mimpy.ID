@@ -1,7 +1,11 @@
 <!-- header -->
 <?php
+    // judul halaman
     $title = "Mimpy.ID";
+    // masukkan header
     include '_header.php';
+
+
 ?>
 <!-- end header -->
 
@@ -15,7 +19,7 @@
             
             <div class="row text-center mb-3">
                 <div class="col-md-3 offset-md-3">
-                    <a href="profil_admin.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Admin</button></a>
+                    <a href="profil.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Admin</button></a>
                 </div>
                 <div class="col-md-3">
                     <a href="dashboard.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Dashboard Admin</button></a>
@@ -33,7 +37,7 @@
             
             <div class="row text-center mb-3">
                 <div class="col-md-3 offset-md-3">
-                    <a href="profil_perusahaan.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
+                    <a href="profil.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
                 </div>
                 <div class="col-md-3">
                     <a href="buat-loker.php" class="btn btn-primary btn-block font-weight-bold">Buat Loker</a>
@@ -59,7 +63,7 @@
             
             <div class="row text-center mb-3">
                 <div class="col-md-3 offset-md-3">
-                    <a href="profil_pelamar.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
+                    <a href="profil.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
                 </div>
                 <div class="col-md-3">
                     <a href="edit-cv.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">CV Saya</button></a>

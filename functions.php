@@ -31,7 +31,7 @@ function validasiNama ($nama) {
 }
 
 // validasi nomor telepon
-validasiTelp($telp) {
+function validasiTelp($telp) {
     if (empty($telp)) {
         // jika form kosong
         echo "
@@ -43,7 +43,7 @@ validasiTelp($telp) {
                 );
             </script>
         ";
-    }else if (!is_numeric($telp) {
+    }else if (!is_numeric($telp)) {
         // jika bukan angka
         echo "
             <script>
@@ -163,7 +163,7 @@ function validasiPassword ($password) {
                 );
             </script>
         ";
-    }else if (strlen($password) < 15) {
+    }else if (strlen($password) < 10) {
         // jika password pendek
         echo "
             <script>
@@ -177,6 +177,32 @@ function validasiPassword ($password) {
     }else {
         // jika berhasil melewati semua validasi
         return $password;
+    }
+}
+
+// cek apakah user sudah login atau belum
+// kalau sudah login, tendang ke index
+function cekSudahLogin(){
+    if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSION["pelamar"])) {
+        echo "
+            <script>
+                alert('Ups, Anda Sudah Login Gan !');
+                document.location.href = 'index.php';
+            </script>
+        ";
+    }
+}
+
+// cek apakah user sudah login atau belum
+// kalau sudah belum, tendang ke login.php
+function cekBelumLogin(){
+    if (!isset($_SESSION["admin"]) && !isset($_SESSION["perusahaan"]) && !isset($_SESSION["pelamar"])) {
+        echo "
+            <script>
+                alert('Ups, Anda Belum Login Gan !');
+                document.location.href = 'login.php';
+            </script>
+        ";
     }
 }
 

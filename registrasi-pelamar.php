@@ -5,6 +5,9 @@ include '_header.php';
 ?>
 <!-- end header -->
 
+
+
+
 <!-- body -->
 <div class="row mt-5">
     <div class="col">
@@ -27,36 +30,33 @@ include '_header.php';
                         <!-- form -->
                         <div class="col-md-5">
                             <table class="table">
-                                <form action="">
+                                <form action="" method="POST">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nama Lengkap">
+                                        <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email">
+                                        <input type="text" class="form-control" placeholder="Email" name="email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nomor Telp">
+                                        <input type="text" class="form-control" placeholder="Nomor Telp" name="telp">
                                     </div>
                                     <div class="form-group">
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Laki-Laki</option>
-                                            <option value="">Perempuan</option>
+                                        <select name="gender" id="" class="form-control">
+                                            <option value="pria">Laki-Laki</option>
+                                            <option value="wanita">Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control" placeholder="Alamat Lengkap"></textarea>
+                                        <textarea type="text" class="form-control" placeholder="Alamat Lengkap" name="alamat"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" placeholder="Password" name="password1">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Ulangi Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" value="setuju" id="setuju"> <label for="setuju">Setuju</label>
+                                        <input type="password" class="form-control" placeholder="Ulangi Password" name="password2">
                                     </div>
                                     <div class="form-group text-center">
-                                        <button type="submit" class="btn btn-primary">Registrasi</button>
+                                        <button type="submit" class="btn btn-primary" name="daftar">Registrasi</button>
                                     </div>
                                 </form>
                             </table>
@@ -73,3 +73,71 @@ include '_header.php';
 include '_footer.php';
 ?>
 <!-- end footer -->
+
+
+<?php
+
+// jika tombol daftar sudah di klik
+if (isset($_POST["daftar"])) {
+
+    // tangkap semua isi form
+    $nama = htmlspecialchars($_POST["nama"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $telp = htmlspecialchars($_POST["telp"]);
+    $gender = htmlspecialchars($_POST["gender"]);
+    $alamat = htmlspecialchars($_POST["alamat"]);
+    $password1 = htmlspecialchars($_POST["password1"]);
+    $password2 = htmlspecialchars($_POST["password2"]);
+
+    // validasi form
+    validasiNama($nama);
+    validasiTelp($telp);
+    validasiAlamat($alamat);
+    validasiPassword($password1);
+    validasiPassword($password2);
+    
+    // cek apakah email sudah terdaftar
+    $cekEmail = mysqli_query($connectDB, "SELECT * FROM pelamar WHERE email = '$email'");
+    if (mysqli_num_rows($cekEmail) == 1){
+        // jika email sudah terdaftar
+        echo "
+            <script>
+                Swal.fire(
+                    'PENDAFTARAN GAGAL',
+                    'Email Sudah Terdaftar',
+                    'error'
+                );
+            </script>
+        ";
+    }else {
+        // jika email belum terdaftar
+        if($password1 != $password2){
+            // jika password tidak sama
+            echo "
+                <script>
+                    Swal.fire(
+                        'PENDAFTARAN GAGAL',
+                        'Password Tidak Sama',
+                        'error'
+                    );
+                </script>
+            ";
+        }else {
+            // jika password sama
+            // pendaftaran berhasil
+
+            $password = password_hash($password1, PASSWORD_DEFAULT);
+            mysqli_query($connectDB,"INSERT INTO pelamar VALUES ('','$nama','$email','$telp','$gender','$alamat','$password')");
+
+            echo "
+                <script>
+                    Swal.fire('PENDAFTARAN BERHASIL','Silahkan Login Terlebih Dahulu','success').then(function() {
+                        window.location = 'login.php';
+                    });
+                </script>
+            ";
+        }
+    }
+}
+
+?>

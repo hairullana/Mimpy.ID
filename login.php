@@ -1,120 +1,133 @@
-<!-- header -->
 <?php 
+// header
 $title = "Login";
 include '_header.php';
-?>
-<!-- end header -->
+// end header
 
-<?php
-
-// kalau sudah login, tendang ke index
-if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSION["pelamar"])) {
-    echo "
-        <script>
-            alert('Ups, Anda Sudah Login Gan !');
-            document.location.href = 'index.php';
-        </script>
-    ";
-}
+cekSudahLogin();
 
 // jika sudah memasukkan info login
 if (isset($_POST["login"])){
-    // tangkap variabel post
+    // tangkap variabel
     $email = htmlspecialchars($_POST["email"]);
     $password = htmlspecialchars($_POST["password"]);
 
+    if (isset($_POST["user"])){
 
-    if($_POST["user"] == "admin") {
-        // login sebagai admin
-        $cekUser = mysqli_query($connectDB,"SELECT * FROM admin WHERE email = '$email'");
-        if (mysqli_affected_rows($connectDB) > 0){
-            // jika email ditemukan
-            // cek passwordnya
-            $cekUser = mysqli_fetch_assoc($cekUser);
-            if ($cekUser["password"] != $password){
-                // kalau password tidak cocok
+        if($_POST["user"] == "admin") {
+            // login sebagai admin
+            $cekUser = mysqli_query($connectDB,"SELECT * FROM admin WHERE email = '$email'");
+    
+            if (mysqli_num_rows($cekUser) > 0){
+                // jika email ditemukan
+                // cek passwordnya
+                $admin = mysqli_fetch_assoc($cekUser);
+                
+                if (password_verify($password, $admin["password"])){
+                    // jika password cocok
+                    echo "
+                        <script>
+                            Swal.fire('LOGIN BERHASIL','','success').then(function() {
+                                window.location = 'index.php';
+                            });
+                        </script>
+                    ";
+                    $_SESSION["admin"] = $email;
+                }else{
+                    // jika password tidak cocok
+                    echo "
+                        <script>
+                            Swal.fire('LOGIN GAGAL','Password Yang Anda Masukkan Salah','error');
+                        </script>
+                    ";
+                    
+                }
+            }else {
+                // kalau email tidak ditemukan
                 echo "
                     <script>
-                        alert('Ups, Password Salah Bosku !');
-                        document.location.href = 'login.php';
+                        Swal.fire('LOGIN GAGAL','Email Tidak Ditemukan','error');
                     </script>
                 ";
             }
-        }else {
-            // kalau email tidak ditemukan
-            echo "
-                <script>
-                    alert('Email Tidak Ditemukan Gan !');
-                    document.location.href = 'login.php';
-                </script>
-            ";
-        }
-        $_SESSION["admin"] = $email;
-    }else if ($_POST["user"] == "perusahaan"){
-        // login sebagai perusahaan
-        $cekUser = mysqli_query($connectDB,"SELECT * FROM perusahaan WHERE email = $email");
-        if (mysqli_affected_rows($cekUser) > 0){
-            // jika email ditemukan
-            // cek passwordnya
-            $cekUser = mysqli_fetch_assoc($cekUser);
-            if ($cekUser["password"] != $password){
-                // kalau password tidak cocok
+        }else if ($_POST["user"] == "perusahaan"){
+            // login sebagai perusahaan
+            $cekUser = mysqli_query($connectDB,"SELECT * FROM perusahaan WHERE email = '$email'");
+            if (mysqli_num_rows($cekUser) > 0){
+                // jika email ditemukan
+                // cek passwordnya
+                $perusahaan = mysqli_fetch_assoc($cekUser);
+    
+                if (password_verify($password, $perusahaan["password"])){
+                    // kalau password cocok
+                    echo "
+                        <script>
+                            Swal.fire('LOGIN BERHASIL','','success').then(function() {
+                                window.location = 'index.php';
+                            });
+                        </script>
+                    ";
+                    $_SESSION["perusahaan"] = $perusahaan['id'];
+                }else {
+                    // jika password tidak cocok
+                    echo "
+                        <script>
+                            Swal.fire('LOGIN GAGAL','Password Yang Anda Masukkan Salah','error');
+                        </script>
+                    ";
+                }
+            }else {
+                // kalau email tidak ditemukan
                 echo "
                     <script>
-                        alert('Ups, Password Salah Bosku !');
-                        document.location.href = 'login.php';
+                        Swal.fire('LOGIN GAGAL','Email Tidak Ditemukan','error');
+                    </script>
+                ";
+            
+            }
+        }else if ($_POST["user"] == "pelamar"){
+            // login sebagai pelamar
+            $cekUser = mysqli_query($connectDB,"SELECT * FROM pelamar WHERE email = '$email'");
+            if (mysqli_num_rows($cekUser) == 1){
+                // jika email ditemukan
+                $pelamar = mysqli_fetch_assoc($cekUser);
+    
+                if (password_verify($password, $pelamar["password"])){
+                    // kalau password tidak cocok
+                    echo "
+                        <script>
+                            Swal.fire('LOGIN BERHASIL','','success').then(function() {
+                                window.location = 'index.php';
+                            });
+                        </script>
+                    ";
+                    // buat session pelamar
+                    $_SESSION["pelamar"] = $email;
+                }else {
+                    // jika password tidak cocok
+                    echo "
+                        <script>
+                            Swal.fire('LOGIN GAGAL','Password Yang Anda Masukkan Salah','error');
+                        </script>
+                    ";
+                }
+            }else {
+                // kalau email tidak ditemukan
+                echo "
+                    <script>
+                        Swal.fire('LOGIN GAGAL','Email Tidak Ditemukan','error');
                     </script>
                 ";
             }
-        }else {
-            // kalau email tidak ditemukan
-            echo "
-                <script>
-                    alert('Email Tidak Ditemukan Gan !');
-                    document.location.href = 'login.php';
-                </script>
-            ";
         }
-        $_SESSION["perusahaan"] = $email;
-    }else if ($_POST["user"] == "pelamar"){
-        // login sebagai pelamar
-        $cekUser = mysqli_query($connectDB,"SELECT * FROM perusahaan WHERE email = $email");
-        if (mysqli_affected_rows($cekUser) > 0){
-            // jika email ditemukan
-            // cek passwordnya
-            $cekUser = mysqli_fetch_assoc($cekUser);
-            if ($cekUser["password"] != $password){
-                // kalau password tidak cocok
-                echo "
-                    <script>
-                        alert('Ups, Password Salah Bosku !');
-                        document.location.href = 'login.php';
-                    </script>
-                ";
-            }
-        }else {
-            // kalau email tidak ditemukan
-            echo "
-                <script>
-                    alert('Email Tidak Ditemukan Gan !');
-                    document.location.href = 'login.php';
-                </script>
-            ";
-        }
-        $_SESSION["pelamar"] = $email;
-    }else {
+    }else{
+        // jika belum memilih jenis user
         echo "
             <script>
-                alert('Ups, Pilih Jenis Usernya Dulu Cuy !');
-                document.location.href = 'login.php';
+                Swal.fire('LOGIN GAGAL','Pilh Jenis User Terlebih Dahulu','error');
             </script>
         ";
     }
-    echo "
-        <script>
-            document.location.href = 'index.php';
-        </script>
-    ";
 }
 
 ?>

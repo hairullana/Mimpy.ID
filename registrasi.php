@@ -4,21 +4,6 @@ $title = "Registrasi";
 include '_header.php';
 ?>
 <!-- end header -->
-
-<?php
-
-// kalau sudah login, tendang ke index
-if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSION["pelamar"])) {
-    echo "
-        <script>
-            alert('Ups, Anda Sudah Login Gan !');
-            document.location.href = 'index.php';
-        </script>
-    ";
-}
-
-?>
-
 <!-- pilihan registrasi -->
 <div class="row mt-5">
     <div class="col-md-6 offset-md-3">

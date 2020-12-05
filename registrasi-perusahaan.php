@@ -11,8 +11,9 @@ include '_header.php';
 if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSION["pelamar"])) {
     echo "
         <script>
-            alert('Ups, Anda Sudah Login Gan !');
-            document.location.href = 'index.php';
+            Swal.fire('ERROR','Anda Sudah Login','error').then(function() {
+                window.location = 'index.php';
+            });
         </script>
     ";
 }
@@ -90,9 +91,9 @@ include '_footer.php';
 
 <?php
 
-require "functions.php";
 
 if (isset($_POST["daftar"])) {
+    // tangkap semua form
     $nama = htmlspecialchars($_POST["nama"]);
     $email = htmlspecialchars($_POST["email"]);
     $telp = htmlspecialchars($_POST["telp"]);
@@ -102,7 +103,39 @@ if (isset($_POST["daftar"])) {
     $password1 = htmlspecialchars($_POST["password1"]);
     $password2 = htmlspecialchars($_POST["password2"]);
 
+    // validasi
     validasiNama($nama);
+    validasiTelp($telp);
+    validasiKota($kota);
+    validasiAlamat($alamat);
+    validasiDeskripsi($deskripsi);
+    validasiPassword($password1);
+    validasiPassword($password2);
+
+    // cek password
+    if ($password1 != $password2) {
+        echo "
+            <script>
+                Swal.fire('PENDAFTARAN GAGAL','Password Yang Anda Masukkan Tidak Sama','error');
+            </script>
+        ";
+    }else {
+        $password = password_hash($password1, PASSWORD_DEFAULT);
+        mysqli_query($connectDB, "INSERT INTO perusahaan VALUES ('','$nama','$email','$telp','$kota','$alamat','$deskripsi','$password')");
+        echo mysqli_affected_rows($connectDB);
+        if (mysqli_affected_rows($connectDB) > 0) {
+            echo "
+                Swal.fire('PENDAFTARAN BERHASIL','Silahkan Login Terlebih Dahulu','success').then(function() {
+                    window.location = 'login.php';
+                });
+            ";
+        }else {
+            echo mysqli_error($connectDB);
+        }
+    }
+
+
+
 }
 
 ?>
