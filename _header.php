@@ -66,8 +66,8 @@ session_start();
             <!-- end navbar -->
         <?php elseif (isset($_SESSION["perusahaan"]))    : ?>
             <?php
-                $id = $_SESSION["perusahaan"];
-                $perusahaan = mysqli_query($connectDB,"SELECT * FROM perusahaan WHERE id = $id");
+                $email = $_SESSION["perusahaan"];
+                $perusahaan = mysqli_query($connectDB,"SELECT * FROM perusahaan WHERE email = '$email'");
                 $perusahaan = mysqli_fetch_assoc($perusahaan);
             ?>
             <!-- navbar -->

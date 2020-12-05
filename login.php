@@ -67,7 +67,7 @@ if (isset($_POST["login"])){
                             });
                         </script>
                     ";
-                    $_SESSION["perusahaan"] = $perusahaan['id'];
+                    $_SESSION["perusahaan"] = $email;
                 }else {
                     // jika password tidak cocok
                     echo "
