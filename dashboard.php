@@ -1,3 +1,14 @@
+<?php
+
+// mulai session
+session_start();
+// masukkan koneksi db
+require "connectDB.php";
+// panggil fungsi
+require "functions.php";
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -64,19 +75,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-loker_admin.php">
+                        <a class="nav-link text-white" href="data-loker.php">
                             <i class="fas fa-sticky-note"></i>
                             Data Loker
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-pelamar_admin.php">
+                        <a class="nav-link text-white" href="data-pelamar.php">
                             <i class="fas fa-address-card"></i>
                             Data Pelamar
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-lamaran_admin.php">
+                        <a class="nav-link text-white" href="data-lamaran.php">
                             <i class="fas fa-address-book"></i>
                             Data Lamaran
                         </a>
@@ -97,30 +108,30 @@
                                 <i class="fas fa-building"></i>
                             </div>
                             <h5 class="card-title"><strong>JUMLAH PERUSAHAAN</strong></h5>
-                            <div class="display-4">1.893</div>
+                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($connectDB, "SELECT * FROM perusahaan")) ?></div>
                             <a href="data-perusahaan.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
-                    <div class="card bg-warning mx-auto" style="width: 25rem;">
-                        <div class="card-body">
-                            <div class="card-body-icon">
-                                <i class="fas fa-sticky-note"></i>
-                            </div>
-                            <h5 class="card-title"><strong>JUMLAH LOKER</strong></h5>
-                            <div class="display-4">3.154</div>
-                            <a href="data-loker_admin.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row text-white mt-5">
                     <div class="card bg-danger mx-auto" style="width: 25rem;">
                         <div class="card-body">
                             <div class="card-body-icon">
                                 <i class="fas fa-address-card"></i>
                             </div>
                             <h5 class="card-title"><strong>JUMLAH PELAMAR</strong></h5>
-                            <div class="display-4">8.642</div>
-                            <a href="data-pelamar_admin.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($connectDB, "SELECT * FROM pelamar")) ?></div>
+                            <a href="data-pelamar.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-white mt-5">
+                    <div class="card bg-warning mx-auto" style="width: 25rem;">
+                        <div class="card-body">
+                            <div class="card-body-icon">
+                                <i class="fas fa-sticky-note"></i>
+                            </div>
+                            <h5 class="card-title"><strong>JUMLAH LOKER</strong></h5>
+                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($connectDB, "SELECT * FROM loker")) ?></div>
+                            <a href="data-loker.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
                     <div class="card bg-primary mx-auto" style="width: 25rem;">
@@ -129,8 +140,8 @@
                                 <i class="fas fa-address-card"></i>
                             </div>
                             <h5 class="card-title"><strong>JUMLAH LAMARAN</strong></h5>
-                            <div class="display-4">8.642</div>
-                            <a href="data-lamaran_admin.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
+                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($connectDB, "SELECT * FROM lamaran")) ?></div>
+                            <a href="data-lamaran.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
                 </div>

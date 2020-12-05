@@ -206,4 +206,17 @@ function cekBelumLogin(){
     }
 }
 
+// cek login admin
+function cekLoginAdmin(){
+    if (!isset($_SESSION["admin"])){
+        echo "
+            <script>
+                Swal.fire('ANDA BUKAN ADMIN','Silahkan Login Sebagai Admin Terlebih Dahulu','warning').then(function(){
+                    window.location = 'index.php';
+                });
+            </script>
+        ";
+    }
+}
+
 ?>

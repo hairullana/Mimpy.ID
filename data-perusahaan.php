@@ -1,3 +1,14 @@
+<?php
+
+// mulai session
+session_start();
+// masukkan koneksi db
+require "connectDB.php";
+// panggil fungsi
+require "functions.php";
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -62,19 +73,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-loker_admin.php">
+                        <a class="nav-link text-white" href="data-loker.php">
                             <i class="fas fa-sticky-note"></i>
                             Data Loker
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-pelamar_admin.php">
+                        <a class="nav-link text-white" href="data-pelamar.php">
                             <i class="fas fa-address-card"></i>
                             Data Pelamar
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-lamaran_admin.php">
+                        <a class="nav-link text-white" href="data-lamaran.php">
                             <i class="fas fa-address-book"></i>
                             Data Lamaran
                         </a>
@@ -106,69 +117,32 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Company Name</th>
+                                    <th>Nama Perusahaan</th>
                                     <th>E-mail</th>
-                                    <th>Phone Number</th>
-                                    <th>Regional</th>
-                                    <th>Action</th>
+                                    <th>No Telp</th>
+                                    <th>Kota</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Suka Maju</td>
-                                    <td>sukamaju.cs@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Suka Maju</td>
-                                    <td>sukamaju.cs@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Suka Maju</td>
-                                    <td>sukamaju.cs@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Suka Maju</td>
-                                    <td>sukamaju.cs@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Suka Maju</td>
-                                    <td>sukamaju.cs@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                                <?php
+                                    $perusahaan = mysqli_query($connectDB, "SELECT * FROM perusahaan");
+                                    foreach ($perusahaan as $data) :
+                                ?>
+                                    <tr>
+                                        <td><?= $data["id"] ?></td>
+                                        <td><?= $data["nama"] ?></td>
+                                        <td><?= $data["email"] ?></td>
+                                        <td><?= $data["telp"] ?></td>
+                                        <td><?= $data["kota"] ?></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Detail</a>
+                                            <a href="#" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    endforeach;
+                                ?>
                             </tbody>
                             </table>
                         </div>

@@ -1,3 +1,14 @@
+<?php
+
+// mulai session
+session_start();
+// masukkan koneksi db
+require "connectDB.php";
+// panggil fungsi
+require "functions.php";
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -62,19 +73,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="data-loker_admin.php">
+                        <a class="nav-link text-white font-weight-bold" href="data-loker.php">
                             <i class="fas fa-sticky-note"></i>
                             Data Loker
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-pelamar_admin.php">
+                        <a class="nav-link text-white" href="data-pelamar.php">
                             <i class="fas fa-address-card"></i>
                             Data Pelamar
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-lamaran_admin.php">
+                        <a class="nav-link text-white" href="data-lamaran.php">
                             <i class="fas fa-address-book"></i>
                             Data Lamaran
                         </a>
@@ -106,63 +117,34 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Company Name</th>
-                                    <th>Position</th>
-                                    <th>Graduate Requirements</th>
+                                    <th>Nama Perusahaan</th>
+                                    <th>Posisi</th>
+                                    <th>Lulusan</th>
+                                    <th>Jobdesk</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>System Analyst</td>
-                                    <td>S2 Teknik Informatika</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>System Analyst</td>
-                                    <td>S2 Teknik Informatika</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>System Analyst</td>
-                                    <td>S2 Teknik Informatika</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>System Analyst</td>
-                                    <td>S2 Teknik Informatika</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>System Analyst</td>
-                                    <td>S2 Teknik Informatika</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                                <?php
+                                    $loker = mysqli_query($connectDB, "SELECT *, perusahaan.nama as namaPerusahaan FROM loker INNER JOIN perusahaan  ON loker.idPerusahaan = perusahan.id");
+                                    foreach ($loker as $data) :
+                                ?>
+                                    <tr>
+                                        <td><?= $data["id"] ?></td>
+                                        <td><?= $data["namaPerusahaan"] ?></td>
+                                        <td><?= $data["posisi"] ?></td>
+                                        <td><?= $data["lulusan"] ?></td>
+                                        <td><?= $data["jobdesk"] ?></td>
+                                        <td><?= $data["status"] ?></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Detail</a>
+                                            <a href="#" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    endforeach;
+                                ?>
                             </tbody>
                             </table>
                         </div>

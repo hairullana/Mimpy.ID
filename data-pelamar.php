@@ -1,3 +1,15 @@
+<?php
+
+// mulai session
+session_start();
+// masukkan koneksi db
+require "connectDB.php";
+// panggil fungsi
+require "functions.php";
+
+?>
+
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -20,10 +32,9 @@
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
         <!-- title -->
-        <title>Data Lamaran</title>
+        <title>Data Pelamar</title>
     </head>
     <body>
-        
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
             <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
@@ -63,19 +74,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-loker_admin.php">
+                        <a class="nav-link text-white" href="data-loker.php">
                             <i class="fas fa-sticky-note"></i>
                             Data Loker
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-pelamar_admin.php">
+                        <a class="nav-link text-white font-weight-bold" href="data-pelamar.php">
                             <i class="fas fa-address-card"></i>
                             Data Pelamar
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="data-lamaran_admin.php">
+                        <a class="nav-link text-white" href="data-lamaran.php">
                             <i class="fas fa-address-book"></i>
                             Data Lamaran
                         </a>
@@ -107,67 +118,36 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Date</th>
-                                    <th>Company Name</th>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Status</th>
+                                    <th>Nama</th>
+                                    <th>E-mail</th>
+                                    <th>No Telp</th>
+                                    <th>Alamat</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>001</td>
-                                    <td>20 Juni 2020</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
-                                    <td>System Analyst</td>
-                                    <td>
-                                        <a href="#" class="btn btn-block btn-primary">Waiting</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>20 Juni 2020</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
-                                    <td>System Analyst</td>
-                                    <td>
-                                        <a href="#" class="btn btn-block btn-danger">Decline</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>20 Juni 2020</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
-                                    <td>System Analyst</td>
-                                    <td>
-                                        <a href="#" class="btn btn-block btn-danger">Decline</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>20 Juni 2020</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
-                                    <td>System Analyst</td>
-                                    <td>
-                                        <a href="#" class="btn btn-block btn-primary">Waiting</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>20 Juni 2020</td>
-                                    <td>PT. Maju Mundur</td>
-                                    <td>Febri Wira</td>
-                                    <td>System Analyst</td>
-                                    <td>
-                                        <a href="#" class="btn btn-block btn-success">Accept</a>
-                                    </td>
-                                </tr>
+                                <?php
+                                    $pelamar = mysqli_query($connectDB, "SELECT * FROM pelamar");
+                                    foreach ($pelamar as $data) :
+                                ?>
+                                    <tr>
+                                        <td><?= $data["id"] ?></td>
+                                        <td><?= $data["nama"] ?></td>
+                                        <td><?= $data["email"] ?></td>
+                                        <td><?= $data["telp"] ?></td>
+                                        <td><?= $data["alamat"] ?></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Detail</a>
+                                            <a href="#" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    endforeach;
+                                ?>
                             </tbody>
                             </table>
                         </div>
+
                         <!-- pagination -->
                         <div class="row">
                             <div class="col">
@@ -183,6 +163,8 @@
                             </div>
                         </div>
                         <!-- end pagination -->
+
+
                     </div>
                 </div>
             </div>

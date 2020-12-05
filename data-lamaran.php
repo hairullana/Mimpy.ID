@@ -1,3 +1,14 @@
+<?php
+
+// mulai session
+session_start();
+// masukkan koneksi db
+require "connectDB.php";
+// panggil fungsi
+require "functions.php";
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -20,9 +31,10 @@
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
         <!-- title -->
-        <title>Data Pelamar</title>
+        <title>Data Lamaran</title>
     </head>
     <body>
+        
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
             <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
@@ -62,19 +74,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-loker_admin.php">
+                        <a class="nav-link text-white" href="data-loker.php">
                             <i class="fas fa-sticky-note"></i>
                             Data Loker
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="data-pelamar_admin.php">
+                        <a class="nav-link text-white" href="data-pelamar.php">
                             <i class="fas fa-address-card"></i>
                             Data Pelamar
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="data-lamaran_admin.php">
+                        <a class="nav-link text-white font-weight-bold" href="data-lamaran.php">
                             <i class="fas fa-address-book"></i>
                             Data Lamaran
                         </a>
@@ -106,73 +118,47 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>E-mail</th>
-                                    <th>Phone Number</th>
-                                    <th>Regional</th>
-                                    <th>Action</th>
+                                    <th>Tanggal</th>
+                                    <th>Pelamar</th>
+                                    <th>Perusahaan</th>
+                                    <th>Posisi</th>
+                                    <th>Gaji</th>
+                                    <th>Status</th>
+                                    <th>Aksi
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>001</td>
-                                    <td>Febri Wira</td>
-                                    <td>febriwira@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>Febri Wira</td>
-                                    <td>febriwira@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>Febri Wira</td>
-                                    <td>febriwira@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>Febri Wira</td>
-                                    <td>febriwira@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>001</td>
-                                    <td>Febri Wira</td>
-                                    <td>febriwira@gmail.com</td>
-                                    <td>081234567890</td>
-                                    <td>Denpasar</td>
-                                    <td>
-                                    <a href="#" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                                <?php
+                                    $loker = mysqli_query($connectDB, "SELECT *, pelamar.nama as namaPelamar FROM lamaran INNER JOIN pelamar ON lamaran.idPelamar = pelamar.id");
+                                    foreach ($loker as $data) :
+                                        $idLoker = $data["idLoker"];
+                                        $loker = mysqli_query($connectDB, "SELECT * FROM loker WHERE id = $idLoker");
+                                        $loker = mysqli_fetch_assoc($loker);
+                                        $idPerusahaan = $loker["idPerusahaan"];
+                                        $perusahaan = mysqli_query($connectDB, "SELECT * FROM perusahaan WHERE id = $idPerusahaan");
+                                        $perusahaan = mysqli_fetch_assoc($perusahaan);
+
+                                ?>
+                                    <tr>
+                                        <td><?= $data["id"] ?></td>
+                                        <td><?= $data["tanggal"] ?></td>
+                                        <td><?= $data["namaPelamar"] ?></td>
+                                        <td><?= $perusahaan["nama"] ?></td>
+                                        <td><?= $data["posisi"] ?></td>
+                                        <td><?= $data["gaji"] ?></td>
+                                        <td><?= $data["status"] ?></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Detail</a>
+                                            <a href="#" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    endforeach;
+                                ?>
                             </tbody>
                             </table>
                         </div>
-
                         <!-- pagination -->
                         <div class="row">
                             <div class="col">
@@ -188,8 +174,6 @@
                             </div>
                         </div>
                         <!-- end pagination -->
-
-
                     </div>
                 </div>
             </div>
