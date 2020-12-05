@@ -14,20 +14,20 @@ include '_header.php' ?>
                     <h3>Ganti Kata Sandi</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="" method="POST">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Kata Sand Lama</label>
-                            <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kata Sandi Lama">
+                            <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kata Sandi Lama" name="passwordLama">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Kata Sandi Baru</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Kata Sandi Baru">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Kata Sandi Baru" name="password1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Ulangi Kata Sandi Baru</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ulangi Kata Sandi Baru">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ulangi Kata Sandi Baru" name="password2">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Ganti Kata Sandi</button>
+                        <button type="submit" name="simpanData" class="btn btn-primary btn-block">Ganti Kata Sandi</button>
                     </form>
                 </div>
             </div>
@@ -38,3 +38,105 @@ include '_header.php' ?>
 
 <!-- footer -->
 <?php include '_footer.php' ?>
+
+<?php
+
+// jika tombol ganti kata sandi di tekan
+if (isset($_POST["simpanData"])) {
+    // ambil data form
+    $passwordLama = $_POST["passwordLama"];
+    $password1 = $_POST["password1"];
+    $password2 = $_POST["password2"];
+    // validasi
+    validasiPassword($password1);
+    validasiPassword($password2);
+
+    // cek jika password baru tidak sama
+    if ($password1 != $password2){
+        echo "
+            <script>
+                Swal.fire('PERUBAHAN GAGAL','Password Baru Tidak Sama','error');
+            </script>
+        ";
+    }else{      // jika password baru sama
+        // jika role user = admin
+        if (isset($_SESSION["admin"])){
+            // ambil data admin
+            $admin = mysqli_query($connectDB, "SELECT * FROM admin");
+            $admin = mysqli_fetch_assoc($admin);
+    
+            // cek password lama
+            // jika tidak sama
+            if (password_verify($passwordLama, $admin["password"])){
+                $password = password_hash($password1, PASSWORD_DEFAULT);
+                mysqli_query($connectDB, "UPDATE admin SET password = '$password'");
+                echo "
+                    <script>
+                        Swal.fire('PERUBAHAN BERHASIL','Password Berhasil Diganti','success').then(function(){
+                            window.location = 'ganti-password.php';
+                        });
+                    </script>
+                ";
+            }else {
+                echo "
+                    <script>
+                        Swal.fire('PERUBAHAN GAGAL','Password Lama Salah','error');
+                    </script>
+                ";
+            }
+        }else if (isset($_SESSION["perusahaan"])){     // jika role user = perusahaan
+            // ambil data perusahaan
+            $email = $_SESSION["perusahaan"];
+            $perusahaan = mysqli_query($connectDB, "SELECT * FROM perusahaan WHERE email = '$email'");
+            $perusahaan = mysqli_fetch_assoc($perusahaan);
+    
+            // cek password lama
+            // jika tidak sama
+            if (password_verify($passwordLama, $perusahaan["password"])){
+                $password = password_hash($password1, PASSWORD_DEFAULT);
+                mysqli_query($connectDB, "UPDATE perusahaan SET password = '$password' WHERE email = '$email'");
+                echo "
+                    <script>
+                        Swal.fire('PERUBAHAN BERHASIL','Password Berhasil Diganti','success').then(function(){
+                            window.location = 'ganti-password.php';
+                        });
+                    </script>
+                ";
+            }else {
+                echo "
+                    <script>
+                        Swal.fire('PERUBAHAN GAGAL','Password Lama Salah','error');
+                    </script>
+                ";
+            }
+        }else if (isset($_SESSION["pelamar"])){        // jika role user = pelamar
+            // ambil data pelamar
+            $email = $_SESSION["pelamar"];
+            $pelamar = mysqli_query($connectDB, "SELECT * FROM pelamar WHERE email = '$email'");
+            $pelamar = mysqli_fetch_assoc($pelamar);
+    
+            // cek password lama
+            // jika tidak sama
+            if (password_verify($passwordLama, $pelamar["password"])){
+                $password = password_hash($password1, PASSWORD_DEFAULT);
+                mysqli_query($connectDB, "UPDATE pelamar SET password = '$password' WHERE email = '$email'");
+                echo "
+                    <script>
+                        Swal.fire('PERUBAHAN BERHASIL','Password Berhasil Diganti','success').then(function(){
+                            window.location = 'ganti-password.php';
+                        });
+                    </script>
+                ";
+            }else {
+                echo "
+                    <script>
+                        Swal.fire('PERUBAHAN GAGAL','Password Lama Salah','error');
+                    </script>
+                ";
+            }
+        }
+    }
+
+}
+
+?>

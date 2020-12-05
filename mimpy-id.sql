@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Des 2020 pada 15.48
+-- Waktu pembuatan: 05 Des 2020 pada 17.14
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.5
 
@@ -122,9 +122,9 @@ CREATE TABLE `perusahaan` (
 
 INSERT INTO `perusahaan` (`id`, `nama`, `email`, `telp`, `kota`, `alamat`, `deskripsi`, `password`) VALUES
 (1, 'PT. Hairul Lana', 'hairullana@gmail.com', '082215215399', 'Surabaya', '', '', '$2y$10$sEKoaBS8uNnUNGlbpjWi0.VPe.xWN6Un4OyKYRrXremC9lbW9r7HS'),
-(2, 'PT. Derwi Rainord', 'derwirainord@gmail.com', '087767894521', 'Rote', 'Jl. Mawar No 99, Rote, Nusa Tenggara Timur', 'PT. Derwi Rainord merupakan perusahaan yang bergerak di bidang fashion dalam pembuatan baju batik dengan skala pemasaran Internasional', '$2y$10$1aPHx9O2t3LVD7iAbQWYrOqDUeHVuZHlVEWJUj4FbKkNIX3eDKEY2'),
-(3, 'PT. Farin', 'farinistighfarizky@gmail.com', '083213578424', 'Denpasar', 'Jl. Gatot Subroto No 99, Denpasar, Bali', 'PT. Farin merupakan perusahaan yang bergerak di bidang penjualan barang elektronik yang memiliki pusat di Denpasar, Bali', '$2y$10$2KCkRGbIVBQoZltjovlwZOVBIgcC1En4gHhEzc9Uzmt2q9U5L3VcW'),
-(4, 'PT. Arya Dwisada', 'aryadwisada@gmail.com', '085234186537', 'Karangasem', 'Jl. Karangasem No 99, Karangasem, Bali', 'PT. Arya Dwisada merupakan sebuah perusahaan yang bergerak di bidang pariwisata di wilayah Bali. Memiliki rating 10/5 sehingga pelanggan dijamin puas bosku', '$2y$10$S3CMSZAvmetXzf1htNlK4.aZWonx312C5PaD5NNgEC6Isq59bGNOi'),
+(2, 'PT. Derwi Rainord', 'derwirainord@gmail.com', '087767894521', 'Rote', 'Jl. Mawar No 99, Rote, Nusa Tenggara Timur', 'PT. Derwi Rainord merupakan perusahaan yang bergerak di bidang fashion dalam pembuatan baju batik dengan skala pemasaran Internasional', '$2y$10$UWsNGlGB/i0ci8x4Y56Zwe2Zqu4R9ml2kcpPCDSk/hy6UCE4wle8.'),
+(3, 'PT. Farin', 'farinistighfarizky@gmail.com', '083213578424', 'Denpasar', 'Jl. Gatot Subroto No 99, Denpasar, Bali', 'PT. Farin merupakan perusahaan yang bergerak di bidang penjualan barang elektronik yang memiliki pusat di Denpasar, Bali', '$2y$10$KBFp5yKA25EgeZJsERaucOGOYe7h.Dz03d4YUys3TEZKfKpXzCYjS'),
+(4, 'PT. Arya Dwisada', 'aryadwisada@gmail.com', '085234186537', 'Karangasem', 'Jl. Karangasem No 99, Karangasem, Bali', 'PT. Arya Dwisada merupakan sebuah perusahaan yang bergerak di bidang pariwisata di wilayah Bali. Memiliki rating 10/5 sehingga pelanggan dijamin puas bosku', '$2y$10$5RJ5ev71l5slU2E8J7uFMOHqfsLPVuW7Ht9wA/X5nwC0q.CS9bEjm'),
 (5, 'PT. Febri Wira', 'febriwira@gmail.com', '089764627452', 'Badung', 'Jl. Melati No 99, Badung, Bali', 'PT. Febri Wira merupakan perusahaan yang bergerak di bidang Design Grafis seperti pembuatan logo, iklan, banner, dan sebagainya', '$2y$10$/.mWAnSzMaKJviq84RaTtO2bExdUv1dfJptxpgxVpYk2sVt.pixDu');
 
 --
@@ -187,7 +187,7 @@ ALTER TABLE `pelamar`
 -- AUTO_INCREMENT untuk tabel `perusahaan`
 --
 ALTER TABLE `perusahaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
