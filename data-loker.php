@@ -30,6 +30,9 @@ require "functions.php";
         <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
+        <!-- panggil headtags -->
+        <?php require "headtags.php" ?>
+
         <!-- title -->
         <title>Data Loker</title>
     </head>
@@ -120,14 +123,13 @@ require "functions.php";
                                     <th>Nama Perusahaan</th>
                                     <th>Posisi</th>
                                     <th>Lulusan</th>
-                                    <th>Jobdesk</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                    $loker = mysqli_query($connectDB, "SELECT *, perusahaan.nama as namaPerusahaan FROM loker INNER JOIN perusahaan  ON loker.idPerusahaan = perusahan.id");
+                                    $loker = mysqli_query($connectDB, "SELECT *, perusahaan.nama as namaPerusahaan FROM loker INNER JOIN perusahaan  ON loker.idPerusahaan = perusahaan.id");
                                     foreach ($loker as $data) :
                                 ?>
                                     <tr>
@@ -135,7 +137,6 @@ require "functions.php";
                                         <td><?= $data["namaPerusahaan"] ?></td>
                                         <td><?= $data["posisi"] ?></td>
                                         <td><?= $data["lulusan"] ?></td>
-                                        <td><?= $data["jobdesk"] ?></td>
                                         <td><?= $data["status"] ?></td>
                                         <td>
                                             <a href="#" class="btn btn-primary">Detail</a>

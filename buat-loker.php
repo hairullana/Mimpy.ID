@@ -12,40 +12,34 @@ include '_header.php';
             <h3>Buat Loker Baru</h3>
         </div>
         <div class="card-body">
-            <form action="">
+            <form action="" method="POST">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Posisi">
+                    <input type="text" class="form-control" placeholder="Posisi" name="posisi">
                 </div>
                 <div class="form-group">
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select class="form-control" id="exampleFormControlSelect1" name="lulusan">
                         <option selected disabled>Lulusan</option>
-                        <option>Tanpa Ijasah</option>
-                        <option>SD</option>
-                        <option>SMP</option>
-                        <option>SMA/K</option>
-                        <option>D1</option>
-                        <option>D2</option>
-                        <option>D3</option>
-                        <option>D4</option>
-                        <option selected>S1</option>
-                        <option>S2</option>
-                        <option>S3</option>
+                        <option value="tanpa ijasah">Tanpa Ijasah</option>
+                        <option value="SD">SD</option>
+                        <option value="SMP">SMP</option>
+                        <option value="SMA">SMA/K</option>
+                        <option value="D1">D1</option>
+                        <option value="D2">D2</option>
+                        <option value="D3">D3</option>
+                        <option value="D4">D4</option>
+                        <option value="S1">S1</option>
+                        <option value="S2">S2</option>
+                        <option value="S3">S3</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Gaji">
+                    <textarea class="form-control" name="jobdesk" id="" placeholder="Jobdesk" name="jobdesk"></textarea>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" name="" id="" placeholder="Jobdesk"></textarea>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" name="" id="" placeholder="Keahlian Utama"></textarea>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" name="" id="" placeholder="Keterangan"></textarea>
+                    <textarea class="form-control" name="keterangan" id="" placeholder="Keterangan" name="keterangan"></textarea>
                 </div>
                 <div class="form-group text-center">
-                    <button class="btn btn-primary">Posting Loker</button>
+                    <button class="btn btn-primary" name="postingLoker">Posting Loker</button>
                 </div>
             </form>
         </div>
@@ -56,4 +50,47 @@ include '_header.php';
 <!-- footer -->
 <?php
 include '_footer.php';
+?>
+
+
+<?php
+
+// jika tombol posting loker sudah di tekan
+if (isset($_POST["postingLoker"])){
+    // tangkap semua nilai
+    $posisi = htmlspecialchars($_POST["posisi"]);
+    $lulusan = htmlspecialchars($_POST["lulusan"]);
+    $jobdesk = htmlspecialchars($_POST["jobdesk"]);
+    $keterangan = htmlspecialchars($_POST["keterangan"]);
+
+    // cari idPerusahaan
+    $emailPerusahaan = $_SESSION["perusahaan"];
+    $perusahaan = mysqli_query($connectDB, "SELECT * FROM perusahaan WHERE email = '$emailPerusahaan'");
+    $perusahaan = mysqli_fetch_assoc($perusahaan);
+    $idPerusahaan = $perusahaan["id"];
+
+    // validasi kolom
+    if (cekKosong($posisi) == true){
+        if (cekKosong($lulusan) == true){
+            if (cekKosong($jobdesk) == true){
+                if (cekKosong($keterangan) == true){
+                    mysqli_query($connectDB, "INSERT INTO loker VALUES ('',$idPerusahaan,'$posisi','$lulusan','$jobdesk','$keterangan',0)");
+                    echo "
+                        <script>
+                            Swal.fire('LOKER BERHASIL DIPOSTING','','success').then(function(){
+                                window.location = 'data-loker.php';
+                            });
+                        </script>
+                    ";
+                }
+            }
+        }
+    }
+
+
+
+
+
+}
+
 ?>

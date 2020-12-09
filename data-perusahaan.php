@@ -1,5 +1,13 @@
 <?php
 
+// koneksi db
+require "connectDB.php";
+// session
+session_start();
+
+?>
+<?php
+
 // mulai session
 session_start();
 // masukkan koneksi db

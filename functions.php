@@ -219,4 +219,17 @@ function cekLoginAdmin(){
     }
 }
 
+// cek form kosong
+function cekKosong($var){
+    if (empty($var)){
+        echo "
+            <script>
+                Swal.fire('GAGAL POSTING LOKER','Silahkan Lengkapi Semua Form','error');
+            </script>
+        ";
+        return false;
+    }
+    return true;
+}
+
 ?>
