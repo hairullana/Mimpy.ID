@@ -1,8 +1,8 @@
 <?php 
-// header
-$title = "Login";
-include '_header.php';
-// end header
+// panggil file functions.php
+require "functions.php";
+// panggil koneksi db
+require "db.php";
 
 cekSudahLogin();
 
@@ -16,7 +16,7 @@ if (isset($_POST["login"])){
 
         if($_POST["user"] == "admin") {
             // login sebagai admin
-            $cekUser = mysqli_query($connectDB,"SELECT * FROM admin WHERE email = '$email'");
+            $cekUser = mysqli_query($db,"SELECT * FROM admin WHERE email = '$email'");
     
             if (mysqli_num_rows($cekUser) > 0){
                 // jika email ditemukan
@@ -52,7 +52,7 @@ if (isset($_POST["login"])){
             }
         }else if ($_POST["user"] == "perusahaan"){
             // login sebagai perusahaan
-            $cekUser = mysqli_query($connectDB,"SELECT * FROM perusahaan WHERE email = '$email'");
+            $cekUser = mysqli_query($db,"SELECT * FROM perusahaan WHERE email = '$email'");
             if (mysqli_num_rows($cekUser) > 0){
                 // jika email ditemukan
                 // cek passwordnya
@@ -87,7 +87,7 @@ if (isset($_POST["login"])){
             }
         }else if ($_POST["user"] == "pelamar"){
             // login sebagai pelamar
-            $cekUser = mysqli_query($connectDB,"SELECT * FROM pelamar WHERE email = '$email'");
+            $cekUser = mysqli_query($db,"SELECT * FROM pelamar WHERE email = '$email'");
             if (mysqli_num_rows($cekUser) == 1){
                 // jika email ditemukan
                 $pelamar = mysqli_fetch_assoc($cekUser);
@@ -132,49 +132,64 @@ if (isset($_POST["login"])){
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- headtags -->
+    <?php require "headtags.php" ?>
+    <title>Login</title>
+</head>
+<body>
 
-<!-- body -->
-<div class="container my-5">
-    <div class="row">
-        <div class="col-xl-6 offset-xl-3">
-            <div class="card">
-            <div class="card-header text-center">
-                Silahkan Login Terlebih Dahulu
-                </div>
-                <!-- form login -->
-                <div class="card-body">
-                <form action="" method="POST">
-                <div class="text-center mb-3">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="user" id="exampleRadios1" value="admin">
-                        <label class="form-check-label" for="exampleRadios1">Admin</label>
+    <!-- navbar -->
+    <?php include "navbar.php"; ?>
+    
+    <!-- body -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-xl-6 offset-xl-3">
+                <div class="card">
+                <div class="card-header text-center">
+                    Silahkan Login Terlebih Dahulu
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="user" id="exampleRadios2" value="perusahaan">
-                        <label class="form-check-label" for="exampleRadios2">Perusahaan</label>
+                    <!-- form login -->
+                    <div class="card-body">
+                    <form action="" method="POST">
+                    <div class="text-center mb-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user" id="exampleRadios1" value="admin">
+                            <label class="form-check-label" for="exampleRadios1">Admin</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user" id="exampleRadios2" value="perusahaan">
+                            <label class="form-check-label" for="exampleRadios2">Perusahaan</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="user" id="exampleRadios3" value="pelamar">
+                            <label class="form-check-label" for="exampleRadios3">Pelamar</label>
+                        </div>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="user" id="exampleRadios3" value="pelamar">
-                        <label class="form-check-label" for="exampleRadios3">Pelamar</label>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email Address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email">
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" name="login">Login</button>
+                </form>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email Address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block" name="login">Login</button>
-            </form>
+            </div>
             </div>
         </div>
-        </div>
     </div>
-</div>
-<!-- end body -->
+    <!-- end body -->
 
-<!-- footer -->
-<?php include '_footer.php' ?>
-<!-- end footer -->
+    <!-- footer -->
+    <?php include '_footer.php' ?>
+    <!-- end footer -->
+</body>
+</html>

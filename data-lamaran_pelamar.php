@@ -1,111 +1,131 @@
-<!-- header -->
 <?php
-$title = "Kelola Lamaran";
-include '_header.php';
+
+// panggil koneksi db
+require "db.php";
+// panggil file functions.php
+require "functions.php";
+// aktifkan session
+session_start();
+
 ?>
-<!-- end header -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- judul -->
+    <title>Data Lamaran</title>
+    <!-- headtags -->
+    <?php require "headtags.php" ?>
+</head>
+<body>
 
-<!-- body -->
-<div class="container">
-    <div class="card mt-5">
-        <div class="card-header text-center">
-            <h3>Kelola Lamaran</h3>
-        </div>
-        <div class="card-body container ">
+    <!-- navbar -->
+    <?php require "navbar.php"; ?>
+    
+    <!-- body -->
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-header text-center">
+                <h3>Kelola Lamaran</h3>
+            </div>
+            <div class="card-body container ">
 
-            <!-- search -->
-            <form action="">
-                <div class="row mx-5 my-3">
-                    <div class="col">
-                        <div class="form-group">
-                            <input class="form-control" type="search" placeholder="Keyword" aria-label="Search">
+                <!-- search -->
+                <form action="">
+                    <div class="row mx-5 my-3">
+                        <div class="col">
+                            <div class="form-group">
+                                <input class="form-control" type="search" placeholder="Keyword" aria-label="Search">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" type="submit">Search</button>
                         </div>
                     </div>
-                    <div>
-                        <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+                <!-- end search -->
+
+                <!-- data -->
+                <table class="table table-responsive-md">
+                    <tr>
+                        <th>ID Loker</th>
+                        <th>Tanggal</th>
+                        <th>Perusahaan</th>
+                        <th>Posisi</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1 Januari 2020</td>
+                        <td>PT. Abdi Jaya</td>
+                        <td>Manager</td>
+                        <td><span class="text-danger">Ditotak</span></td>
+                        <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1 Februari 2020</td>
+                        <td>PT. Ayam Geprek</td>
+                        <td>Manager</td>
+                        <td>Menunggu</td>
+                        <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>5 Maret 2020</td>
+                        <td>PT. Ayam Bakar Anu</td>
+                        <td>Manager</td>
+                        <td><span class="text-danger">Ditolak</span></td>
+                        <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>6 April 2020</td>
+                        <td>PT. Yeyeye</td>
+                        <td>Manager</td>
+                        <td>Menunggu</td>
+                        <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>7 Mei 2020</td>
+                        <td>PT. Abdi Jaya</td>
+                        <td>Manager</td>
+                        <td><span class="text-success">Diterima</span></td>
+                        <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
+                    </tr>
+                </table>
+                <!-- end data -->
+
+
+                <!-- pagination -->
+                <div class="row mt-3">
+                    <div class="col">
+                        <nav aria-label="...">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-            </form>
-            <!-- end search -->
-
-            <!-- data -->
-            <table class="table table-responsive-md">
-                <tr>
-                    <th>ID Loker</th>
-                    <th>Tanggal</th>
-                    <th>Perusahaan</th>
-                    <th>Posisi</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1 Januari 2020</td>
-                    <td>PT. Abdi Jaya</td>
-                    <td>Manager</td>
-                    <td><span class="text-danger">Ditotak</span></td>
-                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>1 Februari 2020</td>
-                    <td>PT. Ayam Geprek</td>
-                    <td>Manager</td>
-                    <td>Menunggu</td>
-                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>5 Maret 2020</td>
-                    <td>PT. Ayam Bakar Anu</td>
-                    <td>Manager</td>
-                    <td><span class="text-danger">Ditolak</span></td>
-                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>6 April 2020</td>
-                    <td>PT. Yeyeye</td>
-                    <td>Manager</td>
-                    <td>Menunggu</td>
-                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>7 Mei 2020</td>
-                    <td>PT. Abdi Jaya</td>
-                    <td>Manager</td>
-                    <td><span class="text-success">Diterima</span></td>
-                    <td><a href="surat-lamaran.php" class="btn btn-primary">Detail</a> <a href="" class="btn btn-primary">Hapus</a></td>
-                </tr>
-            </table>
-            <!-- end data -->
-
-
-            <!-- pagination -->
-            <div class="row mt-3">
-                <div class="col">
-                    <nav aria-label="...">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
+                <!-- end pagination -->
             </div>
-            <!-- end pagination -->
         </div>
     </div>
-</div>
 
 
-<!-- footer -->
-<?php
-include '_footer.php';
-?>
-<!-- end footer -->
+    <!-- footer -->
+    <?php include 'footer.php'; ?>
+    <!-- end footer -->
+
+</body>
+</html>
+
 

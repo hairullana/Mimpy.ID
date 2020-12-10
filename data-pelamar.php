@@ -1,11 +1,11 @@
 <?php
 
-// mulai session
-session_start();
-// masukkan koneksi db
-require "connectDB.php";
-// panggil fungsi
+// panggil koneksi db
+require "db.php";
+// panggil file functions.php
 require "functions.php";
+// aktifkan session
+session_start();
 
 ?>
 
@@ -36,24 +36,7 @@ require "functions.php";
     </head>
     <body>
         <!-- navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-            <a class="navbar-brand" href="/mimpy.id">Mimpy.ID</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto"></ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="registrasi.php">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="login.php">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <?php require "navbar.php" ?>
         <!-- end navbar -->
 
         <!-- Nav -->
@@ -127,7 +110,7 @@ require "functions.php";
                             </thead>
                             <tbody>
                                 <?php
-                                    $pelamar = mysqli_query($connectDB, "SELECT * FROM pelamar");
+                                    $pelamar = mysqli_query($db, "SELECT * FROM pelamar");
                                     foreach ($pelamar as $data) :
                                 ?>
                                     <tr>

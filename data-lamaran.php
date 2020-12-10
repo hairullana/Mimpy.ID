@@ -1,11 +1,11 @@
 <?php
 
-// mulai session
-session_start();
-// masukkan koneksi db
-require "connectDB.php";
-// panggil fungsi
+// panggil koneksi db
+require "db.php";
+// panggil file functions.php
 require "functions.php";
+// aktifkan session
+session_start();
 
 ?>
 
@@ -130,13 +130,13 @@ require "functions.php";
                             </thead>
                             <tbody>
                                 <?php
-                                    $loker = mysqli_query($connectDB, "SELECT *, pelamar.nama as namaPelamar FROM lamaran INNER JOIN pelamar ON lamaran.idPelamar = pelamar.id");
+                                    $loker = mysqli_query($db, "SELECT *, pelamar.nama as namaPelamar FROM lamaran INNER JOIN pelamar ON lamaran.idPelamar = pelamar.id");
                                     foreach ($loker as $data) :
                                         $idLoker = $data["idLoker"];
-                                        $loker = mysqli_query($connectDB, "SELECT * FROM loker WHERE id = $idLoker");
+                                        $loker = mysqli_query($db, "SELECT * FROM loker WHERE id = $idLoker");
                                         $loker = mysqli_fetch_assoc($loker);
                                         $idPerusahaan = $loker["idPerusahaan"];
-                                        $perusahaan = mysqli_query($connectDB, "SELECT * FROM perusahaan WHERE id = $idPerusahaan");
+                                        $perusahaan = mysqli_query($db, "SELECT * FROM perusahaan WHERE id = $idPerusahaan");
                                         $perusahaan = mysqli_fetch_assoc($perusahaan);
 
                                 ?>

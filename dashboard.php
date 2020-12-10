@@ -1,11 +1,11 @@
 <?php
 
-// mulai session
-session_start();
-// masukkan koneksi db
-require "connectDB.php";
-// panggil fungsi
+// panggil koneksi db
+require "db.php";
+// panggil file functions.php
 require "functions.php";
+// aktifkan session
+session_start();
 
 ?>
 
@@ -108,7 +108,7 @@ require "functions.php";
                                 <i class="fas fa-building"></i>
                             </div>
                             <h5 class="card-title"><strong>JUMLAH PERUSAHAAN</strong></h5>
-                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($connectDB, "SELECT * FROM perusahaan")) ?></div>
+                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($b, "SELECT * FROM perusahaan")) ?></div>
                             <a href="data-perusahaan.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ require "functions.php";
                                 <i class="fas fa-address-card"></i>
                             </div>
                             <h5 class="card-title"><strong>JUMLAH PELAMAR</strong></h5>
-                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($connectDB, "SELECT * FROM pelamar")) ?></div>
+                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($b, "SELECT * FROM pelamar")) ?></div>
                             <a href="data-pelamar.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
@@ -130,7 +130,7 @@ require "functions.php";
                                 <i class="fas fa-sticky-note"></i>
                             </div>
                             <h5 class="card-title"><strong>JUMLAH LOKER</strong></h5>
-                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($connectDB, "SELECT * FROM loker")) ?></div>
+                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($b, "SELECT * FROM loker")) ?></div>
                             <a href="data-loker.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ require "functions.php";
                                 <i class="fas fa-address-card"></i>
                             </div>
                             <h5 class="card-title"><strong>JUMLAH LAMARAN</strong></h5>
-                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($connectDB, "SELECT * FROM lamaran")) ?></div>
+                            <div class="display-4"><?= mysqli_num_rows(mysqli_query($b, "SELECT * FROM lamaran")) ?></div>
                             <a href="data-lamaran.php"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right ml-2"></i></p></a>
                         </div>
                     </div>
