@@ -38,7 +38,7 @@ session_start();
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" name="lulusan">
                             <option selected disabled>Lulusan</option>
-                            <option value="tanpa ijasah">Tanpa Ijasah</option>
+                            <option value="Tanpa Ijasah">Tanpa Ijasah</option>
                             <option value="SD">SD</option>
                             <option value="SMP">SMP</option>
                             <option value="SMA">SMA/K</option>
