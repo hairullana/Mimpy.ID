@@ -7,8 +7,6 @@ require "functions.php";
 // aktifkan session
 session_start();
 
-cekBelumLogin();
-
 ?>
 
 
@@ -29,7 +27,7 @@ cekBelumLogin();
     <div class="container mt-5">
         <div class="card col-md-6 offset-md-3">
             <div class="card-header text-center">
-                <h3>Profil Admin</h3>
+                <h3>Profil</h3>
             </div>
             <div class="card-body">
                 <form action="" method="POST">
@@ -74,7 +72,7 @@ cekBelumLogin();
                             <input type="text" class="form-control" placeholder="Nama Perusahaan" name="nama" value="<?= $perusahaan['nama'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Email" name="email" value="<?=$perusahaan['email'] ?>">
+                            <input type="email" class="form-control" placeholder="Email" name="email" value="<?= $perusahaan['email'] ?>">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Nomor Telp" name="telp" value="<?= $perusahaan['telp'] ?>">
@@ -120,7 +118,7 @@ cekBelumLogin();
                             <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" value="<?= $pelamar['nama'] ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Email" name="email" value="<?= $pelamar['email'] ?>">
+                            <input type="email" class="form-control" placeholder="Email" name="email" value="<?= $pelamar['email'] ?>">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Nomor Telp" name="telp" value="<?= $pelamar['telp'] ?>">
@@ -152,7 +150,7 @@ cekBelumLogin();
 
     <!-- footer -->
     <?php
-    include '_footer.php'
+    include 'footer.php'
     ?>
 
 </body>
@@ -161,6 +159,9 @@ cekBelumLogin();
 
 
 <?php
+
+// cek apakah sudah login atau belum
+cekBelumLogin();
 
 // jika melakukan perubahan profil
 if (isset($_POST["simpanData"])) {
@@ -190,24 +191,32 @@ if (isset($_POST["simpanData"])) {
         $kota = htmlspecialchars($_POST["kota"]);
         $alamat = htmlspecialchars($_POST["alamat"]);
         $deskripsi = htmlspecialchars($_POST["deskripsi"]);
+
         // validasi form
-        validasiNama($nama);
-        validasiTelp($telp);
-        validasiKota($kota);
-        validasiAlamat($alamat);
-        validasiDeskripsi($deskripsi);
-        // update db
-        mysqli_query($db,"UPDATE perusahaan SET nama = '$nama', email = '$email', telp = '$telp', kota = '$kota', alamat = '$alamat', deskripsi = '$deskripsi' WHERE email = '$emailLama'");
-        // ubah nilai session
-        $_SESSION["perusahaan"] = $email;
-        // alert
-        echo "
-            <script>
-                Swal.fire('SUCCESS','Perubahan Berhasil Disimpan','success').then(function(){
-                    window.location = 'profil.php';
-                });
-            </script>
-        ";
+        if (cekKosong($email) == true) {
+            if (validasiNama($nama) == true){
+                if (validasiTelp($telp) == true) {
+                    if (validasiKota($kota) == true){
+                        if (validasiAlamat($alamat) == true) {
+                            if (validasiDeskripsi($deskripsi) == true){
+                                // update db
+                                mysqli_query($db,"UPDATE perusahaan SET nama = '$nama', email = '$email', telp = '$telp', kota = '$kota', alamat = '$alamat', deskripsi = '$deskripsi' WHERE email = '$emailLama'");
+                                // ubah nilai session
+                                $_SESSION["perusahaan"] = $email;
+                                // alert
+                                echo "
+                                    <script>
+                                        Swal.fire('UPDATE PROFIL BERHASIL','','success').then(function(){
+                                            window.location = 'profil.php';
+                                        });
+                                    </script>
+                                ";
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }else if ($_SESSION["pelamar"]){        // jika role user = pelamar
         // ambil data email
         $emailLama = $_SESSION["pelamar"];
@@ -218,6 +227,7 @@ if (isset($_POST["simpanData"])) {
         $gender = htmlspecialchars($_POST["gender"]);
         $alamat = htmlspecialchars($_POST["alamat"]);
         // validasi form
+        cekKosong($email);
         validasiNama($nama);
         validasiTelp($telp);
         validasiAlamat($alamat);

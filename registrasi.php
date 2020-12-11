@@ -28,7 +28,7 @@ session_start();
     <div class="row mt-5">
         <div class="col-md-6 offset-md-3">
             <div class="container">
-                <div class="card">
+                <div class="card shadow-lg">
                     <div class="card-header text-center">
                         <h3>Registrasi</h3>
                     </div>
@@ -53,9 +53,17 @@ session_start();
 
     <!-- footer -->
     <?php
-    include '_footer.php';
+    include 'footer.php';
     ?>
     <!-- end footer -->
 
 </body>
 </html>
+
+
+<?php
+
+// cek apakah sudah login atau belum
+cekSudahLogin();
+
+?>

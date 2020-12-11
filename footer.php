@@ -1,5 +1,5 @@
 <!-- footer -->
-<div class="card mt-4 bg-primary text-white">
+<div class="card mt-5 bg-primary text-white">
     <div class="container">
         <div class="row">
             <div class="col-md-6">

@@ -13,6 +13,7 @@ function validasiNama ($nama) {
                 );
             </script>
         ";
+        return false;
     }else if (strlen($nama) < 3) {
         // jika nama pendek
         echo "
@@ -24,9 +25,10 @@ function validasiNama ($nama) {
                 );
             </script>
         ";
+        return false;
     }else {
         // jika berhasil melewati semua validasi
-        return $nama;
+        return true;
     }
 }
 
@@ -43,6 +45,7 @@ function validasiTelp($telp) {
                 );
             </script>
         ";
+        return false;
     }else if (!is_numeric($telp)) {
         // jika bukan angka
         echo "
@@ -54,9 +57,10 @@ function validasiTelp($telp) {
                 );
             </script>
         ";
+        return false;
     }else {
         // jika berhasil melewati validasi
-        return $telp;
+        return true;
     }
 }
 
@@ -73,6 +77,7 @@ function validasiKota ($kota) {
                 );
             </script>
         ";
+        return false;
     }else if (strlen($kota) < 3) {
         // jika kota pendek
         echo "
@@ -84,9 +89,10 @@ function validasiKota ($kota) {
                 );
             </script>
         ";
+        return false;
     }else {
         // jika berhasil melewati semua validasi
-        return $kota;
+        return true;
     }
 }
 
@@ -103,6 +109,7 @@ function validasiAlamat ($alamat) {
                 );
             </script>
         ";
+        return false;
     }else if (strlen($alamat) < 15) {
         // jika alamat pendek
         echo "
@@ -114,9 +121,10 @@ function validasiAlamat ($alamat) {
                 );
             </script>
         ";
+        return false;
     }else {
         // jika berhasil melewati semua validasi
-        return $alamat;
+        return true;
     }
 }
 
@@ -133,6 +141,7 @@ function validasiDeskripsi ($deskripsi) {
                 );
             </script>
         ";
+        return false;
     }else if (strlen($deskripsi) < 15) {
         // jika deskripsi pendek
         echo "
@@ -144,9 +153,10 @@ function validasiDeskripsi ($deskripsi) {
                 );
             </script>
         ";
+        return false;
     }else {
         // jika berhasil melewati semua validasi
-        return $deskripsi;
+        return true;
     }
 }
 
@@ -163,6 +173,7 @@ function validasiPassword ($password) {
                 );
             </script>
         ";
+        return false;
     }else if (strlen($password) < 10) {
         // jika password pendek
         echo "
@@ -174,9 +185,10 @@ function validasiPassword ($password) {
                 );
             </script>
         ";
+        return false;
     }else {
         // jika berhasil melewati semua validasi
-        return $password;
+        return true;
     }
 }
 
@@ -186,8 +198,9 @@ function cekSudahLogin(){
     if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSION["pelamar"])) {
         echo "
             <script>
-                alert('Ups, Anda Sudah Login Gan !');
-                document.location.href = 'index.php';
+                Swal.fire('AKSES DITOLAK','Anda Sudah Login','warning').then(function(){
+                        window.location = 'index.php';
+                });
             </script>
         ";
     }
@@ -199,8 +212,9 @@ function cekBelumLogin(){
     if (!isset($_SESSION["admin"]) && !isset($_SESSION["perusahaan"]) && !isset($_SESSION["pelamar"])) {
         echo "
             <script>
-                alert('Ups, Anda Belum Login Gan !');
-                document.location.href = 'login.php';
+                Swal.fire('AKSES DITOLAK','Silahkan Login Untuk Mengakses Halaman Ini','warning').then(function(){
+                        window.location = 'login.php';
+                });
             </script>
         ";
     }

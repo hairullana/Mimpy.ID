@@ -59,7 +59,7 @@ session_start();
 
     <!-- footer -->
     <?php
-    include '_footer.php'
+    include 'footer.php'
     ?>
     <!-- end footer -->
 

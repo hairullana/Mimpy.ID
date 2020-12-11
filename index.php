@@ -55,15 +55,15 @@ session_start();
                         <a href="profil.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="buat-loker.php" class="btn btn-primary btn-block font-weight-bold">Buat Loker</a>
+                        <a href="buat-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Buat Loker</button></a>
                     </div>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-3 offset-md-3">
-                        <a href="data-loker-perusahaan.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Loker</button></a>
+                        <a href="data-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Loker</button></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="data-pelamar-perusahaan.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Pelamar</button></a>
+                        <a href="data-pelamar.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Pelamar</button></a>
                     </div>
                 </div>
             </div>
@@ -245,7 +245,7 @@ session_start();
 
 
     <!-- footer -->
-    <?php include '_footer.php'; ?>
+    <?php include 'footer.php'; ?>
     <!-- end footer -->
 </body>
 </html>

@@ -18,17 +18,6 @@ $idPerusahaan = $loker["idPerusahaan"];
 $perusahaan = mysqli_query($db, "SELECT * from perusahaan where id = $idPerusahaan");
 $perusahaan = mysqli_fetch_assoc($perusahaan);
 
-// jika yg login bukan yg punya perusahaan, tendang ke index
-if ($perusahaan["email"] != $_SESSION["perusahaan"]){
-    echo "
-        <script>
-            Swal.fire('AKSES DITOLAK','Anda Tidak Berhak Ke Halaman Ini','warning').then(function(){
-                window.location = 'index.php';
-            });
-        </script>
-    ";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -65,12 +54,23 @@ if ($perusahaan["email"] != $_SESSION["perusahaan"]){
 
 <?php
 
+// jika yg login bukan yg punya perusahaan, tendang ke index
+if ($perusahaan["email"] != $_SESSION["perusahaan"]){
+    echo "
+        <script>
+            Swal.fire('AKSES DITOLAK','Anda Tidak Berhak Ke Halaman Ini','warning').then(function(){
+                window.location = 'index.php';
+            });
+        </script>
+    ";
+}
+
 // jika belum login perusahaan, tendang ke index
 if (!isset($_SESSION["perusahaan"])){
     echo "
         <script>
             Swal.fire('AKSES DITOLAK','','success').then(function(){
-                window.location = 'data-loker-perusahaan.php';
+                window.location = 'data-loker.php';
             });
         </script>
     ";
@@ -96,27 +96,7 @@ if (!isset($_SESSION["perusahaan"])){
         $perusahaan = mysqli_fetch_assoc($perusahaan);
 
         // jika yang login perushaaan yg punya loker
-        if($perusahaan["email"] == $_SESSION["perusahaan"]){
-            mysqli_query($db, "DELETE from loker WHERE id = $id");
-            // jika berhasil di hapus
-            if (mysqli_affected_rows($db) > 0){
-                echo "
-                    <script>
-                        Swal.fire('Data Loker Berhasil Di Hapus','','success').then(function(){
-                            window.location = 'data-loker-perusahaan.php';
-                        });
-                    </script>
-                ";
-            }else {     // jika gagal di hapus karena id loker tidak ada
-                echo "
-                    <script>
-                        Swal.fire('Data Loker Gagal Di Hapus','Data Loker Tidak Ditemukan','success').then(function(){
-                            window.location = 'data-loker-perusahaan.php';
-                        });
-                    </script>
-                ";
-            }
-        }else {     // jika yg login bukan perusahaan yang bukan punya loker
+        if($perusahaan["email"] != $_SESSION["perusahaan"]){
             echo "
                 <script>
                     Swal.fire('AKSES DITOLAK','Loker Ini Bukan Milik Perusahaan Anda','success').then(function(){

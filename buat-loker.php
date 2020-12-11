@@ -110,7 +110,7 @@ if (isset($_POST["postingLoker"])){
                     echo "
                         <script>
                             Swal.fire('LOKER BERHASIL DIPOSTING','','success').then(function(){
-                                window.location = 'data-loker-perusahaan.php';
+                                window.location = 'data-loker.php';
                             });
                         </script>
                     ";

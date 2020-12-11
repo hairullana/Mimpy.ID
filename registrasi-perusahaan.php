@@ -8,17 +8,6 @@ require "functions.php";
 session_start();
 
 
-// kalau sudah login, tendang ke index
-if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSION["pelamar"])) {
-    echo "
-        <script>
-            Swal.fire('ERROR','Anda Sudah Login','error').then(function() {
-                window.location = 'index.php';
-            });
-        </script>
-    ";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +29,7 @@ if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSI
     <div class="row mt-5">
         <div class="col">
             <div class="container">
-                <div class="card">
+                <div class="card shadow-lg">
                 <!-- heading -->
                     <div class="card-header text-center">
                         <h3>Registrasi Perusahaan</h3>
@@ -100,7 +89,7 @@ if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSI
 
     <!-- footer -->
     <?php
-    include '_footer.php';
+    include 'footer.php';
     ?>
     <!-- end footer -->
 
@@ -110,6 +99,9 @@ if (isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]) || isset($_SESSI
 
 
 <?php
+
+// cek apakah sudah login atau belum
+cekSudahLogin();
 
 
 if (isset($_POST["daftar"])) {

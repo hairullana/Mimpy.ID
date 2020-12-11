@@ -40,7 +40,7 @@ session_start();
         <!-- end navbar -->
 
         <!-- Nav -->
-        <div class="row no-gutters mt-5">
+        <div class="row no-gutters">
             <div class="col-md-2 bg-dark pr-3 pt-4"> 
                 <ul class="nav flex-column ml-3 mb-5">
                     <li class="nav-item">

@@ -29,7 +29,7 @@ session_start();
     <div class="row mt-5">
         <div class="col">
             <div class="container">
-                <div class="card">
+                <div class="card shadow-lg">
                     <!-- heading -->
                     <div class="card-header text-center">
                         <h3>Registrasi Pelamar</h3>
@@ -87,7 +87,7 @@ session_start();
 
     <!-- footer -->
     <?php
-    include '_footer.php';
+    include 'footer.php';
     ?>
     <!-- end footer -->
 
@@ -97,6 +97,9 @@ session_start();
 
 
 <?php
+
+// cek apakah sudah login atau belum
+cekSudahLogin();
 
 // jika tombol daftar sudah di klik
 if (isset($_POST["daftar"])) {
