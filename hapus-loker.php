@@ -32,7 +32,7 @@ if (!isset($_SESSION["perusahaan"])){
     echo "
         <script>
             Swal.fire('AKSES DITOLAK','','success').then(function(){
-                window.location = 'data-loker-perusahaan.php';
+                window.location = 'data-loker.php';
             });
         </script>
     ";
@@ -42,7 +42,7 @@ if (!isset($_SESSION["perusahaan"])){
         echo "
             <script>
                 Swal.fire('AKSI DITOLAK','Tidak Dapat Mengakses Halaman','error').then(function(){
-                    window.location = 'data-loker-perusahaan.php';
+                    window.location = 'data-loker.php';
                 });
             </script>
         ";
@@ -65,7 +65,7 @@ if (!isset($_SESSION["perusahaan"])){
                 echo "
                     <script>
                         Swal.fire('Data Loker Berhasil Di Hapus','','success').then(function(){
-                            window.location = 'data-loker-perusahaan.php';
+                            window.location = 'data-loker.php';
                         });
                     </script>
                 ";
@@ -73,7 +73,7 @@ if (!isset($_SESSION["perusahaan"])){
                 echo "
                     <script>
                         Swal.fire('Data Loker Gagal Di Hapus','Data Loker Tidak Ditemukan','success').then(function(){
-                            window.location = 'data-loker-perusahaan.php';
+                            window.location = 'data-loker.php';
                         });
                     </script>
                 ";
@@ -82,7 +82,7 @@ if (!isset($_SESSION["perusahaan"])){
             echo "
                 <script>
                     Swal.fire('AKSES DITOLAK','Loker Ini Bukan Milik Perusahaan Anda','success').then(function(){
-                        window.location = 'data-loker-perusahaan.php';
+                        window.location = 'data-loker.php';
                     });
                 </script>
             ";
