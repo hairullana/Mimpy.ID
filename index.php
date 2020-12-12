@@ -8,7 +8,7 @@ require "functions.php";
 session_start();
 
 // ambil data loker
-$loker = mysqli_query($db, "SELECT *, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id");
+$loker = mysqli_query($db, "SELECT loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id");
 ?>
 
 
@@ -88,7 +88,7 @@ $loker = mysqli_query($db, "SELECT *, perusahaan.nama as namaPerusahaan, perusah
                 </div>
                 <div class="row text-center">
                     <div class="col-md-3 offset-md-3">
-                        <a href="data-lamaran_pelamar.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Lamaran</button></a>
+                        <a href="data-lamaran.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Lamaran</button></a>
                     </div>
                     <div class="col-md-3">
                         <a href="cari-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Cari Loker Lanjutan</button></a>
@@ -154,7 +154,7 @@ $loker = mysqli_query($db, "SELECT *, perusahaan.nama as namaPerusahaan, perusah
                             <h3 class="mb-0"><?= $data["namaPerusahaan"] ?></h3>
                             <div class="mb-1 text-muted"><?= $data["alamatPerusahaan"] ?></div>
                             <p class="card-text mb-auto">Dicari <?= $data["posisi"] ?>, Minimal <?= $data["lulusan"] ?>. <?= $data["jobdesk"] ?></p>
-                            <a href="detail-loker.php" class="stretched-link">read more</a>
+                            <a href="detail-loker.php?id=<?= $data['idLoker'] ?>" class="stretched-link">read more</a>
                         </div>
                     </div>
                 </div>

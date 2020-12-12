@@ -7,6 +7,13 @@ require "functions.php";
 // aktifkan session
 session_start();
 
+
+// ambil inputan id
+$id = $_GET["id"];
+// ambil data lamaran
+$lamaran = mysqli_query($db, "SELECT lamaran.suratLamaran as suratLamaran, pelamar.id as idPelamar, pelamar.nama as namaPelamar, lamaran.status as status, lamaran.tanggal as tanggal, lamaran.id as idLamaran, perusahaan.nama as namaPerusahaan, loker.posisi as posisi from lamaran inner join loker on loker.id = lamaran.idLoker inner join perusahaan on perusahaan.id = loker.idPerusahaan inner join pelamar on lamaran.idPelamar = pelamar.id where lamaran.id = $id");
+$lamaran = mysqli_fetch_assoc($lamaran);
+
 ?>
 
 <!DOCTYPE html>
@@ -14,57 +21,39 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lamaran</title>
+    <title>Surat Lamaran</title>
     <?php require "headtags.php" ?>
 </head>
 <body>
-
-
+    
     <!-- navbar -->
     <?php require "navbar.php" ?>
 
 
     <!-- body -->
-    <div class="container">
-
-        <div class="card mt-5">
-            <div class="card-header text-center">
-                <h3>Buat Lamaran</h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                Ringkasan Pekerjaan
-                            </div>
-                            <!-- overview -->
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Perusahaan : PT. Ayam Geprek Rainord</li>
-                                <li class="list-group-item">Jabatan : Koki</li>
-                                <li class="list-group-item">Minimal Lulusan : SMA/K</li>
-                            </ul>
-                        </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="container mt-5 ">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Lamaran</h3>
                     </div>
-                </div>
-                <div class="row mt-5">
-                <!-- surat lamaran -->
-                    <div class="col">
-                        <strong>Surat Lamaran Anda</strong>
-                        <form action="" class="mt-4">
-                            <div class="form-group col-sm-12">
-                                <textarea name="" id="" style="height:300px;" class="form-control"></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-5 offset-sm-1">
-                                    <a href="cv.php" class="btn btn-primary btn-block">Lihat CV Saya</a>
-                                    <br>
-                                </div>
-                                <div class="col-sm-5">
-                                    <a href="kirim-lamaran.php"><button class="btn btn-danger btn-block">Kirim Lamaran</button></a>
-                                </div>
-                            </div>
-                        </form>
+                    <!-- biodata singkat -->
+                    <div class="card-body">
+                        <p>Tanggal Lamaran : <?= $lamaran["tanggal"] ?></p>
+                        <p>Pelamar : <?= $lamaran["namaPelamar"] ?></p>
+                        <p>Perusahaan : <?= $lamaran["namaPerusahaan"] ?></p>
+                        <p>Posisi : <?= $lamaran["posisi"] ?></p>
+                        <p>Status : <?= $lamaran["status"] ?></p>
+                        <p><a href="cv.php?id=<?= $id['idPelamar'] ?>" class="btn btn-primary">Selengkapnya Lihat CV</a></p>
+
+                        <!-- surat lamaran -->
+                        <div class="mt-5">
+                            <h5>Surat Lamaran</h5>
+                            <p>
+                                <?= nl2br(str_replace(' ','  ', htmlspecialchars($lamaran["suratLamaran"]))); ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,10 +63,30 @@ session_start();
 
 
     <!-- footer -->
-    <?php 
-    include 'footer.php';
+    <?php
+    include 'footer.php'
     ?>
-    
+    <!-- end footer -->
+
 </body>
 </html>
 
+
+<?php
+
+// jika tidak menerima inputan id
+if (!isset($_GET["id"])){
+    echo "
+        <script>
+            Swal.fire('Akses Ditolak !','','success').then(function(){
+                window.location = 'data-lamaran.php';
+            });
+        </script>
+    ";
+}
+
+
+
+
+
+?>

@@ -87,7 +87,7 @@ $perusahaan = mysqli_fetch_assoc($perusahaan);
                         <?php if (isset($_SESSION["pelamar"])) : ?>
                             <div class="row my-5">
                                 <div class="col text-center">
-                                    <a href="lamaran.php" class="btn btn-danger btn-lg shadow-lg">Buat Lamaran</a>
+                                    <a href="buat-lamaran.php?id=<?= $id ?>" class="btn btn-danger btn-lg shadow-lg">Buat Lamaran</a>
                                 </div>
                             </div>
                         <?php endif; ?>
