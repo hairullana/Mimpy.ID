@@ -113,19 +113,19 @@ session_start();
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $loker = mysqli_query($db, "SELECT *, perusahaan.nama as namaPerusahaan FROM loker INNER JOIN perusahaan  ON loker.idPerusahaan = perusahaan.id");
+                                        $loker = mysqli_query($db, "SELECT *, loker.id as idLoker, perusahaan.nama as namaPerusahaan FROM loker INNER JOIN perusahaan  ON loker.idPerusahaan = perusahaan.id");
                                         if (mysqli_num_rows($loker) > 0) :
                                             foreach ($loker as $data) :
                                     ?>
                                             <tr>
-                                                <td><?= $data["id"] ?></td>
+                                                <td><?= $data["idLoker"] ?></td>
                                                 <td><?= $data["namaPerusahaan"] ?></td>
                                                 <td><?= $data["posisi"] ?></td>
                                                 <td><?= $data["lulusan"] ?></td>
                                                 <td><?= $data["status"] ?></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary">Detail</a>
-                                                    <a href="#" class="btn btn-danger">Delete</a>
+                                                    <a href="detail-loker.php?id=<?= $data['idLoker'] ?>" class="btn btn-primary">Detail</a>
+                                                    <a href="hapus-loker.php?id=<?= $data['idLoker'] ?>" class="btn btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                     <?php

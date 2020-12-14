@@ -21,6 +21,17 @@ session_start();
 </head>
 <body>
     
+    <!-- navbar -->
+    <?php require "navbar.php" ?>
+
+    <div class="row mt-5">
+        <div class="col">
+            <h3 class="text-center">Sedang Mencoba Menghapus Data Lowongan Kerja</h3>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <?php require "footer.php" ?>
 </body>
 </html>
 
@@ -28,7 +39,7 @@ session_start();
 <?php
 
 // jika belum login perusahaan, tendang ke index
-if (!isset($_SESSION["perusahaan"])){
+if (!(isset($_SESSION["perusahaan"]) || isset($_SESSION["admin"]))){
     echo "
         <script>
             Swal.fire('AKSES DITOLAK','','success').then(function(){
@@ -58,7 +69,7 @@ if (!isset($_SESSION["perusahaan"])){
         $perusahaan = mysqli_fetch_assoc($perusahaan);
 
         // jika yang login perushaaan yg punya loker
-        if($perusahaan["email"] == $_SESSION["perusahaan"]){
+        if(($perusahaan["email"] == $_SESSION["perusahaan"]) || isset($_SESSION["admin"])){
             mysqli_query($db, "DELETE from loker WHERE id = $id");
             // jika berhasil di hapus
             if (mysqli_affected_rows($db) > 0){

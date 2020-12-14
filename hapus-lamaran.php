@@ -21,7 +21,17 @@ require "db.php";
     <?php require "headtags.php" ?>
 </head>
 <body>
-    
+    <!-- navbar -->
+    <?php require "navbar.php" ?>
+
+    <div class="row mt-5">
+        <div class="col">
+            <h3 class="text-center">Sedang Mencoba Menghapus Data Lamaran</h3>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <?php require "footer.php" ?>
 </body>
 </html>
 
@@ -38,13 +48,14 @@ if (!(isset($_SESSION["pelamar"]) || isset($_SESSION["admin"]))){
     ";
 }
 
-if (!isset($_GET["id"])){
+
+if ($_GET["id"] == NULL){
     echo "
-        <script>
-            Swal.fire('Akses Ditolak','Maaf, Halaman Belum Menerima Inputan ID Lamaran','warning').then(function(){
-                window.location = 'index.php';
-            });
-        </script>
+    <script>
+        Swal.fire('Akses Ditolak','Maaf, Halaman Belum Menerima Inputan ID Lamaran','warning').then(function(){
+            window.location = 'index.php';
+        });
+    </script>
     ";
 }
 
@@ -62,6 +73,15 @@ if (mysqli_affected_rows($db)){
         </script>
     ";
     
+}else{
+    echo "
+        <script>
+            Swal.fire('Data Lamaran Gagal Di Hapus','','success').then(function(){
+                window.location = 'data-lamaran.php';
+            });
+        </script>
+    ";
+
 }
 
 ?>

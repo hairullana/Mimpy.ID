@@ -99,7 +99,7 @@ session_start();
                                       <th>Status</th>
                                   </tr>
                               </thead>
-                              <tbody>
+                              <tbody> 
                                   <?php
                                       $lamaran = mysqli_query($db, "SELECT loker.idPerusahaan as idPerusahaan, loker.id as idLoker, lamaran.id as idLamaran, pelamar.nama as namaPelamar, loker.posisi as posisi, lamaran.status as status FROM lamaran join pelamar on pelamar.id = lamaran.idPelamar join loker on loker.id = lamaran.idLoker");
                                       foreach ($lamaran as $data) :
@@ -116,8 +116,8 @@ session_start();
                                           <td><?= $data["posisi"] ?></td>
                                           <td><?= $data["status"] ?></td>
                                           <td>
-                                              <a href="#" class="btn btn-primary">Detail</a>
-                                              <a href="#" class="btn btn-danger">Delete</a>
+                                              <a href="lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-primary">Detail</a>
+                                              <a href="hapus-lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-danger">Delete</a>
                                           </td>
                                       </tr>
                                   <?php
@@ -245,6 +245,83 @@ session_start();
         <?php
         include 'footer.php';
         ?>
+      <?php elseif(isset($_SESSION["pelamar"])) : ?>
+        <div class="container mt-5">
+            <div class="card">
+              <div class="card-header text-center">
+                  <h3>Data Pelamar</h3>
+              </div>
+              <div class="card-body">
+                  
+                  <!-- search -->
+                  <form action="">
+                      <div class="row mx-5">
+                          <div class="col">
+                              <div class="form-group">
+                                  <input class="form-control" type="search" placeholder="Keyword" aria-label="Search">
+                              </div>
+                          </div>
+                          <div>
+                              <button class="btn btn-primary" type="submit">Search</button>
+                          </div>
+                      </div>
+                  </form>
+                  <!-- end search -->
+
+
+                  <!-- data pelamar -->
+                  <table class="table text-center">
+                      <tr>
+                          <th>ID Lamaran</th>
+                          <th>Perusahaan</th>
+                          <th>Posisi</th>
+                          <th>Gaji</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                      </tr>
+                      <?php
+                      // ambil data lamaran
+                      $idPelamar = $_SESSION["pelamar"];
+                      $lamaran = mysqli_query($db,"SELECT *, lamaran.status as statusLamaran, lamaran.id as idLamaran , perusahaan.nama as namaPerusahaan from lamaran inner join perusahaan on perusahaan.id = lamaran.idPelamar inner join loker on lamaran.idLoker = loker.id");
+                      ?>
+                      <?php foreach ($lamaran as $data) : ?>
+                        <tr>
+                            <td><?= $data["idLamaran"] ?></td>
+                            <td><?= $data["namaPerusahaan"] ?></td>
+                            <td><?= $data["posisi"] ?></td>
+                            <td><?= "Rp. " . number_format($data["gaji"]) ?></td>
+                            <td><?= $data["statusLamaran"] ?></td>
+                            <td><a href="cv.php?id=<?= $data['idPelamar'] ?>" class="btn btn-primary">Lihat CV</a> <a href="surat-lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-primary">Lihat Lamaran</a></td>
+                        </tr>
+                      <?php endforeach; ?>
+                  </table>
+                  <!-- end data pelamar -->
+
+
+                  <!-- pagination -->
+                  <div class="row">
+                      <div class="col">
+                          <nav aria-label="...">
+                              <ul class="pagination justify-content-center">
+                                  <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+                                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                  <li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                              </ul>
+                          </nav>
+                      </div>
+                  </div>
+                  <!-- end pagination -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- footer -->
+        <?php
+        include 'footer.php';
+        ?>
       <?php else : ?>
         <h1 class="display-4 m-5 text-center">AKSES DITOLAK !</h1>
       <?php endif; ?>
@@ -254,14 +331,6 @@ session_start();
 <?php
 
 // jika bukan admin atau perusahaan maka tendang ke index
-if (!(isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]))){
-  echo "
-    <script>
-      Swal.fire('Akses Ditolak !','Maaf Anda Tidak Dapat Mengakses Halaman Ini','warning').then(function(){
-          window.location = 'index.php';
-      });
-    </script>
-  ";
-}
+cekBelumLogin();
 
 ?>
