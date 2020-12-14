@@ -65,7 +65,7 @@ $loker = mysqli_query($db, "SELECT loker.posisi as posisi, loker.lulusan as lulu
                         <a href="data-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Loker</button></a>
                     </div>
                     <div class="col-md-3">
-                        <a href="data-pelamar.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Pelamar</button></a>
+                        <a href="data-lamaran.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Lamaran</button></a>
                     </div>
                 </div>
             </div>
