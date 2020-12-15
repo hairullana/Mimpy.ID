@@ -10,7 +10,7 @@ session_start();
 
 //konfirgurasi pagination
 $jumlahDataPerHalaman = 6;
-$jumlahData = mysqli_num_rows(mysqli_query($db,"SELECT loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id"));
+$jumlahData = mysqli_num_rows(mysqli_query($db,"SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id"));
 //ceil() = pembulatan ke atas
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 //menentukan halaman aktif
@@ -24,13 +24,13 @@ if ( isset($_GET["page"])){
 $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
 //fungsi memasukkan data di db ke array
-$loker = mysqli_query($db, "SELECT loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id order by loker.id DESC LIMIT $awalData, $jumlahDataPerHalaman");
+$loker = mysqli_query($db, "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id order by loker.id DESC LIMIT $awalData, $jumlahDataPerHalaman");
 
 //ketika tombol cari ditekan
 if ( isset($_POST["cari"])) {
   $keyword = htmlspecialchars($_POST["keyword"]);
 
-  $query = "SELECT loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
+  $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
   perusahaan.nama LIKE '%$keyword%' OR
   perusahaan.kota LIKE '%$keyword%' OR
   perusahaan.alamat LIKE '%$keyword%' OR
@@ -212,15 +212,16 @@ if ( isset($_POST["cari"])) {
         <!-- list loker -->
         <div class="row mb-2">
             <?php foreach ($loker as $data) : ?>
+                <?php $string = "Dicari " . $data["posisi"] . ", Minimal " .  $data["lulusan"] . ". " . $data["jobdesk"]; ?>
                 <div class="col-md-6 mb-2">
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col-auto d-none d-lg-block">
-                            <svg class="bd-placeholder-img" width="200" height="205" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                          <img src="assets/perusahaan/<?= $data['foto'] ?>" width="200" height="205" alt="">
                         </div>
                         <div class="col p-4 d-flex flex-column position-static">
                             <h3 class="mb-0"><?= $data["namaPerusahaan"] ?></h3>
                             <div class="mb-1 text-muted"><?= $data["alamatPerusahaan"] ?></div>
-                            <p class="card-text mb-auto">Dicari <?= $data["posisi"] ?>, Minimal <?= $data["lulusan"] ?>. <?= $data["jobdesk"] ?></p>
+                            <p class="card-text mb-auto"><?= substr($string, 0, 90) . "..." ?></p>
                             <a href="detail-loker.php?id=<?= $data['idLoker'] ?>" class="stretched-link">read more</a>
                         </div>
                     </div>

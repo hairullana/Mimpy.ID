@@ -30,7 +30,7 @@ session_start();
                 <h3>Profil</h3>
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                 <?php
                     if (isset($_SESSION["admin"])) :
                         $admin = mysqli_query($db,"SELECT * FROM admin");
@@ -49,7 +49,7 @@ session_start();
                         <!-- image -->
                         <div class="row my-3">
                             <div class="col text-center">
-                                <img src="assets/perusahaan.png" alt="" class="rounded img-fluid" width=35% style="max-width:200px">
+                                <img src="assets/perusahaan/<?= $perusahaan['foto'] ?>" alt="" class="rounded img-fluid" width=35% style="max-width:200px">
                             </div>
                         </div>
                         <!-- end image -->
@@ -58,12 +58,9 @@ session_start();
                         <div class="row">
                             <div class="col-md-6 offset-md-3 active mt-3">
                                 <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Foto</button>
-                                    </div>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-                                        <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+                                        <input type="file" name="foto" class="custom-file-input" id="name" aria-describedby="name">
+                                        <label class="custom-file-label" for="name">Foto Profil</label>
                                     </div>
                                 </div>
                             </div>
@@ -182,41 +179,79 @@ if (isset($_POST["simpanData"])) {
             </script>
         ";
     }else if (isset($_SESSION["perusahaan"])){      // jika role user = perusahaan
-        // ambil data email
-        $emailLama = $_SESSION["perusahaan"];
-        // ambil isi form
-        $nama = htmlspecialchars($_POST["nama"]);
-        $email = htmlspecialchars($_POST["email"]);
-        $telp = htmlspecialchars($_POST["telp"]);
-        $kota = htmlspecialchars($_POST["kota"]);
-        $alamat = htmlspecialchars($_POST["alamat"]);
-        $deskripsi = htmlspecialchars($_POST["deskripsi"]);
 
-        // validasi form
-        if (cekKosong($email) == true) {
-            if (validasiNama($nama) == true){
-                if (validasiTelp($telp) == true) {
-                    if (validasiKota($kota) == true){
-                        if (validasiAlamat($alamat) == true) {
-                            if (validasiDeskripsi($deskripsi) == true){
-                                // update db
-                                mysqli_query($db,"UPDATE perusahaan SET nama = '$nama', email = '$email', telp = '$telp', kota = '$kota', alamat = '$alamat', deskripsi = '$deskripsi' WHERE email = '$emailLama'");
-                                // ubah nilai session
-                                $_SESSION["perusahaan"] = $email;
-                                // alert
-                                echo "
-                                    <script>
-                                        Swal.fire('UPDATE PROFIL BERHASIL','','success').then(function(){
-                                            window.location = 'profil.php';
-                                        });
-                                    </script>
-                                ";
+        $ukuranFile = $_FILES["foto"]["size"];
+        $temp = $_FILES["foto"]["tmp_name"];
+        $namaFile = $_FILES["foto"]["name"];
+        $error = $_FILES["foto"]["error"];
+
+        //cek apakah file adalah gambar
+        $ekstensiGambarValid = ['jpg','jpeg','png','pdf','doc','docx'];
+        // explode = memecah string menjadi array (dg pemisah delimiter)
+        $ekstensiGambar = explode('.',$namaFile);
+        //mengambil ekstensi gambar yg paling belakang dg strltolower (mengecilkan semua huruf)
+        $ekstensiGambar = strtolower(end($ekstensiGambar));
+        
+        //CEK $ekstensiGambar ada di array $ekstensiGambarValid
+        if (!in_array($ekstensiGambar,$ekstensiGambarValid) ){
+            echo "
+                <script>
+                    Swal.fire('Gagal Upload Foto Profil','Format File Tidak Valid','warning').then(function(){
+                        window.location = 'profil.php';
+                    });
+                </script>
+            ";
+        }else if ( $ukuranFile > 3000000 ) {        // cek ukuran max 3000000 byte atau 3 mb
+            echo "
+                <script>
+                    Swal.fire('Gagal Upload Foto Profil','Ukuran Gambar Telalu Besar','warning').then(function(){
+                        window.location = 'profil.php';
+                    });
+                </script>
+            ";
+        }else {
+            // ambil data email
+            $emailLama = $_SESSION["perusahaan"];
+            // ambil isi form
+            $nama = htmlspecialchars($_POST["nama"]);
+            $email = htmlspecialchars($_POST["email"]);
+            $telp = htmlspecialchars($_POST["telp"]);
+            $kota = htmlspecialchars($_POST["kota"]);
+            $alamat = htmlspecialchars($_POST["alamat"]);
+            $deskripsi = htmlspecialchars($_POST["deskripsi"]);
+    
+            // validasi form
+            if (cekKosong($email) == true) {
+                if (validasiNama($nama) == true){
+                    if (validasiTelp($telp) == true) {
+                        if (validasiKota($kota) == true){
+                            if (validasiAlamat($alamat) == true) {
+                                if (validasiDeskripsi($deskripsi) == true){
+                                    //LOLOS CEK BROOO
+                                    //generate nama baru random
+                                    $namaFileBaru = 'perusahaan' . $perusahaan['id'] . '.' . $ekstensiGambar;
+                                    move_uploaded_file($temp,'assets/perusahaan/'.$namaFileBaru);
+                                    // update db
+                                    mysqli_query($db,"UPDATE perusahaan SET foto = '$namaFileBaru', nama = '$nama', email = '$email', telp = '$telp', kota = '$kota', alamat = '$alamat', deskripsi = '$deskripsi' WHERE email = '$emailLama'");
+                                    // ubah nilai session
+                                    $_SESSION["perusahaan"] = $email;
+                                    // alert
+                                    echo "
+                                        <script>
+                                            Swal.fire('UPDATE PROFIL BERHASIL','','success').then(function(){
+                                                window.location = 'profil.php';
+                                            });
+                                        </script>
+                                    ";
+                                }
                             }
                         }
                     }
                 }
             }
         }
+        
+
     }else if ($_SESSION["pelamar"]){        // jika role user = pelamar
         // ambil data email
         $emailLama = $_SESSION["pelamar"];
