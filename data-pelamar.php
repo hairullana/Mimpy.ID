@@ -83,12 +83,13 @@ session_start();
                   <div class="table-responsive">
                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
-                          <tr>
-                              <th>ID Pelamar</th>
+                          <tr> 
+                              <th>ID</th>
                               <th>Nama</th>
                               <th>Email</th>
                               <th>Telepon</th>
                               <th>Alamat</th>
+                              <th>CV</th>
                               <th>Aksi</th>
                           </tr>
                       </thead>
@@ -101,11 +102,12 @@ session_start();
                                   <td><?= $data["id"] ?></td>
                                   <td><?= $data["nama"] ?></td>
                                   <td><?= $data["email"] ?></td>
-                                  <td><?= $data["telp"] ?></td>
+                                  <td><?= $data["telp"] ?></td> 
                                   <td><?= $data["alamat"] ?></td>
+                                  <td><a href="assets/cv/<?= $data['cv'] ?>"><?= $data['cv'] ?></a></td>
                                   <td>
-                                      <a href="pelamar.php?id=<?= $data['id'] ?>" class="btn btn-primary btn-block">Detail</a>
-                                      <a href="hapus-pelamar.php?id=<?= $data['id'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Pelamar ?')" class="btn btn-danger btn-block">Delete</a>
+                                      <a href="pelamar.php?id=<?= $data['id'] ?>" class="btn btn-outline-primary btn-block">Detail</a>
+                                      <a href="hapus-pelamar.php?id=<?= $data['id'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Pelamar ?')" class="btn btn-outline-danger btn-block">Delete</a>
                                   </td>
                               </tr>
                           <?php

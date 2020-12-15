@@ -124,8 +124,8 @@ session_start();
                                                 <td><?= $data["lulusan"] ?></td>
                                                 <td><?= $data["status"] ?></td>
                                                 <td>
-                                                    <a href="detail-loker.php?id=<?= $data['idLoker'] ?>" class="btn btn-primary">Detail</a>
-                                                    <a href="hapus-loker.php?id=<?= $data['idLoker'] ?>" class="btn btn-danger">Delete</a>
+                                                    <a href="detail-loker.php?id=<?= $data['idLoker'] ?>" class="btn btn-outline-primary">Detail</a>
+                                                    <a href="hapus-loker.php?id=<?= $data['idLoker'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Lowongan Kerja ?')" class="btn btn-outline-danger">Delete</a>
                                                 </td>
                                             </tr>
                                     <?php
@@ -191,6 +191,7 @@ session_start();
                                         <th>ID Loker</th>
                                         <th>Posisi</th>
                                         <th>Syarat Lulusan</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                     <?php
@@ -209,7 +210,15 @@ session_start();
                                                 <td><?= $data["id"] ?></td>
                                                 <td><?= $data["posisi"] ?></td>
                                                 <td><?= $data["lulusan"] ?></td>
-                                                <td><a href="detail-loker.php?id=<?= $data['id'] ?>" class="btn btn-primary">Detail</a> <a href="edit-loker.php?id=<?= $data['id'] ?>" class="btn btn-success">Edit</a> <a href="hapus-loker.php?id=<?= $data['id'] ?>" class="btn btn-danger">Hapus</a></td>
+                                                <td><?= $data["status"] ?></td>
+                                                <td>
+                                                    <a href="detail-loker.php?id=<?= $data['id'] ?>" class="btn btn-outline-primary">Detail</a>
+                                                    <a href="edit-loker.php?id=<?= $data['id'] ?>" class="btn btn-outline-success">Edit</a>
+                                                    <a href="hapus-loker.php?id=<?= $data['id'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Lowongan Kerja ?')" class="btn btn-outline-danger">Hapus</a>
+                                                    <?php if($data['status'] == 'Aktif') : ?>
+                                                        <a href="tutup-loker.php?id=<?=  $data['id']?>" onclick="return confirm('Apakah Anda Yakin Ingin Menutup Loker Ini ?')" class="btn btn-outline-warning">Tutup Loker</a>
+                                                    <?php endif; ?>
+                                                </td>
                                             </tr>
                                     <?php
                                         endforeach;

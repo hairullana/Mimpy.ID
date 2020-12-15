@@ -13,6 +13,9 @@ $id = $_GET["id"];
 // ambil data lamaran
 $lamaran = mysqli_query($db, "SELECT lamaran.suratLamaran as suratLamaran, pelamar.id as idPelamar, pelamar.nama as namaPelamar, lamaran.status as status, lamaran.tanggal as tanggal, lamaran.id as idLamaran, perusahaan.nama as namaPerusahaan, loker.posisi as posisi from lamaran inner join loker on loker.id = lamaran.idLoker inner join perusahaan on perusahaan.id = loker.idPerusahaan inner join pelamar on lamaran.idPelamar = pelamar.id where lamaran.id = $id");
 $lamaran = mysqli_fetch_assoc($lamaran);
+// ambil cv
+$idPelamar = $lamaran["idPelamar"];
+$pelamar = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from pelamar where id = $idPelamar"));
 
 ?>
 
@@ -45,7 +48,7 @@ $lamaran = mysqli_fetch_assoc($lamaran);
                         <p>Perusahaan : <?= $lamaran["namaPerusahaan"] ?></p>
                         <p>Posisi : <?= $lamaran["posisi"] ?></p>
                         <p>Status : <?= $lamaran["status"] ?></p>
-                        <p><a href="cv.php?id=<?= $id['idPelamar'] ?>" class="btn btn-primary">Selengkapnya Lihat CV</a></p>
+                        <p><a href="assets/cv/<?= $pelamar['cv'] ?>" class="btn btn-primary">Selengkapnya Lihat CV</a></p>
 
                         <!-- surat lamaran -->
                         <div class="mt-5">

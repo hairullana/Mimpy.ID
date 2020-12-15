@@ -119,8 +119,8 @@ session_start();
                                         <td><?= $data["telp"] ?></td>
                                         <td><?= $data["kota"] ?></td>
                                         <td>
-                                            <a href="perusahaan.php?id=<?= $data['id'] ?>" class="btn btn-primary btn-block">Detail</a>
-                                            <a href="hapus-perusahaan.php?id=<?= $data['id'] ?>" class="btn btn-danger btn-block">Delete</a>
+                                            <a href="perusahaan.php?id=<?= $data['id'] ?>" class="btn btn-outline-primary btn-block">Detail</a>
+                                            <a href="hapus-perusahaan.php?id=<?= $data['id'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Perusahaan ?')" class="btn btn-outline-danger btn-block">Delete</a>
                                         </td>
                                     </tr>
                                 <?php

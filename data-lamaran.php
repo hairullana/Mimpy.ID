@@ -97,6 +97,7 @@ session_start();
                                       <th>Perusahaan</th>
                                       <th>Posisi</th>
                                       <th>Status</th>
+                                      <th>Aksi</th>
                                   </tr>
                               </thead>
                               <tbody> 
@@ -116,8 +117,8 @@ session_start();
                                           <td><?= $data["posisi"] ?></td>
                                           <td><?= $data["status"] ?></td>
                                           <td>
-                                              <a href="lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-primary">Detail</a>
-                                              <a href="hapus-lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-danger">Delete</a>
+                                              <a href="lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-outline-primary">Detail</a>
+                                              <a href="hapus-lamaran.php?id=<?= $data['idLamaran'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Lamaran ?')" class="btn btn-outline-danger">Delete</a>
                                           </td>
                                       </tr>
                                   <?php
@@ -197,22 +198,24 @@ session_start();
                       </tr>
                       <?php
                       // ambil data lamaran
-                      $lamaran = mysqli_query($db,"SELECT *, lamaran.status as statusLamaran, lamaran.id as idLamaran , pelamar.nama as namaPelamar from lamaran inner join pelamar on pelamar.id = lamaran.idPelamar inner join loker on lamaran.idLoker = loker.id");
+                      $email = $_SESSION["perusahaan"];
+                      $perusahaan = mysqli_fetch_assoc(mysqli_query($db,"SELECT * from perusahaan where email = '$email'"));
+                      $idPerusahaan = $perusahaan['id'];
+                      $lamaran = mysqli_query($db,"SELECT *, lamaran.status as statusLamaran, lamaran.id as idLamaran , pelamar.nama as namaPelamar from lamaran inner join pelamar on pelamar.id = lamaran.idPelamar inner join loker on lamaran.idLoker = loker.id where loker.idPerusahaan = $idPerusahaan");
                       ?>
                       <?php foreach ($lamaran as $data) : ?>
                         <tr>
                             <td><?= $data["idLamaran"] ?></td>
                             <td><?= $data["namaPelamar"] ?></td>
                             <td><?= $data["posisi"] ?></td>
-                            <td><a href="cv.php?id=<?= $data['idPelamar'] ?>" class="btn btn-primary">Lihat CV</a> <a href="surat-lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-primary">Lihat Lamaran</a></td>
+                            <td><a href="cv.php?id=<?= $data['idPelamar'] ?>" class="btn btn-outline-primary">Lihat CV</a> <a href="surat-lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-outline-primary">Lihat Lamaran</a></td>
                             <td>
                               <?php if ($data["statusLamaran"] == "Menunggu") : ?>
-                                <a href="terima-lamaran.php?id=<?= $data['idLamaran'] ?>" type="submit" class="btn btn-success">Terima<a> <a href="tolak-lamaran.php?id=<?= $data['idLamaran'] ?>" 
-                                type="submit" class="btn btn-danger">Tolak<a>
+                                <a href="terima-lamaran.php?id=<?= $data['idLamaran'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menerima Lamaran ?')" type="submit" class="btn btn-outline-success">Terima<a> <a href="tolak-lamaran.php?id=<?= $data['idLamaran'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menolak Lamaran ?')" type="submit" class="btn btn-outline-danger">Tolak<a>
                               <?php elseif ($data["statusLamaran"] == "Diterima") : ?>
-                                <button class="btn btn-success">Diterima</button>
+                                Diterima
                               <?php elseif ($data["statusLamaran"] == "Ditolak") : ?>
-                                <button class="btn btn-danger">Ditolak</button>
+                                Ditolak
                               <?php endif; ?>
                             </td>
                         </tr>
@@ -232,7 +235,7 @@ session_start();
                                   <li class="page-item"><a class="page-link" href="#">3</a></li>
                                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
                               </ul>
-                          </nav>
+                          </nav> 
                       </div>
                   </div>
                   <!-- end pagination -->
@@ -249,7 +252,8 @@ session_start();
         <div class="container mt-5">
             <div class="card">
               <div class="card-header text-center">
-                  <h3>Data Pelamar</h3>
+                  <h3>Data Lamaran
+                  </h3>
               </div>
               <div class="card-body">
                   
@@ -269,20 +273,22 @@ session_start();
                   <!-- end search -->
 
 
-                  <!-- data pelamar -->
+                  <!-- data pelamar --> 
                   <table class="table text-center">
                       <tr>
-                          <th>ID Lamaran</th>
+                          <th>ID</th>
                           <th>Perusahaan</th>
                           <th>Posisi</th>
-                          <th>Gaji</th>
+                          <th>Negoisasi Gaji</th>
+                          <th>Lamaran</th>
                           <th>Status</th>
-                          <th>Aksi</th>
                       </tr>
                       <?php
                       // ambil data lamaran
-                      $idPelamar = $_SESSION["pelamar"];
-                      $lamaran = mysqli_query($db,"SELECT *, lamaran.status as statusLamaran, lamaran.id as idLamaran , perusahaan.nama as namaPerusahaan from lamaran inner join perusahaan on perusahaan.id = lamaran.idPelamar inner join loker on lamaran.idLoker = loker.id");
+                      $email = $_SESSION["pelamar"];
+                      $pelamar = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM pelamar where email = '$email'"));
+                      $idPelamar = $pelamar['id'];
+                      $lamaran = mysqli_query($db,"SELECT lamaran.gaji as gaji, loker.posisi as posisi, lamaran.status as statusLamaran, lamaran.id as idLamaran, perusahaan.nama as namaPerusahaan from lamaran join loker on lamaran.idLoker = loker.id join perusahaan on perusahaan.id = loker.idPerusahaan where lamaran.idPelamar = $idPelamar");
                       ?>
                       <?php foreach ($lamaran as $data) : ?>
                         <tr>
@@ -290,11 +296,11 @@ session_start();
                             <td><?= $data["namaPerusahaan"] ?></td>
                             <td><?= $data["posisi"] ?></td>
                             <td><?= "Rp. " . number_format($data["gaji"]) ?></td>
+                            <td><a href="lamaran.php?id=<?= $data['idLamaran'] ?>">Surat Lamaran</a></td>
                             <td><?= $data["statusLamaran"] ?></td>
-                            <td><a href="cv.php?id=<?= $data['idPelamar'] ?>" class="btn btn-primary">Lihat CV</a> <a href="surat-lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-primary">Lihat Lamaran</a></td>
                         </tr>
                       <?php endforeach; ?>
-                  </table>
+                  </table> 
                   <!-- end data pelamar -->
 
 

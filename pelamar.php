@@ -64,6 +64,11 @@ $pelamar = mysqli_fetch_assoc(mysqli_query($db,"SELECT * from pelamar where id =
                             <td>:</td>
                             <td><?= $pelamar["alamat"] ?></td>
                         </tr>
+                            <td>CV</td>
+                            <td>:</td>
+                            <td><a href="assets/cv/<?= $pelamar['cv'] ?>"><?= $pelamar['cv'] ?></a></td>
+                        <tr>
+                        </tr>
                     </table>
                 </div>
             </div>
