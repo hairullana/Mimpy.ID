@@ -195,7 +195,7 @@ session_start();
                                 </div>
                             </div>
                             <!-- end pagination -->
-                                                <?php endif; ?>
+                          <?php endif; ?>
 
 
                       </div>
@@ -225,15 +225,17 @@ session_start();
               <div class="card-body">
                   
                   <!-- search -->
-                  <form action="">
-                      <div class="row mx-5">
+                  <form action="" method="post">
+                      <div class="row mx-5 mb-4">
                           <div class="col">
-                              <div class="form-group">
-                                  <input class="form-control" type="search" placeholder="Keyword" aria-label="Search">
-                              </div>
+                            <?php if (isset($_POST["keyword"])) : ?>
+                              <input class="form-control" name="keyword" type="search" placeholder="Keyword" aria-label="Search" value="<?= $_POST['keyword'] ?>">
+                            <?php else : ?>
+                              <input class="form-control" name="keyword" type="search" placeholder="Keyword" aria-label="Search">
+                            <?php endif; ?>
                           </div>
                           <div>
-                              <button class="btn btn-primary" type="submit">Search</button>
+                              <button class="btn btn-primary" name="cari" type="submit">Search</button>
                           </div>
                       </div>
                   </form>
@@ -254,14 +256,45 @@ session_start();
                       $email = $_SESSION["perusahaan"];
                       $perusahaan = mysqli_fetch_assoc(mysqli_query($db,"SELECT * from perusahaan where email = '$email'"));
                       $idPerusahaan = $perusahaan['id'];
-                      $lamaran = mysqli_query($db,"SELECT *, lamaran.status as statusLamaran, lamaran.id as idLamaran , pelamar.nama as namaPelamar from lamaran inner join pelamar on pelamar.id = lamaran.idPelamar inner join loker on lamaran.idLoker = loker.id where loker.idPerusahaan = $idPerusahaan");
+
+                      //konfirgurasi pagination
+                      $jumlahDataPerHalaman = 3;
+                      $jumlahData = mysqli_num_rows(mysqli_query($db,"SELECT loker.posisi as posisi, lamaran.id as idLamaran, pelamar.nama as namaPelamar, lamaran.status as statusLamaran FROM lamaran join pelamar on pelamar.id = lamaran.idPelamar join loker on lamaran.idLoker = loker.id where loker.idPerusahaan = $idPerusahaan"));
+                      //ceil() = pembulatan ke atas
+                      $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+                      //menentukan halaman aktif
+                      //$halamanAktif = ( isset($_GET["page"]) ) ? $_GET["page"] : 1;
+                      if ( isset($_GET["page"])){
+                          $halamanAktif = $_GET["page"];
+                      }else{
+                          $halamanAktif = 1;
+                      }
+                      //data awal
+                      $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
+
+                      //fungsi memasukkan data di db ke array
+                      $lamaran = mysqli_query($db, "SELECT pelamar.cv as cv, loker.posisi as posisi, lamaran.id as idLamaran, pelamar.nama as namaPelamar, lamaran.status as statusLamaran FROM lamaran join pelamar on pelamar.id = lamaran.idPelamar  join loker on lamaran.idLoker = loker.id where loker.idPerusahaan = $idPerusahaan order by lamaran.id DESC LIMIT $awalData, $jumlahDataPerHalaman");
+
+                      //ketika tombol cari ditekan
+                      if ( isset($_POST["cari"])) {
+                        $keyword = htmlspecialchars($_POST["keyword"]);
+
+                        $query = "SELECT pelamar.cv as cv, loker.posisi as posisi, lamaran.id as idLamaran, pelamar.nama as namaPelamar, lamaran.status as statusLamaran FROM lamaran join pelamar on pelamar.id = lamaran.idPelamar  join loker on lamaran.idLoker = loker.id WHERE 
+                        posisi LIKE '%$keyword%' OR
+                        lulusan LIKE '%$keyword%' AND
+                        loker.idPerusahaan = $idPerusahaan
+                        ORDER BY lamaran.id DESC
+                        ";
+
+                        $lamaran = mysqli_query($db,$query);
+                      }
                       ?>
                       <?php foreach ($lamaran as $data) : ?>
                         <tr>
                             <td><?= $data["idLamaran"] ?></td>
                             <td><?= $data["namaPelamar"] ?></td>
                             <td><?= $data["posisi"] ?></td>
-                            <td><a href="cv.php?id=<?= $data['idPelamar'] ?>" class="btn btn-outline-primary">Lihat CV</a> <a href="surat-lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-outline-primary">Lihat Lamaran</a></td>
+                            <td><a href="assets/cv/<?= $data['cv'] ?>" class="btn btn-outline-primary">Lihat CV</a> <a href="lamaran.php?id=<?= $data['idLamaran'] ?>" class="btn btn-outline-primary">Lihat Lamaran</a></td>
                             <td>
                               <?php if ($data["statusLamaran"] == "Menunggu") : ?>
                                 <a href="terima-lamaran.php?id=<?= $data['idLamaran'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menerima Lamaran ?')" type="submit" class="btn btn-outline-success">Terima<a> <a href="tolak-lamaran.php?id=<?= $data['idLamaran'] ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menolak Lamaran ?')" type="submit" class="btn btn-outline-danger">Tolak<a>
@@ -277,21 +310,39 @@ session_start();
                   <!-- end data pelamar -->
 
 
-                  <!-- pagination -->
-                  <div class="row">
-                      <div class="col">
-                          <nav aria-label="...">
-                              <ul class="pagination justify-content-center">
-                                  <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
-                                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                  <li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                              </ul>
-                          </nav> 
-                      </div>
-                  </div>
-                  <!-- end pagination -->
+                  <?php if (!isset($_POST["cari"])) : ?>
+                    <!-- pagination -->
+                    <div class="row">
+                        <div class="col">
+                            <nav aria-label="...">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <?php if( $halamanAktif > 1 ) : ?>
+                                            <a class="page-link" href="?page=<?= $halamanAktif - 1; ?>"><i class="fa fa-chevron-left"></i></a>
+                                        <?php endif; ?>
+                                    </li>
+                                    <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+                                        <?php if( $i == $halamanAktif ) : ?>
+                                            <li class="page-item active">
+                                                <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+                                            </li>
+                                        <?php else : ?>
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+                                            </li>   
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                    <li class="page-item">
+                                        <?php if( $halamanAktif < $jumlahHalaman ) : ?>
+                                            <a class="page-link" href="?page=<?= $halamanAktif + 1; ?>"><i class="fa fa-chevron-right"></i></a>
+                                        <?php endif; ?>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- end pagination -->
+                  <?php endif; ?>
                 </div>
             </div>
         </div>
