@@ -31,7 +31,7 @@ session_start();
                       <a class="nav-link active text-white" href="dashboard.php">
                           <i class="fas fa-tachometer-alt"></i>
                           Dashboard
-                      </a>
+                      </a> 
                   <hr class="bg-secondary">
               </li>
               <li class="nav-item">  
@@ -95,7 +95,23 @@ session_start();
                       </thead>
                       <tbody>
                           <?php
-                          $pelamar = mysqli_query($db, "SELECT * FROM pelamar");
+                          //konfirgurasi pagination
+                          $jumlahDataPerHalaman = 3;
+                          $jumlahData = mysqli_num_rows(mysqli_query($db,"SELECT * FROM pelamar"));
+                          //ceil() = pembulatan ke atas
+                          $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+                          //menentukan halaman aktif
+                          //$halamanAktif = ( isset($_GET["page"]) ) ? $_GET["page"] : 1;
+                          if ( isset($_GET["page"])){
+                              $halamanAktif = $_GET["page"];
+                          }else{
+                              $halamanAktif = 1;
+                          }
+                          //data awal
+                          $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
+
+                          //fungsi memasukkan data di db ke array
+                          $pelamar = mysqli_query($db,"SELECT * FROM pelamar LIMIT $awalData, $jumlahDataPerHalaman");
                           ?>
                           <?php foreach ($pelamar as $data) : ?>
                               <tr>
@@ -122,11 +138,27 @@ session_start();
                       <div class="col">
                           <nav aria-label="...">
                               <ul class="pagination justify-content-center">
-                                  <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
-                                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                  <li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                  <li class="page-item">
+                                      <?php if( $halamanAktif > 1 ) : ?>
+                                          <a class="page-link" href="?page=<?= $halamanAktif - 1; ?>"><i class="fa fa-chevron-left"></i></a>
+                                      <?php endif; ?>
+                                  </li>
+                                  <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+                                      <?php if( $i == $halamanAktif ) : ?>
+                                          <li class="page-item active">
+                                              <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+                                          </li>
+                                      <?php else : ?>
+                                          <li class="page-item">
+                                              <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+                                          </li>   
+                                      <?php endif; ?>
+                                  <?php endfor; ?>
+                                  <li class="page-item">
+                                      <?php if( $halamanAktif < $jumlahHalaman ) : ?>
+                                          <a class="page-link" href="?page=<?= $halamanAktif + 1; ?>"><i class="fa fa-chevron-right"></i></a>
+                                      <?php endif; ?>
+                                  </li>
                               </ul>
                           </nav>
                       </div>

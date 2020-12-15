@@ -113,9 +113,25 @@ session_start();
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $loker = mysqli_query($db, "SELECT *, loker.id as idLoker, perusahaan.nama as namaPerusahaan FROM loker INNER JOIN perusahaan  ON loker.idPerusahaan = perusahaan.id");
-                                        if (mysqli_num_rows($loker) > 0) :
-                                            foreach ($loker as $data) :
+                                    //konfirgurasi pagination
+                                    $jumlahDataPerHalaman = 3;
+                                    $jumlahData = mysqli_num_rows(mysqli_query($db,"SELECT * FROM loker"));
+                                    //ceil() = pembulatan ke atas
+                                    $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+                                    //menentukan halaman aktif
+                                    //$halamanAktif = ( isset($_GET["page"]) ) ? $_GET["page"] : 1;
+                                    if ( isset($_GET["page"])){
+                                        $halamanAktif = $_GET["page"];
+                                    }else{
+                                        $halamanAktif = 1;
+                                    }
+                                    //data awal
+                                    $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
+
+                                    //fungsi memasukkan data di db ke array
+                                    $loker = mysqli_query($db, "SELECT *, loker.id as idLoker, perusahaan.nama as namaPerusahaan FROM loker INNER JOIN perusahaan  ON loker.idPerusahaan = perusahaan.id LIMIT $awalData, $jumlahDataPerHalaman");
+                                    if (mysqli_num_rows($loker) > 0) :
+                                    foreach ($loker as $data) :
                                     ?>
                                             <tr>
                                                 <td><?= $data["idLoker"] ?></td>
