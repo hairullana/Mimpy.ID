@@ -62,20 +62,22 @@ session_start();
       </div>
       <div class="col-md-10 p-5">
               <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Data Pelamar</h6>
-                  </div>
+                <div class="card-header text-center">
+                    <h3 class="">Data Pelamar</h3>
+                </div>
               <div class="card-body">
                   <!-- search -->
-                  <form action="">
-                      <div class="row mx-5">
+                  <form action="" method="post">
+                      <div class="row mx-5 mb-4">
                           <div class="col">
-                              <div class="form-group">
-                                  <input class="form-control" type="search" placeholder="Keyword" aria-label="Search">
-                              </div>
+                            <?php if (isset($_POST["keyword"])) : ?>
+                              <input class="form-control" name="keyword" type="search" placeholder="Keyword" aria-label="Search" value="<?= $_POST['keyword'] ?>">
+                            <?php else : ?>
+                              <input class="form-control" name="keyword" type="search" placeholder="Keyword" aria-label="Search">
+                            <?php endif; ?>
                           </div>
                           <div>
-                              <button class="btn btn-primary" type="submit">Search</button>
+                              <button class="btn btn-primary" name="cari" type="submit">Search</button>
                           </div>
                       </div>
                   </form>
@@ -111,7 +113,20 @@ session_start();
                           $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
                           //fungsi memasukkan data di db ke array
-                          $pelamar = mysqli_query($db,"SELECT * FROM pelamar LIMIT $awalData, $jumlahDataPerHalaman");
+                          $pelamar = mysqli_query($db,"SELECT * FROM pelamar order by id desc LIMIT $awalData, $jumlahDataPerHalaman");
+                          //ketika tombol cari ditekan
+                          if ( isset($_POST["cari"])) {
+                            $keyword = htmlspecialchars($_POST["keyword"]);
+
+                            $query = "SELECT * from pelamar WHERE 
+                            nama LIKE '%$keyword%' OR
+                            email LIKE '%$keyword%' OR
+                            alamat LIKE '%$keyword%'
+                            ORDER BY id DESC
+                            ";
+
+                            $pelamar = mysqli_query($db,$query);
+                          }
                           ?>
                           <?php foreach ($pelamar as $data) : ?>
                               <tr>
@@ -133,37 +148,40 @@ session_start();
                       </table>
                   </div>
 
-                  <!-- pagination -->
-                  <div class="row">
-                      <div class="col">
-                          <nav aria-label="...">
-                              <ul class="pagination justify-content-center">
-                                  <li class="page-item">
-                                      <?php if( $halamanAktif > 1 ) : ?>
-                                          <a class="page-link" href="?page=<?= $halamanAktif - 1; ?>"><i class="fa fa-chevron-left"></i></a>
-                                      <?php endif; ?>
-                                  </li>
-                                  <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
-                                      <?php if( $i == $halamanAktif ) : ?>
-                                          <li class="page-item active">
-                                              <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
-                                          </li>
-                                      <?php else : ?>
-                                          <li class="page-item">
-                                              <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
-                                          </li>   
-                                      <?php endif; ?>
-                                  <?php endfor; ?>
-                                  <li class="page-item">
-                                      <?php if( $halamanAktif < $jumlahHalaman ) : ?>
-                                          <a class="page-link" href="?page=<?= $halamanAktif + 1; ?>"><i class="fa fa-chevron-right"></i></a>
-                                      <?php endif; ?>
-                                  </li>
-                              </ul>
-                          </nav>
-                      </div>
-                  </div>
-                  <!-- end pagination -->
+
+                  <?php if (!isset($_POST["cari"])) : ?>
+                    <!-- pagination -->
+                    <div class="row">
+                        <div class="col">
+                            <nav aria-label="...">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <?php if( $halamanAktif > 1 ) : ?>
+                                            <a class="page-link" href="?page=<?= $halamanAktif - 1; ?>"><i class="fa fa-chevron-left"></i></a>
+                                        <?php endif; ?>
+                                    </li>
+                                    <?php for( $i = 1; $i <= $jumlahHalaman; $i++ ) : ?>
+                                        <?php if( $i == $halamanAktif ) : ?>
+                                            <li class="page-item active">
+                                                <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+                                            </li>
+                                        <?php else : ?>
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+                                            </li>   
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                    <li class="page-item">
+                                        <?php if( $halamanAktif < $jumlahHalaman ) : ?>
+                                            <a class="page-link" href="?page=<?= $halamanAktif + 1; ?>"><i class="fa fa-chevron-right"></i></a>
+                                        <?php endif; ?>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- end pagination -->
+                  <?php endif; ?>
 
 
               </div>
