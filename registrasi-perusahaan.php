@@ -133,7 +133,7 @@ if (isset($_POST["daftar"])) {
         ";
     }else {
         $password = password_hash($password1, PASSWORD_DEFAULT);
-        mysqli_query($db, "INSERT INTO perusahaan VALUES ('','$nama','$email','$telp','$kota','$alamat','$deskripsi','$password')");
+        mysqli_query($db, "INSERT INTO perusahaan VALUES ('','$nama','$email','$telp','$kota','$alamat','$deskripsi','default.jpg','$password')");
         echo mysqli_affected_rows($db);
         if (mysqli_affected_rows($db) > 0) {
             echo "

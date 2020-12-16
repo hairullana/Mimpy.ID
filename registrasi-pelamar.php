@@ -151,7 +151,7 @@ if (isset($_POST["daftar"])) {
             // pendaftaran berhasil
 
             $password = password_hash($password1, PASSWORD_DEFAULT);
-            mysqli_query($db,"INSERT INTO pelamar VALUES ('','$nama','$email','$telp','$gender','$alamat','$password')");
+            mysqli_query($db,"INSERT INTO pelamar VALUES ('','$nama','$email','$telp','$gender','$alamat','default.jpg','$password')");
 
             echo "
                 <script>
