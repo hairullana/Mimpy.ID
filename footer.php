@@ -14,8 +14,8 @@
                     <p class="card-text">
                         <a href="/mimpy.id" class="link-footer">Home</a><br>
                         <a href="terms.php" class="link-footer">Term and Condition</a><br>
-                        <a href="registrasi.php" class="link-footer">Registration</a><br>
-                        <a href="login.php" class="link-footer">Login</a>
+                        <a href="terms.php#contact-us" class="link-footer">Contact Us</a><br>
+                        <a href="#up" class="link-footer">Go To Navbar</a>
                     </p>
                 </div>
             </div>

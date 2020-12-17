@@ -35,14 +35,20 @@ session_start();
                         <h3>Registrasi Pelamar</h3>
                     </div>
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row pb-4">
                             <!-- syarat dan ketentuan -->
                             <div class="col-md-5 offset-md-1">
-                                <h5>Term and Condition</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa odio deleniti placeat sit? Maxime, quos? Quaerat quod magnam alias pariatur, a error expedita molestiae, obcaecati voluptatem, harum saepe minus omnis.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam eius facilis culpa rem voluptatum adipisci dolorum non odio ut sit, sed maxime necessitatibus ea possimus, maiores quas laboriosam voluptates dolor?</p>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe sapiente assumenda ea quia amet incidunt labore voluptatem debitis inventore modi sunt, architecto maiores officia pariatur dicta, alias cumque deserunt explicabo!</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt aliquam animi mollitia quasi omnis, eius voluptate aperiam earum reprehenderit dolore adipisci nihil, nisi accusamus doloribus, fugit beatae unde praesentium dolorum.</p>
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <h3>Syarat Dan Ketentuan</h3>
+                                    </div>
+                                    <div class="card-body p-4 text-justify">
+                                        <h5>Selamat datang di website Mimpy.ID.</h5>
+                                        <p>Terms and Condition of Use berikut adalah ketentuan dalam pengunjungan situs, layanan dan fitur yang ada di website Mimpy.ID<p>
+                                        <p>Harapan kami Anda membaca Terms and Condition of Use ini dengan seksama. Dengan mengakses dan menggunakan website Mimpy.ID berarti Anda telah memahami dan menyetujui untuk terikat dan tunduk dengan semua peraturan yang berlaku di situs ini. Apabila Anda tidak menerima Syarat dan Ketentuan dan/atau Pernyataan Privasi, mohon untuk tidak bergabung, mengakses, melihat, mengunduh atau dengan cara lain menggunakan layanan apa pun yang ditawarkan oleh Mimpy.ID melalui Situs.
+                                        <p><a href="terms.php" class="btn btn-primary"><i class="fa fa-forward"></i> Baca Selengkapnya</a></p>
+                                    </div>
+                                </div>
                             </div>
                             <!-- form -->
                             <div class="col-md-5">
