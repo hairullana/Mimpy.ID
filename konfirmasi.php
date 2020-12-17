@@ -44,60 +44,59 @@ if (!isset($_SESSION["pelamar"])){
             });
         </script>
     ";
-}else {
-    if (!isset($_GET["id"])){
-        echo "
-            <script>
-                Swal.fire('Halaman Error !','Halaman Tidak Menerima Informasi Pelamar','error').then(function(){
-                    window.location = 'data-lamaran.php';
-                });
-            </script>
-        ";
-    }else {
-        // ambil data yg login
-        $email = $_SESSION["pelamar"];
-        $pelamar = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from pelamar where email = '$email'"));
-        // ambil data yg punya loker
-        $id = $_GET["id"];
-        $lamaran = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from lamaran where id = $id"));
-
-        // cek apakah yg login benar yg punya lamaran
-        if ($pelamar["id"] != $lamaran["idPelamar"]){
-            echo "
-                <script>
-                    Swal.fire('Akses Ditolak !','Anda Tidak Diizinkan Untuk Mengakses Halaman Ini','warning').then(function(){
-                        window.location = 'data-lamaran.php';
-                    });
-                </script>
-            ";
-        }
-    }
-
-}
-
-// cek jika lamaran masih menunggu
-$id = $_GET["id"];
-$lamaran = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from lamaran where id = $id"));
-
-if ($lamaran["status"] == "Menunggu"){
+}else if (isset($_GET["id"]) == NULL){
     echo "
         <script>
-            Swal.fire('Aksi Ditolak !','Status Loker Masih Menunggu Bro. Sabarlah Sikit !','warning').then(function(){
+            Swal.fire('Halaman Error !','Halaman Tidak Menerima Informasi Pelamar','error').then(function(){
                 window.location = 'data-lamaran.php';
             });
         </script>
     ";
-}else{
-    mysqli_query($db, "UPDATE lamaran set konfirmasi = 1 where id = $id");
-    if (mysqli_affected_rows($db)){
+}else {
+    // ambil data yg login
+    $email = $_SESSION["pelamar"];
+    $pelamar = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from pelamar where email = '$email'"));
+    // ambil data yg punya loker
+    $id = $_GET["id"];
+    $lamaran = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from lamaran where id = $id"));
+
+    // cek apakah yg login benar yg punya lamaran
+    if ($pelamar["id"] != $lamaran["idPelamar"]){
         echo "
             <script>
-                Swal.fire('Konfirmasi Berhasil !','','success').then(function(){
+                Swal.fire('Akses Ditolak !','Anda Tidak Diizinkan Untuk Mengakses Halaman Ini','warning').then(function(){
                     window.location = 'data-lamaran.php';
                 });
             </script>
         ";
+    }else{
+        // cek jika lamaran masih menunggu
+        $id = $_GET["id"];
+        $lamaran = mysqli_fetch_assoc(mysqli_query($db, "SELECT * from lamaran where id = $id"));
+        
+        if ($lamaran["status"] == "Menunggu"){
+            echo "
+                <script>
+                    Swal.fire('Aksi Ditolak !','Status Loker Masih Menunggu Bro. Sabarlah Sikit !','warning').then(function(){
+                        window.location = 'data-lamaran.php';
+                    });
+                </script>
+            ";
+        }else{
+            mysqli_query($db, "UPDATE lamaran set konfirmasi = 1 where id = $id");
+            if (mysqli_affected_rows($db)){
+                echo "
+                    <script>
+                        Swal.fire('Konfirmasi Berhasil !','','success').then(function(){
+                            window.location = 'data-lamaran.php';
+                        });
+                    </script>
+                ";
+            }
+        }
     }
 }
+    
+
 
 ?>

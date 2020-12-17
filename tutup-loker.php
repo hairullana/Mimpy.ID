@@ -83,7 +83,7 @@ if (!isset($_SESSION["perusahaan"])){
             }else {     // jika gagal di hapus karena id loker tidak ada
                 echo "
                     <script>
-                        Swal.fire('Data Loker Gagal Di Ditutup','Data Loker Tidak Ditemukan','success').then(function(){
+                        Swal.fire('Data Loker Gagal Di Ditutup','Data Loker Tidak Ditemukan','error').then(function(){
                             window.location = 'data-loker.php';
                         });
                     </script>
@@ -92,7 +92,7 @@ if (!isset($_SESSION["perusahaan"])){
         }else {     // jika yg login bukan perusahaan yang bukan punya loker
             echo "
                 <script>
-                    Swal.fire('Akses Ditolak !','Loker Ini Bukan Milik Perusahaan Anda','success').then(function(){
+                    Swal.fire('Akses Ditolak !','Loker Ini Bukan Milik Perusahaan Anda','warning').then(function(){
                         window.location = 'data-loker.php';
                     });
                 </script>

@@ -280,10 +280,12 @@ session_start();
                         $keyword = htmlspecialchars($_POST["keyword"]);
 
                         $query = "SELECT pelamar.cv as cv, loker.posisi as posisi, lamaran.id as idLamaran, pelamar.nama as namaPelamar, lamaran.status as statusLamaran FROM lamaran join pelamar on pelamar.id = lamaran.idPelamar  join loker on lamaran.idLoker = loker.id WHERE 
-                        posisi LIKE '%$keyword%' OR
-                        lulusan LIKE '%$keyword%' AND
-                        loker.idPerusahaan = $idPerusahaan
+                        (loker.posisi LIKE '%$keyword%' OR
+                        loker.lulusan LIKE '%$keyword%' OR
+                        pelamar.nama LIKE '%$keyword%') AND
+                        (loker.idPerusahaan = $idPerusahaan)
                         ORDER BY lamaran.id DESC
+
                         ";
 
                         $lamaran = mysqli_query($db,$query);
@@ -419,8 +421,8 @@ session_start();
                         $keyword = htmlspecialchars($_POST["keyword"]);
 
                         $query = "SELECT lamaran.konfirmasi as konfirmasi, lamaran.gaji as gaji, loker.posisi as posisi, lamaran.status as statusLamaran, lamaran.id as idLamaran, perusahaan.nama as namaPerusahaan from lamaran join loker on lamaran.idLoker = loker.id join perusahaan on perusahaan.id = loker.idPerusahaan WHERE
-                        perusahaan.nama LIKE '%$keyword%' OR
-                        loker.posisi LIKE '%$keyword%' AND
+                        (perusahaan.nama LIKE '%$keyword%' OR
+                        loker.posisi LIKE '%$keyword%') AND
                         lamaran.idPelamar = $idPelamar
                         ORDER BY lamaran.id DESC
                         ";
@@ -503,6 +505,7 @@ session_start();
 <?php
 
 // jika bukan admin atau perusahaan maka tendang ke index
+// jika bukan admin atau perusahaan, maka tendang ke index
 cekBelumLogin();
 
 ?>

@@ -45,9 +45,7 @@ if (!isset($_SESSION["admin"])){
       });
     </script>
   ";
-}
-
-if (!isset($_GET["id"])){
+}else if ($_GET["id"] == NULL){
   echo "
     <script>
       Swal.fire('Halaman Error !','Halaman Tidak Menerima Informasi Perusahaan','error').then(function(){
@@ -55,25 +53,26 @@ if (!isset($_GET["id"])){
       });
     </script>
   ";
+}else {
+  mysqli_query($db,"DELETE from perusahaan where id = $id");
+  if (mysqli_affected_rows($db) == 1){
+    echo "
+      <script>
+        Swal.fire('Data Perusahaan Berhasil Di Hapus !','','success').then(function(){
+            window.location = 'data-perusahaan.php';
+        });
+      </script>
+    ";
+  }else {
+    echo "
+      <script>
+        Swal.fire('Data Perusahaan Gagal Di Hapus !','','error').then(function(){
+            window.location = 'data-perusahaan.php';
+        });
+      </script>
+    ";
+  }
 }
 
-mysqli_query($db,"DELETE from perusahaan where id = $id");
-if (mysqli_affected_rows($db) == 1){
-  echo "
-    <script>
-      Swal.fire('Data Perusahaan Berhasil Di Hapus !','','success').then(function(){
-          window.location = 'data-perusahaan.php';
-      });
-    </script>
-  ";
-}else {
-  echo "
-    <script>
-      Swal.fire('Data Perusahaan Gagal Di Hapus !','','error').then(function(){
-          window.location = 'data-perusahaan.php';
-      });
-    </script>
-  ";
-}
 
 ?>

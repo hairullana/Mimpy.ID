@@ -1,11 +1,11 @@
 <?php
 
-// panggil file functions.php
-require "functions.php";
 // panggil koneksi db
 require "db.php";
 // session
 session_start();
+// panggil file functions.php
+require "functions.php";
 
 
 

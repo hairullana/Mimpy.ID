@@ -65,6 +65,8 @@ session_start();
 
 <?php
 
+cekBelumLogin();
+
 // jika tombol ganti kata sandi di tekan
 if (isset($_POST["simpanData"])) {
     // ambil data form

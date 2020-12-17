@@ -85,523 +85,520 @@ session_start();
             $lulusan = $_POST["lulusan"];
             $kota = $_POST["kota"];
 
-            if ($lulusan == "" && $posisi == ""){
+            if ($kota == "" && $posisi == ""){
                 if ($lulusan == "Tanpa Ijasah") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'Tanpa Ijasah' OR
-                        loker.lulusan LIKE 'SD' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'Tanpa Ijasah' OR
+                        loker.lulusan = 'SD' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SD") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'SD' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'SD' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SMP") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SMA") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D1") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D2") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D3") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D4") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S1") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S2") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S3") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'S3' OR
+                        loker.lulusan = 'S3'
                         order by loker.id desc
                     ";
                 }
             }else if ($posisi == ""){
                 if ($lulusan == "Tanpa Ijasah") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'Tanpa Ijasah' OR
-                        loker.lulusan LIKE 'SD' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'Tanpa Ijasah' OR
+                        loker.lulusan = 'SD' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SD") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'SD' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        loker.lulusan LIKE 'SD' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'SD' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SMP") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        loker.lulusan LIKE '%$lulusan$' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SMA") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D1") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D2") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D3") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D4") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S1") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S2") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S3") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }
             }else if ($kota == ""){
                 if ($lulusan == "Tanpa Ijasah") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'Tanpa Ijasah' OR
-                        loker.lulusan LIKE 'SD' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'Tanpa Ijasah' OR
+                        loker.lulusan = 'SD' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SD") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'SD' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        loker.lulusan LIKE 'SD' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'SD' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3' OR
+                        loker.lulusan = 'SD')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SMP") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        loker.lulusan LIKE '%$lulusan$' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3' OR
+                        loker.lulusan = '%$lulusan$')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SMA") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D1") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D2") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D3") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D4") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S1") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S2") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S3") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'S3' OR
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'S3')
                         order by loker.id desc
                     ";
                 }
             }else {
                 if ($lulusan == "Tanpa Ijasah") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'Tanpa Ijasah' OR
-                        loker.lulusan LIKE 'SD' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'Tanpa Ijasah' OR
+                        loker.lulusan = 'SD' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SD") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'SD' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        loker.lulusan LIKE 'SD' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'SD' OR
+                        loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3' OR) AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SMP") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'SMP' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        loker.lulusan LIKE '%$lulusan$' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'SMP' OR
+                        loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3' OR
+                        loker.lulusan = '%$lulusan$') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "SMA") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'SMA' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'SMA' OR
+                        loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D1") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'D1' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'D1' OR
+                        loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D2") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'D2' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'D2' OR
+                        loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D3") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'D3' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'D3' OR
+                        loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "D4") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'D4' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'D4' OR
+                        loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S1") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'S1' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'S1' OR
+                        loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S2") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'S2' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'S2' OR
+                        loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }else if ($lulusan == "S3") {
                     $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-                        loker.posisi LIKE '%$posisi%' OR
-                        loker.lulusan LIKE 'S3' OR
-                        perusahaan.kota LIKE '%$kota$' OR
-                        perusahaan.alamat LIKE '$$kota$'
+                        (loker.posisi LIKE '%$posisi%') AND
+                        (loker.lulusan = 'S3') AND
+                        (perusahaan.kota LIKE '%$kota%' OR
+                        perusahaan.alamat LIKE '%$kota%')
                         order by loker.id desc
                     ";
                 }
@@ -615,13 +612,13 @@ session_start();
             <div class="row mb-4">
                 <div class="col-md-8 offset-md-2 font-weight-bold text-center">
                     <?php if($kota == "" && $posisi == "") : ?>
-                        <div class="alert alert-primary">Menampilkan <?= mysqli_num_rows($loker) ?> Lowongan Kerja dengan Syarat  Lulusan Minimal <?= $lulusan ?></div>
+                        <div class="alert alert-primary">Menampilkan <?= mysqli_num_rows($loker) ?> Lowongan Kerja dengan Syarat  Lulusan Minimal "<?= $lulusan ?>"</div>
                     <?php elseif ($posisi == "") : ?>
-                        <div class="alert alert-primary">Menampilkan <?= mysqli_num_rows($loker) ?> Lowongan Kerja dengan Syarat  Lulusan Minimal <?= $lulusan ?> di Daerah <?= $kota ?></div>
+                        <div class="alert alert-primary">Menampilkan <?= mysqli_num_rows($loker) ?> Lowongan Kerja dengan Syarat  Lulusan Minimal "<?= $lulusan ?>" di Daerah "<?= $kota ?>"</div>
                     <?php elseif($kota == "") : ?>
-                        <div class="alert alert-primary">Menampilkan <?= mysqli_num_rows($loker) ?> Lowongan Kerja dengan Syarat  Lulusan Minimal <?= $lulusan ?> dan Posisi <?= $posisi ?></div>
+                        <div class="alert alert-primary">Menampilkan <?= mysqli_num_rows($loker) ?> Lowongan Kerja dengan Syarat  Lulusan Minimal "<?= $lulusan ?>" dan Posisi "<?= $posisi ?>"</div>
                     <?php else : ?>
-                        <div class="alert alert-primary">Menampilkan <?= mysqli_num_rows($loker) ?> Lowongan Kerja dengan Syarat  Lulusan Minimal <?= $lulusan ?> dan Posisi <?= $posisi ?> di Daerah <?= $kota ?></div>
+                        <div class="alert alert-primary">Menampilkan <?= mysqli_num_rows($loker) ?> Lowongan Kerja dengan Syarat  Lulusan Minimal "<?= $lulusan ?>" dan Posisi "<?= $posisi ?>" di Daerah "<?= $kota ?>"</div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -654,8 +651,3 @@ session_start();
     <!-- end foooter -->
 </body>
 </html>
-
-
-
-
-        

@@ -52,7 +52,7 @@ if (!(isset($_SESSION["perusahaan"]) || isset($_SESSION["admin"]))){
     if (!isset($_GET["id"])) {
         echo "
             <script>
-                Swal.fire('AKSI DITOLAK','Tidak Dapat Mengakses Halaman','error').then(function(){
+                Swal.fire('AKSI DITOLAK','ID Tidak Ada. Tidak Dapat Mengakses Halaman','error').then(function(){
                     window.location = 'data-loker.php';
                 });
             </script>
@@ -92,7 +92,7 @@ if (!(isset($_SESSION["perusahaan"]) || isset($_SESSION["admin"]))){
         }else {     // jika yg login bukan perusahaan yang bukan punya loker
             echo "
                 <script>
-                    Swal.fire('AKSES DITOLAK','Loker Ini Bukan Milik Perusahaan Anda','success').then(function(){
+                    Swal.fire('AKSES DITOLAK','Loker Ini Bukan Milik Perusahaan Anda','warning').then(function(){
                         window.location = 'data-loker.php';
                     });
                 </script>

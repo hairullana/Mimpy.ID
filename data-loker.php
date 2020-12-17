@@ -284,8 +284,8 @@ session_start();
                                       $keyword = htmlspecialchars($_POST["keyword"]);
 
                                       $query = "SELECT * FROM loker WHERE 
-                                      posisi LIKE '%$keyword%' OR
-                                      lulusan LIKE '%$keyword%' AND
+                                      (posisi LIKE '%$keyword%' OR
+                                      lulusan LIKE '%$keyword%') AND
                                       idPerusahaan = $idPerusahaan
                                       ORDER BY id DESC
                                       ";
@@ -384,7 +384,7 @@ if (!(isset($_SESSION["admin"]) || isset($_SESSION["perusahaan"]))){
         <script>
             Swal.fire('AKSES DITOLAK','Anda Tidak Dizinkan Untuk Mengakses Halaman Ini','warning').then(function(){
                 window.location = 'index.php';
-            })
+            });
         </script>
     ";
 }

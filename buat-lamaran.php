@@ -91,10 +91,7 @@ if (!isset($_SESSION["pelamar"])){
             });
         </script>
     ";
-}
-
-// jika loker sudah tidak aktif
-if ($loker["status"] == "Tidak Aktif"){
+}else if ($loker["status"] == "Tidak Aktif"){     // jika loker sudah tidak aktif
     echo "
         <script>
             Swal.fire('Akses Ditolak !','Lowongan Kerja Sudah Tidak Aktif','warning').then(function(){
@@ -104,8 +101,8 @@ if ($loker["status"] == "Tidak Aktif"){
     ";
 }
 
-// jika sudah mengirim lamaran
-if (isset($_POST["kirimLamaran"])){
+
+if (isset($_POST["kirimLamaran"])){     // jika sudah mengirim lamaran
     // ambil value method post
     $suratLamaran = htmlspecialchars($_POST["suratLamaran"]);
     $gaji = htmlspecialchars($_POST["gaji"]);
@@ -115,21 +112,38 @@ if (isset($_POST["kirimLamaran"])){
     // ambil id pelamar
     $idPelamar = $pelamar["id"];
     $idLoker = $id;
-
     // validasi
-    if (cekKosong($suratLamaran) == true){
-        mysqli_query($db, "INSERT into lamaran values('','$idPelamar','$idLoker','$tanggal','$gaji','$suratLamaran','Menunggu','')");
-        if (mysqli_affected_rows($db) > 0){
+    if ($gaji != ""){
+        if (!is_numeric($gaji)){
             echo "
                 <script>
-                    Swal.fire('Lamaran Berhasil Dikirim','Have A Nice Day Bruh !','success').then(function(){
-                        window.location = 'data-lamaran.php';
+                    Swal.fire('Lamaran Gagal Dikirim','Form Gaji Harus Angka','error').then(function(){
+                        window.location = '#';
                     });
                 </script>
             ";
         }else {
-            echo mysqli_error($db);
+            mysqli_query($db, "INSERT into lamaran values('','$idPelamar','$idLoker','$tanggal','$gaji','$suratLamaran','Menunggu','0','')");
+            if (mysqli_affected_rows($db) > 0){
+                echo "
+                    <script>
+                        Swal.fire('Lamaran Berhasil Dikirim','Have A Nice Day Bruh !','success').then(function(){
+                            window.location = 'data-lamaran.php';
+                        });
+                    </script>
+                ";
+            }else {
+                echo mysqli_error($db);
+            }
         }
+    }else {
+        echo "
+            <script>
+                Swal.fire('Lamaran Gagal Dikirim','Masukkan Jumlah Negoisasi Gaji','error').then(function(){
+                    window.location = '#';
+                });
+            </script>
+        ";
     }
 }
 

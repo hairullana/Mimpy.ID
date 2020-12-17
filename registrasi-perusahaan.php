@@ -137,9 +137,11 @@ if (isset($_POST["daftar"])) {
         echo mysqli_affected_rows($db);
         if (mysqli_affected_rows($db) > 0) {
             echo "
-                Swal.fire('PENDAFTARAN BERHASIL','Silahkan Login Terlebih Dahulu','success').then(function() {
-                    window.location = 'login.php';
-                });
+                <script>
+                    Swal.fire('PENDAFTARAN BERHASIL','Silahkan Login Terlebih Dahulu','success').then(function() {
+                        window.location = 'login.php';
+                    });
+                </script>
             ";
         }else {
             echo mysqli_error($db);

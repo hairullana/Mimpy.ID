@@ -233,12 +233,40 @@ function cekLoginAdmin(){
     }
 }
 
+// cek login perusahaan
+function cekLoginPerusahaan(){
+    if (!isset($_SESSION["perusahaan"])){
+        echo "
+            <script>
+                Swal.fire('Akses Ditolak !','Anda Tidak Diizinkan Untuk Mengakses Halaman Ini','warning').then(function(){
+                    window.location = 'index.php';
+                });
+            </script>
+        ";
+    }
+}
+
+// cek login perusahaan
+function cekLoginPelamar(){
+    if (!isset($_SESSION["pelamar"])){
+        echo "
+            <script>
+                Swal.fire('Akses Ditolak !','Anda Tidak Diizinkan Untuk Mengakses Halaman Ini','warning').then(function(){
+                    window.location = 'index.php';
+                });
+            </script>
+        ";
+    }
+}
+
 // cek form kosong
 function cekKosong($var){
     if (empty($var)){
         echo "
             <script>
-                Swal.fire('GAGAL POSTING LOKER','Silahkan Lengkapi Semua Form','error');
+                Swal.fire('ERROR','Lengkapi Semua Form Nya Bro !','error').then(function(){
+                    window.location = '#';
+                });
             </script>
         ";
         return false;

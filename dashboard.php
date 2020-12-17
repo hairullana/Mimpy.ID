@@ -32,6 +32,8 @@ session_start();
 
         <!-- title -->
         <title>Dashboard Admin</title>
+
+        <?php require "headtags.php" ?>
     </head>
     <body>
         
@@ -169,3 +171,18 @@ session_start();
         -->
     </body>
 </html>
+
+<?php
+
+// jika bukan admin atau perusahaan, maka tendang ke index
+if (!isset($_SESSION["admin"])){
+    echo "
+        <script>
+            Swal.fire('AKSES DITOLAK','Anda Tidak Dizinkan Untuk Mengakses Halaman Ini','warning').then(function(){
+                window.location = 'index.php';
+            });
+        </script>
+    ";
+}
+
+?>
