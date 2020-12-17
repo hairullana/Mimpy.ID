@@ -93,6 +93,17 @@ if (!isset($_SESSION["pelamar"])){
     ";
 }
 
+// jika loker sudah tidak aktif
+if ($loker["status"] == "Tidak Aktif"){
+    echo "
+        <script>
+            Swal.fire('Akses Ditolak !','Lowongan Kerja Sudah Tidak Aktif','warning').then(function(){
+                window.location = 'index.php';
+            });
+        </script>
+    ";
+}
+
 // jika sudah mengirim lamaran
 if (isset($_POST["kirimLamaran"])){
     // ambil value method post

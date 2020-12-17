@@ -84,7 +84,7 @@ $perusahaan = mysqli_fetch_assoc($perusahaan);
                         </div>
 
                         <!-- jika login sebagai pelamar, munculkan tombol buat lamaran -->
-                        <?php if (isset($_SESSION["pelamar"])) : ?>
+                        <?php if (isset($_SESSION["pelamar"]) && $loker["status"] == "Aktif") : ?>
                             <div class="row my-5">
                                 <div class="col text-center">
                                     <a href="buat-lamaran.php?id=<?= $id ?>" class="btn btn-danger btn-lg shadow-lg">Buat Lamaran</a>

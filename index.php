@@ -10,7 +10,7 @@ session_start();
 
 //konfirgurasi pagination
 $jumlahDataPerHalaman = 6;
-$jumlahData = mysqli_num_rows(mysqli_query($db,"SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id"));
+$jumlahData = mysqli_num_rows(mysqli_query($db,"SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE loker.status = 'Aktif'"));
 //ceil() = pembulatan ke atas
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 //menentukan halaman aktif
@@ -24,7 +24,7 @@ if ( isset($_GET["page"])){
 $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
 //fungsi memasukkan data di db ke array
-$loker = mysqli_query($db, "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id order by loker.id DESC LIMIT $awalData, $jumlahDataPerHalaman");
+$loker = mysqli_query($db, "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE loker.status = 'Aktif' order by loker.id DESC LIMIT $awalData, $jumlahDataPerHalaman");
 
 //ketika tombol cari ditekan
 if ( isset($_POST["cari"])) {
@@ -40,6 +40,7 @@ if ( isset($_POST["cari"])) {
   loker.keterangan LIKE '%$keyword%' OR
   perusahaan.deskripsi LIKE '%$keyword%' OR
   loker.posisi LIKE '%$keyword%'
+  WHERE loker.status = 'Aktif'
   ORDER BY loker.id DESC
   ";
 
@@ -153,7 +154,18 @@ if ( isset($_POST["cari"])) {
                 </div>
                 <div class="row text-center">
                     <div class="col-md-3 offset-md-3">
-                        <a href="data-lamaran.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Kelola Lamaran</button></a>
+                        <a href="data-lamaran.php">
+                            <button type="button" class="btn btn-primary btn-block font-weight-bold">
+                                <?php
+                                $idPelamar = $pelamar["id"];
+                                $lamaran = mysqli_query($db,"SELECT * FROM lamaran WHERE idPelamar = $idPelamar AND status != 'Menunggu' AND konfirmasi = 0");
+                                ?>
+                                <?php if(mysqli_num_rows($lamaran) > 0) : ?>
+                                    <i class='fa fa-exclamation-circle'></i>
+                                <?php endif; ?>
+                                Kelola Lamaran
+                            </button>
+                        </a>
                     </div>
                     <div class="col-md-3">
                         <a href="cari-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Cari Loker Lanjutan</button></a>

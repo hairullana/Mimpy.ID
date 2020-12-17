@@ -388,6 +388,7 @@ session_start();
                           <th>Negoisasi Gaji</th>
                           <th>Lamaran</th>
                           <th>Status</th>
+                          <th>Konfirmasi</th>
                       </tr>
                       <?php
                       // ambil data lamaran
@@ -411,13 +412,13 @@ session_start();
                       $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
                       //fungsi memasukkan data di db ke array
-                      $lamaran = mysqli_query($db, "SELECT lamaran.gaji as gaji, loker.posisi as posisi, lamaran.status as statusLamaran, lamaran.id as idLamaran, perusahaan.nama as namaPerusahaan from lamaran join loker on lamaran.idLoker = loker.id join perusahaan on perusahaan.id = loker.idPerusahaan where lamaran.idPelamar = $idPelamar order by lamaran.id DESC LIMIT $awalData, $jumlahDataPerHalaman");
+                      $lamaran = mysqli_query($db, "SELECT lamaran.konfirmasi as konfirmasi, lamaran.gaji as gaji, loker.posisi as posisi, lamaran.status as statusLamaran, lamaran.id as idLamaran, perusahaan.nama as namaPerusahaan from lamaran join loker on lamaran.idLoker = loker.id join perusahaan on perusahaan.id = loker.idPerusahaan where lamaran.idPelamar = $idPelamar order by lamaran.id DESC LIMIT $awalData, $jumlahDataPerHalaman");
 
                       //ketika tombol cari ditekan
                       if ( isset($_POST["cari"])) {
                         $keyword = htmlspecialchars($_POST["keyword"]);
 
-                        $query = "SELECT lamaran.gaji as gaji, loker.posisi as posisi, lamaran.status as statusLamaran, lamaran.id as idLamaran, perusahaan.nama as namaPerusahaan from lamaran join loker on lamaran.idLoker = loker.id join perusahaan on perusahaan.id = loker.idPerusahaan WHERE
+                        $query = "SELECT lamaran.konfirmasi as konfirmasi, lamaran.gaji as gaji, loker.posisi as posisi, lamaran.status as statusLamaran, lamaran.id as idLamaran, perusahaan.nama as namaPerusahaan from lamaran join loker on lamaran.idLoker = loker.id join perusahaan on perusahaan.id = loker.idPerusahaan WHERE
                         perusahaan.nama LIKE '%$keyword%' OR
                         loker.posisi LIKE '%$keyword%' AND
                         lamaran.idPelamar = $idPelamar
@@ -435,6 +436,16 @@ session_start();
                             <td><?= "Rp. " . number_format($data["gaji"]) ?></td>
                             <td><a href="lamaran.php?id=<?= $data['idLamaran'] ?>">Surat Lamaran</a></td>
                             <td><?= $data["statusLamaran"] ?></td>
+                            <td>
+                              <?php if($data["konfirmasi"] == 0 && $data["statusLamaran"] != "Menunggu") : ?>
+                                <a href="konfirmasi.php?id=<?= $data['idLamaran'] ?>" class="btn btn-primary">Konfirmasi</a>
+                              <?php elseif($data["statusLamaran"] == "Menunggu") : ?>
+                                <button class="btn btn-secondary">Konfirmasi</button>
+                              <?php elseif($data["konfirmasi"] == 1) : ?>
+                                <i class="fa fa-check-circle"></i>
+                              <?php endif; ?>
+
+                            </td>
                         </tr>
                       <?php endforeach; ?>
                   </table> 
