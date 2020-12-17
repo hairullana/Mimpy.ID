@@ -116,37 +116,45 @@ if (isset($_POST["daftar"])) {
     $password2 = htmlspecialchars($_POST["password2"]);
 
     // validasi
-    validasiNama($nama);
-    validasiTelp($telp);
-    validasiKota($kota);
-    validasiAlamat($alamat);
-    validasiDeskripsi($deskripsi);
-    validasiPassword($password1);
-    validasiPassword($password2);
-
-    // cek password
-    if ($password1 != $password2) {
-        echo "
-            <script>
-                Swal.fire('PENDAFTARAN GAGAL','Password Yang Anda Masukkan Tidak Sama','error');
-            </script>
-        ";
-    }else {
-        $password = password_hash($password1, PASSWORD_DEFAULT);
-        mysqli_query($db, "INSERT INTO perusahaan VALUES ('','$nama','$email','$telp','$kota','$alamat','$deskripsi','default.jpg','$password')");
-        echo mysqli_affected_rows($db);
-        if (mysqli_affected_rows($db) > 0) {
-            echo "
-                <script>
-                    Swal.fire('PENDAFTARAN BERHASIL','Silahkan Login Terlebih Dahulu','success').then(function() {
-                        window.location = 'login.php';
-                    });
-                </script>
-            ";
-        }else {
-            echo mysqli_error($db);
+    if (validasiNama($nama) == true){
+        if (validasiTelp($telp) == true){
+            if (validasiKota($kota) == true){
+                if (validasiAlamat($alamat) == true){
+                    if (validasiDeskripsi($deskripsi) == true){
+                        if (validasiPassword($password1) == true){
+                            if (validasiPassword($password2) == true){
+                                
+                                // cek password
+                                if ($password1 != $password2) {
+                                    echo "
+                                        <script>
+                                            Swal.fire('PENDAFTARAN GAGAL','Password Yang Anda Masukkan Tidak Sama','error');
+                                        </script>
+                                    ";
+                                }else {
+                                    $password = password_hash($password1, PASSWORD_DEFAULT);
+                                    mysqli_query($db, "INSERT INTO perusahaan VALUES ('','$nama','$email','$telp','$kota','$alamat','$deskripsi','default.jpg','$password')");
+                                    echo mysqli_affected_rows($db);
+                                    if (mysqli_affected_rows($db) > 0) {
+                                        echo "
+                                            <script>
+                                                Swal.fire('PENDAFTARAN BERHASIL','Silahkan Login Terlebih Dahulu','success').then(function() {
+                                                    window.location = 'login.php';
+                                                });
+                                            </script>
+                                        ";
+                                    }else {
+                                        echo mysqli_error($db);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+
 
 
 

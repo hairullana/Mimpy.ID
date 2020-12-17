@@ -31,7 +31,7 @@ if ( isset($_POST["cari"])) {
   $keyword = htmlspecialchars($_POST["keyword"]);
 
   $query = "SELECT perusahaan.foto as foto, loker.posisi as posisi, loker.lulusan as lulusan, loker.jobdesk as jobdesk, loker.id as idLoker, perusahaan.nama as namaPerusahaan, perusahaan.alamat as alamatPerusahaan from loker inner join perusahaan on loker.idPerusahaan = perusahaan.id WHERE
-  perusahaan.nama LIKE '%$keyword%' OR
+  (perusahaan.nama LIKE '%$keyword%' OR
   perusahaan.kota LIKE '%$keyword%' OR
   perusahaan.alamat LIKE '%$keyword%' OR
   perusahaan.email LIKE '%$keyword%' OR
@@ -39,8 +39,8 @@ if ( isset($_POST["cari"])) {
   loker.jobdesk LIKE '%$keyword%' OR
   loker.keterangan LIKE '%$keyword%' OR
   perusahaan.deskripsi LIKE '%$keyword%' OR
-  loker.posisi LIKE '%$keyword%'
-  WHERE loker.status = 'Aktif'
+  loker.posisi LIKE '%$keyword%') AND
+  loker.status = 'Aktif'
   ORDER BY loker.id DESC
   ";
 
