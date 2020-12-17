@@ -1,5 +1,5 @@
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <!-- My CSS -->
 <link rel="stylesheet" href="assets/css/mimpy.id.css">
 <!-- Sweetalert2 -->
