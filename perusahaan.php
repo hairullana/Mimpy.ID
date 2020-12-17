@@ -33,43 +33,50 @@ $perusahaan = mysqli_fetch_assoc(mysqli_query($db,"SELECT * from perusahaan wher
                     <h3 class="text-center">Profil Perusahaan</h3>
                 </div>
                 <div class="card-body ml-4 p-4">
-                    <table cellpadding=10px>
-                        <tr>
-                            <td>ID Perusahaan</td>
-                            <td>:</td>
-                            <td><?= $perusahaan["id"] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Nama</td>
-                            <td>:</td>
-                            <td><?= $perusahaan["nama"] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td><?= $perusahaan["email"] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Nomor Telp</td>
-                            <td>:</td>
-                            <td><?= $perusahaan["telp"] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Kota</td>
-                            <td>:</td>
-                            <td><?= $perusahaan["kota"] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Alamat</td>
-                            <td>:</td>
-                            <td><?= $perusahaan["alamat"] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Deskripsi</td>
-                            <td>:</td>
-                            <td><?= $perusahaan["deskripsi"] ?></td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-4 text-center my-auto">
+                            <img src="assets/perusahaan/<?= $perusahaan['foto']?>" class="img-fluid" style="max-width:80%;height:auto" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <table cellpadding=10px>
+                                <tr>
+                                    <td>ID Perusahaan</td>
+                                    <td>:</td>
+                                    <td><?= $perusahaan["id"] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>:</td>
+                                    <td><?= $perusahaan["nama"] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>:</td>
+                                    <td><?= $perusahaan["email"] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Nomor Telp</td>
+                                    <td>:</td>
+                                    <td><?= $perusahaan["telp"] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Kota</td>
+                                    <td>:</td>
+                                    <td><?= $perusahaan["kota"] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat</td>
+                                    <td>:</td>
+                                    <td><?= $perusahaan["alamat"] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Deskripsi</td>
+                                    <td>:</td>
+                                    <td><?= $perusahaan["deskripsi"] ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
