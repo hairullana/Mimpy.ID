@@ -45,8 +45,7 @@ session_start();
                                 </div>
                                 <div class="form-group col-md-4 mb-3">
                                     <select class="form-control" name="lulusan" id="exampleFormControlSelect1">
-                                        <option selected disabled>Minimal Lulusan (wajib)</option>
-                                        <option value="Tanpa Ijasah">Tanpa Ijasah</option>
+                                        <option selected value="Tanpa Ijasah">Tanpa Ijasah</option>
                                         <option value="SD">SD</option>
                                         <option value="SMP">SMP</option>
                                         <option value="SMA">SMA/K</option>
