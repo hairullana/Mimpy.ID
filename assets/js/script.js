@@ -1,9 +1,11 @@
 // scroll
 $(window).scroll(function () {
 
+    // ambil jarak ke atas
     var wScroll = $(this).scrollTop();
 
     // jumbotron
+    // wScroll 100
     $('.jumbotron-index h1').css({
         'transform': 'translate(0px, ' + wScroll / 4 + '%)'
     });
@@ -13,7 +15,7 @@ $(window).scroll(function () {
     });
 
     $('.jumbotron-index button').css({
-        'transform': 'translate(0px, ' + wScroll / 1.5 + '%)'
+        'transform': 'translate(0px, ' + wScroll / 2 + '%)'
     });
 
 

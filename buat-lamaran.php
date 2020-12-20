@@ -49,7 +49,7 @@ $pelamar = mysqli_fetch_assoc(mysqli_query($db,"SELECT * from pelamar where emai
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Rp. </div>
                                 </div>
-                                <input type="text" id="gaji" class="form-control" name="gaji" placeholder="Negisasi Gaji">
+                                <input type="text" id="gaji" class="form-control" name="gaji" placeholder="Negosiasi Gaji">
                             </div>
                         </div>
                         <div class="form-group">
