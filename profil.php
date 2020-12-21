@@ -304,22 +304,29 @@ if (isset($_POST["simpanData"])) {
         $gender = htmlspecialchars($_POST["gender"]);
         $alamat = htmlspecialchars($_POST["alamat"]);
         // validasi form
-        cekKosong($email);
-        validasiNama($nama);
-        validasiTelp($telp);
-        validasiAlamat($alamat);
-        // update db
-        mysqli_query($db,"UPDATE pelamar SET foto = '$namaFileBaru', nama = '$nama', email = '$email', telp = '$telp', gender = '$gender', alamat = '$alamat' WHERE email = '$emailLama'");
-        // ubah nilai session
-        $_SESSION["pelamar"] = $email;
-        // alert
-        echo "
-            <script>
-                Swal.fire('SUCCESS','Perubahan Berhasil Disimpan','success').then(function(){
-                    window.location = 'profil.php';
-                });
-            </script>
-        ";
+        if (cekKosong($email)== true){
+            if (validasiNama($nama) == true){
+                if (validasiTelp($telp) == true){
+                    if (validasiAlamat($alamat) == true){
+                        // update db
+                        mysqli_query($db,"UPDATE pelamar SET foto = '$namaFileBaru', nama = '$nama', email = '$email', telp = '$telp', gender = '$gender', alamat = '$alamat' WHERE email = '$emailLama'");
+                        // ubah nilai session
+                        $_SESSION["pelamar"] = $email;
+                        // alert
+                        echo "
+                            <script>
+                                Swal.fire('SUCCESS','Perubahan Berhasil Disimpan','success').then(function(){
+                                    window.location = 'profil.php';
+                                });
+                            </script>
+                        ";
+                    }
+                }
+            }
+        }
+        
+        
+        
 
 
         

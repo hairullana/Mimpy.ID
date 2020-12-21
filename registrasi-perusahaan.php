@@ -15,7 +15,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi Pelamar</title>
+    <title>Registrasi Perusahaan</title>
     <?php require "headtags.php" ?>
 </head>
 <body>

@@ -58,7 +58,7 @@ session_start();
                                             <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email" name="email">
+                                            <input type="email" class="form-control" placeholder="Email" name="email">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Nomor Telp" name="telp">
@@ -120,54 +120,61 @@ if (isset($_POST["daftar"])) {
     $password2 = htmlspecialchars($_POST["password2"]);
 
     // validasi form
-    validasiNama($nama);
-    validasiTelp($telp);
-    validasiAlamat($alamat);
-    validasiPassword($password1);
-    validasiPassword($password2);
-    
-    // cek apakah email sudah terdaftar
-    $cekEmail = mysqli_query($db, "SELECT * FROM pelamar WHERE email = '$email'");
-    if (mysqli_num_rows($cekEmail) == 1){
-        // jika email sudah terdaftar
-        echo "
-            <script>
-                Swal.fire(
-                    'PENDAFTARAN GAGAL',
-                    'Email Sudah Terdaftar',
-                    'error'
-                );
-            </script>
-        ";
-    }else {
-        // jika email belum terdaftar
-        if($password1 != $password2){
-            // jika password tidak sama
-            echo "
-                <script>
-                    Swal.fire(
-                        'PENDAFTARAN GAGAL',
-                        'Password Tidak Sama',
-                        'error'
-                    );
-                </script>
-            ";
-        }else {
-            // jika password sama
-            // pendaftaran berhasil
-
-            $password = password_hash($password1, PASSWORD_DEFAULT);
-            mysqli_query($db,"INSERT INTO pelamar VALUES ('','$nama','$email','$telp','$gender','$alamat','default.jpg','','$password')");
-
-            echo "
-                <script>
-                    Swal.fire('PENDAFTARAN BERHASIL','Silahkan Login Terlebih Dahulu','success').then(function() {
-                        window.location = 'login.php';
-                    });
-                </script>
-            ";
+    if (validasiNama($nama)== true){
+        if (validasiTelp($telp) == true){
+            if (validasiAlamat($alamat) == true){
+                if (validasiPassword($password1) == true){
+                    if (validasiPassword($password2) == true){
+                        // cek apakah email sudah terdaftar
+                        $cekEmail = mysqli_query($db, "SELECT * FROM pelamar WHERE email = '$email'");
+                        if (mysqli_num_rows($cekEmail) == 1){
+                            // jika email sudah terdaftar
+                            echo "
+                                <script>
+                                    Swal.fire(
+                                        'PENDAFTARAN GAGAL',
+                                        'Email Sudah Terdaftar',
+                                        'error'
+                                    );
+                                </script>
+                            ";
+                        }else {
+                            // jika email belum terdaftar
+                            if($password1 != $password2){
+                                // jika password tidak sama
+                                echo "
+                                    <script>
+                                        Swal.fire(
+                                            'PENDAFTARAN GAGAL',
+                                            'Password Tidak Sama',
+                                            'error'
+                                        );
+                                    </script>
+                                ";
+                            }else {
+                                // jika password sama
+                                // pendaftaran berhasil
+                    
+                                $password = password_hash($password1, PASSWORD_DEFAULT);
+                                mysqli_query($db,"INSERT INTO pelamar VALUES ('','$nama','$email','$telp','$gender','$alamat','default.jpg','','$password')");
+                    
+                                echo "
+                                    <script>
+                                        Swal.fire('PENDAFTARAN BERHASIL','Silahkan Login Terlebih Dahulu','success').then(function() {
+                                            window.location = 'login.php';
+                                        });
+                                    </script>
+                                ";
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+    
+    
+    
 }
 
 ?>
