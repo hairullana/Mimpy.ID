@@ -11,6 +11,9 @@ $id = $_GET["id"];
 $lamaran = mysqli_query($db, "SELECT * FROM lamaran where id = $id");
 $lamaran = mysqli_fetch_assoc($lamaran);
 
+$idPelamar = $lamaran["idPelamar"];
+$pelamar = mysqli_fetch_assoc(mysqli_query($db,"SELECT * from pelamar where id = $idPelamar"));
+
 ?>
 
 <!DOCTYPE html>
@@ -34,3 +37,26 @@ $lamaran = mysqli_fetch_assoc($lamaran);
     <?php require "footer.php" ?>
 </body>
 </html>
+
+<?php
+
+if (!isset($_SESSION["pelamar"])){
+    echo "
+        <script>
+            Swal.fire('AKSES DITOLAK','Anda Tidak Dizinkan Untuk Mengakses Halaman Ini','warning').then(function(){
+                window.location = 'index.php';
+            });
+        </script>
+    ";
+}else if ($pelamar["email"] != $_SESSION["pelamar"]){
+    echo "
+        <script>
+            Swal.fire('AKSES DITOLAK','Anda Tidak Dizinkan Untuk Mengakses Halaman Ini','warning').then(function(){
+                window.location = 'index.php';
+            });
+        </script>
+    ";
+}
+
+
+?>
