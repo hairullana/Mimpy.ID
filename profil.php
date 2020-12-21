@@ -302,7 +302,6 @@ if (isset($_POST["simpanData"])) {
         $email = htmlspecialchars($_POST["email"]);
         $telp = htmlspecialchars($_POST["telp"]);
         $gender = htmlspecialchars($_POST["gender"]);
-        echo $gender;die;
         $alamat = htmlspecialchars($_POST["alamat"]);
         // validasi form
         if (cekKosong($email)== true){
