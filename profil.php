@@ -118,7 +118,7 @@ session_start();
                             <input type="text" class="form-control" placeholder="Nomor Telp" name="telp" value="<?= $pelamar['telp'] ?>">
                         </div>
                         <div class="form-group">
-                            <select name="" id="" class="form-control" name="gender">
+                            <select id="" class="form-control" name="gender">
                                 <?php if ($pelamar["gender"] == "pria") : ?>
                                     <option value="pria" selected>Laki-Laki</option>
                                     <option value="wanita">Perempuan</option>
@@ -302,6 +302,7 @@ if (isset($_POST["simpanData"])) {
         $email = htmlspecialchars($_POST["email"]);
         $telp = htmlspecialchars($_POST["telp"]);
         $gender = htmlspecialchars($_POST["gender"]);
+        echo $gender;die;
         $alamat = htmlspecialchars($_POST["alamat"]);
         // validasi form
         if (cekKosong($email)== true){
