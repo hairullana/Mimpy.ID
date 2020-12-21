@@ -61,7 +61,7 @@ $pelamar = mysqli_fetch_assoc(mysqli_query($db,"SELECT * from pelamar where emai
                                 <br>
                             </div>
                             <div class="col-sm-5">
-                                <a href="cv.php?id=<?= $pelamar['id'] ?>" class="btn btn-success btn-block">Lihat CV Saya</a>
+                                <a href="assets/cv/<?= $pelamar['cv'] ?>" class="btn btn-success btn-block">Lihat CV Saya</a>
                             </div>
                         </div>
                     </form>
