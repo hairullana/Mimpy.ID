@@ -437,7 +437,13 @@ session_start();
                             <td><?= $data["posisi"] ?></td>
                             <td><?= "Rp. " . number_format($data["gaji"]) ?></td>
                             <td><a href="lamaran.php?id=<?= $data['idLamaran'] ?>">Surat Lamaran</a></td>
-                            <td><?= $data["statusLamaran"] ?></td>
+                            <td>
+                                <?php if ($data['statusLamaran'] == "Diterima") : ?>
+                                    <a href="surat-perusahaan.php?id=<?= $data['idLamaran'] ?>"><?= $data["statusLamaran"] ?></a>
+                                <?php else : ?>
+                                    <?= $data["statusLamaran"] ?>
+                                <?php endif; ?>
+                            </td>
                             <td>
                               <?php if($data["konfirmasi"] == 0 && $data["statusLamaran"] != "Menunggu") : ?>
                                 <a href="konfirmasi.php?id=<?= $data['idLamaran'] ?>" class="btn btn-primary">Konfirmasi</a>
