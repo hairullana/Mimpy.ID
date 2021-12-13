@@ -69,7 +69,7 @@ if ( isset($_POST["cari"])) {
         <div class="jumbotron jumbotron-fluid bg jumbotron-index">
             <div class="container text-center">
                 <h1 class="display-1">Mimpy.ID</h1>
-                <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+                <p class="lead">Minimize Unemployment - Platform Pencarian Lowongan Kerja untuk Mimpi Anda.</p>
                 
                 <div class="row text-center mb-3">
                     <div class="col-md-3 offset-md-3">
@@ -87,7 +87,7 @@ if ( isset($_POST["cari"])) {
         <div class="jumbotron jumbotron-fluid bg jumbotron-index">
             <div class="container text-center">
                 <h1 class="display-1">Mimpy.ID</h1>
-                <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+                <p class="lead">Minimize Unemployment - Platform Pencarian Lowongan Kerja untuk Mimpi Anda.</p>
                 
                 <div class="row text-center mb-3">
                     <div class="col-md-3 offset-md-3">
@@ -131,7 +131,7 @@ if ( isset($_POST["cari"])) {
         <div class="jumbotron jumbotron-fluid bg jumbotron-index">
             <div class="container text-center">
                 <h1 class="display-1">Mimpy.ID</h1>
-                <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+                <p class="lead">Minimize Unemployment - Platform Pencarian Lowongan Kerja untuk Mimpi Anda.</p>
                 
                 <div class="row text-center mb-3">
                     <div class="col-md-3 offset-md-3">
@@ -179,7 +179,7 @@ if ( isset($_POST["cari"])) {
         <div class="jumbotron jumbotron-fluid bg jumbotron-index">
             <div class="container text-center">
                 <h1 class="display-1">Mimpy.ID</h1>
-                <p class="lead">Solusi untuk Pengangguran Tanpa Mimpi Seperti Anda.</p>
+                <p class="lead">Minimize Unemployment - Platform Pencarian Lowongan Kerja untuk Mimpi Anda.</p>
                 <div class="row center">
                     <div class="col text-center">
                         <a href="registrasi.php" type="button" class="btn btn-primary align-content-center">Daftar Sekarang</a>

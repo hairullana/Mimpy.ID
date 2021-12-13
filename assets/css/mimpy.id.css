@@ -12,11 +12,12 @@ html  {
 
 .bg {
     height: 400px;
+    /* source: https://unsplash.com/photos/lbO1iCnbTW0 */
     background-image: url(../background.jpg);
     background-attachment: fixed;
     background-size: cover;
     color: #eaeaea;
-    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
     overflow: hidden;
 }
 
