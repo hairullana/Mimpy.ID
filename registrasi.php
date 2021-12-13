@@ -35,10 +35,13 @@ session_start();
                     <div class="card-body">
                         <div class="container">
                             <div class="row text-center">
-                                <div class="col">
+                                <div class="col-md-12 my-2">
+                                    <h5>Saya akan mendaftar sebagai ...</h5>
+                                </div>
+                                <div class="col-12 my-2">
                                     <a href="registrasi-perusahaan.php"><button class="btn btn-primary btn-lg btn-block">Registrasi Sebagai Perusahaan</button></a>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 my-2">
                                     <a href="registrasi-pelamar.php"><button class="btn btn-primary btn-lg btn-block">Registrasi Sebagai Pelamar</button></a>
                                 </div>
                             </div>

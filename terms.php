@@ -98,9 +98,9 @@ session_start();
                                 <h3>Contact Us</h3>
                             </li>
                             <li class="list-group-item"><i class="fa fa-internet-explorer"></i> https://mimpy.id</li>
-                            <li class="list-group-item"><i class="fa fa-phone"></i> (0363) 1808 561</li>
+                            <li class="list-group-item"><i class="fa fa-phone"></i> (0363) xxxx xxxx</li>
                             <li class="list-group-item"><i class="fa fa-facebook-official"></i> Official Mimpy.ID</li>
-                            <li class="list-group-item"><i class="fa fa-instagram"></i> mimpy.id</li>
+                            <li class="list-group-item"><i class="fa fa-instagram"></i> @mimpy.id</li>
                             <li class="list-group-item"><i class="fa fa-home"></i> Jl. Raya Kampus Unud, Jimbaran, Kecamatan Kuta Selatan, Kabupaten Badung, Provinsi Bali</li>
                         </ul>
                     </div>
