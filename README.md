@@ -14,3 +14,4 @@ Made with Technology :
 3. Pelamar (job seeker)
 
 Database Structure : (still in the process of revision)
+cek
